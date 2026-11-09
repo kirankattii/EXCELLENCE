@@ -3,50 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-zinc-200/80">
-      {/* Top Utility Bar */}
-      <div className="bg-[#19364f] text-white py-1.5 px-4 sm:px-8 text-xs border-b border-[#BB9331]/30">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5">
-          <div className="flex items-center gap-3 text-zinc-300">
-            <span className="flex items-center gap-1.5 text-white font-medium">
-              <MapPin className="w-3.5 h-3.5 text-[#BB9331]" aria-hidden="true" />
-              <span>Goa, India</span>
-            </span>
-            <span className="hidden md:inline text-white/30">•</span>
-            <span className="hidden md:inline-flex items-center gap-1 text-[#BB9331] font-semibold">
-              Goa&apos;s Only CTH Accredited Culinary & Hospitality Institute
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-zinc-300">
-            <a
-              href="tel:+919876543210"
-              className="flex items-center gap-1.5 hover:text-[#BB9331] transition-colors focus-visible:outline-2 focus-visible:outline-[#BB9331] rounded"
-            >
-              <Phone className="w-3 h-3 text-[#BB9331]" aria-hidden="true" />
-              <span>+91 98765 43210</span>
-            </a>
-            <span className="text-white/30">•</span>
-            <a
-              href="mailto:admissions@exceleduacademy.com"
-              className="flex items-center gap-1.5 hover:text-[#BB9331] transition-colors focus-visible:outline-2 focus-visible:outline-[#BB9331] rounded"
-            >
-              <Mail className="w-3 h-3 text-[#BB9331]" aria-hidden="true" />
-              <span className="hidden xs:inline">admissions@exceleduacademy.com</span>
-              <span className="xs:hidden">Email</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <header className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-zinc-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <Link
           href="/"
@@ -72,12 +36,12 @@ export default function Header() {
               </span>
             </div>
             <span className="text-[11px] font-semibold text-zinc-600 tracking-wider uppercase mt-0.5">
-              Culinary & Hospitality Academy
+              Culinary &amp; Hospitality Academy
             </span>
           </div>
         </Link>
 
-        {/* Center Nav Menu: Home, About, Courses, Gallery, Blogs, Contact */}
+        {/* Center Nav Menu: Home, About, Courses, Gallery, Blogs, Why Us, Contact */}
         <nav
           className="hidden lg:flex items-center gap-7 text-sm font-medium text-zinc-700"
           aria-label="Main Navigation"
@@ -101,16 +65,22 @@ export default function Header() {
             Courses
           </Link>
           <Link
+            href="#gallery"
+            className="hover:text-[#19364f] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
+          >
+            Gallery
+          </Link>
+          <Link
+            href="#blogs"
+            className="hover:text-[#19364f] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
+          >
+            Blogs
+          </Link>
+          <Link
             href="#why-join-us"
             className="hover:text-[#19364f] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
-            Why Join Us
-          </Link>
-          <Link
-            href="#accreditation"
-            className="hover:text-[#19364f] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
-          >
-            CTH Accreditation
+            Why Us
           </Link>
           <Link
             href="#contact"
@@ -120,7 +90,7 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Right CTA */}
+        {/* Right CTA Button */}
         <div className="flex items-center gap-3">
           <Link
             href="#contact"
@@ -143,7 +113,7 @@ export default function Header() {
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </header>
+      </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
@@ -171,18 +141,25 @@ export default function Header() {
               Courses Offered
             </Link>
             <Link
+              href="#gallery"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 transition-colors"
+            >
+              Gallery
+            </Link>
+            <Link
+              href="#blogs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 transition-colors"
+            >
+              Blogs
+            </Link>
+            <Link
               href="#why-join-us"
               onClick={() => setMobileMenuOpen(false)}
               className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 transition-colors"
             >
               Why Join Us
-            </Link>
-            <Link
-              href="#accreditation"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 transition-colors"
-            >
-              CTH Accreditation
             </Link>
             <Link
               href="#contact"
@@ -204,6 +181,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }

@@ -4,11 +4,13 @@ import Stats from "@/components/Stats";
 import CoursesOffered from "@/components/CoursesOffered";
 import AboutSection from "@/components/AboutSection";
 import FeaturedCourses from "@/components/FeaturedCourses";
+import GallerySection from "@/components/GallerySection";
 import WhyJoinUs from "@/components/WhyJoinUs";
+import CaseStudyFlipStack, { type CaseStudyFlipItem } from "@/components/ui/case-study-flip-stack";
+import BlogSection from "@/components/BlogSection";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import AdmissionForm from "@/components/AdmissionForm";
 import Footer from "@/components/Footer";
-import { CaseStudyFlipStack, type CaseStudyFlipItem } from "@/components/ui/case-study-flip-stack";
 
 const CULINARY_STUDY_ITEMS: CaseStudyFlipItem[] = [
   {
@@ -77,7 +79,13 @@ export default function Home() {
         {/* 5. Featured Courses (Begin Your Learning Adventure) */}
         <FeaturedCourses />
 
-        {/* 6. Interactive 3D Case Study Flip Stack UI */}
+        {/* 6. Campus & Kitchen Gallery */}
+        <GallerySection />
+
+        {/* 7. Why Join Us (Kitchens & Global Placements) */}
+        <WhyJoinUs />
+
+        {/* 8. Interactive 3D Case Study Flip Stack UI */}
         <CaseStudyFlipStack
           items={CULINARY_STUDY_ITEMS}
           heading="Culinary Mastery That Delivers."
@@ -86,13 +94,13 @@ export default function Home() {
           className="bg-[#fafbfc] border-y border-zinc-200/80"
         />
 
-        {/* 7. Why Join Us (Kitchens & Global Placements) */}
-        <WhyJoinUs />
+        {/* 9. Latest Blogs & Industry Insights */}
+        <BlogSection />
 
-        {/* 8. CTH Accreditation Banner */}
+        {/* 10. CTH Accreditation Banner */}
         <AccreditationBanner />
 
-        {/* 9. Get In Touch with Us (Contact Form & Details) */}
+        {/* 11. Get In Touch with Us (Contact Form & Details) */}
         <AdmissionForm />
       </main>
       <Footer />
