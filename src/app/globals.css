@@ -2,25 +2,42 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #19364f;
+  --navy: #19364f;
+  --navy-dark: #0f2334;
+  --navy-light: #254a6b;
+  --navy-subtle: #f0f5fa;
+  --gold: #BB9331;
+  --gold-light: #d6a943;
+  --gold-dark: #8f6e20;
+  --gold-subtle: #fdf8ed;
+  --brand-color: #19364f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-navy: #19364f;
+  --color-navy-dark: #0f2334;
+  --color-navy-light: #254a6b;
+  --color-navy-subtle: #f0f5fa;
+  --color-gold: #BB9331;
+  --color-gold-light: #d6a943;
+  --color-gold-dark: #8f6e20;
+  --color-gold-subtle: #fdf8ed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  accent-color: var(--gold);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Accessible focus ring complying with modern-web-guidance */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
