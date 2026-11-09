@@ -20,17 +20,27 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://exceleduacademy.com"),
-  title: "Excellence Education Academy | Premier Coaching & Academics in Goa",
+  title: "Excellence Education Academy | Goa's Leading Culinary & Hospitality Academy",
   description:
-    "Excellence Education Academy (Estd. 2025, Goa) provides premier academic coaching for Board Exams (CBSE, ICSE, Goa Board), NEET, JEE, Foundation courses, and Olympiads.",
+    "Goa's only CTH-accredited culinary and hospitality institute. Professional Diplomas & Certificates in Culinary Skills, Patisserie, Cruise Hospitality, Front Office, and Bartending with 100% placement assistance.",
+  keywords: [
+    "Culinary Academy Goa",
+    "Hospitality Institute Goa",
+    "CTH Accredited Culinary School",
+    "Diploma in Culinary Skills Goa",
+    "Patisserie courses Goa",
+    "Cruise ship hospitality training",
+    "Chef training institute Goa",
+    "Excellence Education Academy",
+  ],
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Excellence Education Academy | Goa",
+    title: "Excellence Education Academy | Goa's Leading Culinary & Hospitality Academy",
     description:
-      "Empowering students in Goa to achieve academic excellence through expert faculty, personalized mentorship, and proven curricula.",
+      "Goa's only CTH accredited institute for culinary arts, pastry, cruise line hospitality, and hotel management with 100% placement support.",
     url: "https://exceleduacademy.com",
     siteName: "Excellence Education Academy",
     images: [

@@ -1,81 +1,92 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, HeartHandshake, Sparkles, BookOpen } from "lucide-react";
+import { CheckCircle2, Award, ArrowUpRight, ChefHat } from "lucide-react";
 
 export default function AboutSection() {
-  const pillars = [
-    {
-      label: "Small Batches",
-      value: "Max 15–20",
-      description: "No overcrowded lectures; every student receives direct, personal faculty attention.",
-    },
-    {
-      label: "Concept-First",
-      value: "First Principles",
-      description: "We dismantle hard physics, math & chemistry problems with intuitive visual reasoning.",
-    },
-    {
-      label: "Daily Care",
-      value: "1:1 Doubt Labs",
-      description: "Open faculty clinics after every lecture so no doubt carries over to the next day.",
-    },
-    {
-      label: "Performance",
-      value: "Error Journals",
-      description: "Systematic test reviews that turn past mistakes into permanent exam strengths.",
-    },
+  const bullets = [
+    "Goa's only premier vocational academy accredited by CTH (Confederation of Tourism & Hospitality, UK)",
+    "State-of-the-art commercial training kitchens, bakery labs, and mock bar facilities",
+    "100% dedicated placement support across luxury ocean cruise liners & 5-star resort properties",
+    "Curriculum delivered by veteran Executive Chefs, Master Bakers, and F&B Industry Directors",
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-28 bg-white border-y border-zinc-200/70">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-12 sm:space-y-16">
-        {/* Story Headline (Matching Screenshot 4 - Overtake style) */}
-        <div className="max-w-4xl space-y-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-700">
-            <span>• Our story •</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.18]">
-            We founded{" "}
-            <span className="inline-block bg-[#BB9331]/20 text-[#8f6e20] px-3 sm:px-4 py-0.5 rounded-full font-bold">
-              Excellence
-            </span>{" "}
-            because promising{" "}
-            <span className="inline-block bg-[#19364f]/10 text-[#19364f] px-3 sm:px-4 py-0.5 rounded-full font-bold">
-              students
-            </span>{" "}
-            kept getting lost in crowded coaching factories.
-          </h2>
-
-          <p className="text-base sm:text-lg text-zinc-600 leading-relaxed max-w-3xl">
-            Established in 2025 in Goa, Excellence Education Academy was created to bring national-caliber teaching standards back to a human scale. We focus on rigorous conceptual depth, individual mentoring, and disciplined study habits.
-          </p>
-        </div>
-
-        {/* 4 Feature Bento Cards in a Row (Matching Screenshot 4) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pillars.map((item, index) => (
-            <div
-              key={index}
-              className="bg-[#fafbfc] rounded-3xl p-6 sm:p-7 border border-zinc-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-semibold text-[#BB9331] uppercase tracking-wider block mb-2">
-                  {item.label}
-                </span>
-                <h3 className="text-xl font-bold text-zinc-900 tracking-tight mb-2">
-                  {item.value}
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs font-medium text-zinc-400">
-                <span>Pillar 0{index + 1}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#BB9331]" />
+    <section id="about" className="py-20 sm:py-28 bg-[#fafbfc] border-b border-zinc-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          {/* Left Visuals: Clean Modern Photo Collage (from old site spec) */}
+          <div className="lg:col-span-6 space-y-4">
+            <div className="relative w-full aspect-[16/10] rounded-[32px] overflow-hidden border border-zinc-200/80 shadow-lg">
+              <Image
+                src="/images/training-kitchen.jpg"
+                alt="State of the art training kitchen at Excellence Education Academy Goa"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-[#19364f] shadow-sm">
+                ✦ Commercial Training Kitchen
               </div>
             </div>
-          ))}
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200/80 shadow-md">
+                <Image
+                  src="/images/culinary-hero.jpg"
+                  alt="Chef plating dish"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200/80 shadow-md">
+                <Image
+                  src="/images/barista-beverage.jpg"
+                  alt="Barista and beverage training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: About Us Narrative */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-700 shadow-sm">
+              <ChefHat className="w-3.5 h-3.5 text-[#BB9331]" aria-hidden="true" />
+              <span>ABOUT US • WELCOME TO EXCELLENCE</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.15]">
+              Who Are Excellence Education Academy
+            </h2>
+
+            <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
+              Based in the coastal hospitality hub of Goa, <strong className="text-zinc-950 font-semibold">Excellence Education Academy</strong> is the state’s foremost culinary and hospitality institute dedicated to bridging the gap between student aspirations and global career realities.
+            </p>
+
+            <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
+              We provide immersive vocational education where students spend over 80% of their learning time inside high-spec commercial kitchens, pastry studios, and mock service bars. Through our esteemed accreditation from the UK’s Confederation of Tourism &amp; Hospitality (CTH), our diplomas unlock direct employment on international cruise ships and luxury hotels globally.
+            </p>
+
+            {/* 4 Feature Bullet Points from old site spec */}
+            <div className="space-y-3 pt-2">
+              {bullets.map((b, i) => (
+                <div key={i} className="flex items-start gap-3 text-sm text-zinc-700">
+                  <CheckCircle2 className="w-4 h-4 text-[#BB9331] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>{b}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-3">
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-[#19364f] hover:bg-[#132c40] text-white font-medium text-sm px-7 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
+              >
+                <span>Visit Our Goa Campus</span>
+                <ArrowUpRight className="w-4 h-4 text-white" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
