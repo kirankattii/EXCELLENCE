@@ -1,185 +1,166 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, ArrowUp, GraduationCap } from "lucide-react";
+import { ArrowUp, MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f2334] text-white border-t-2 border-[#BB9331]">
-      {/* Upper Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-16">
+    <footer className="bg-white border-t border-zinc-200/80 text-zinc-600">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-16 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          {/* Column 1: Brand & Identity */}
-          <div className="lg:col-span-4 space-y-5">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-14 h-14 bg-white/5 rounded-xl p-1 border border-[#BB9331]/30">
+          {/* Col 1: Brand & Identity */}
+          <div className="lg:col-span-5 space-y-5">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Excellence Education Academy Crest"
                   fill
-                  className="object-contain p-1"
+                  className="object-contain"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-white">
-                  EXCELLENCE
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg font-bold tracking-tight text-zinc-950">
+                  Excellence
                 </span>
-                <span className="text-xs font-semibold tracking-wider text-[#BB9331] uppercase">
-                  Education Academy
-                </span>
-                <span className="text-[10px] text-zinc-400 font-medium tracking-widest uppercase">
-                  Goa • Estd. 2025
+                <span className="text-[11px] font-semibold text-[#BB9331] bg-[#BB9331]/10 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  Academy
                 </span>
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-sm">
-              Dedicated to academic rigor, conceptual understanding, and character building.
-              Preparing students across Goa for board dominance and competitive entrance triumphs.
+            <p className="text-sm text-zinc-600 leading-relaxed max-w-sm">
+              Empowering students in Goa to achieve true academic mastery through small batches, first-principles pedagogy, and daily 1:1 doubt clearing.
             </p>
 
-            <div className="pt-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-zinc-300">
-                <GraduationCap className="w-4 h-4 text-[#BB9331]" aria-hidden="true" />
-                <span>Admissions open for 2025–2026 batches</span>
+            <div className="pt-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-xs text-zinc-700 font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#BB9331]" />
+                <span>Goa Campus • Estd. 2025</span>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Col 2: Navigation Links */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider uppercase text-[#BB9331]">
-              Quick Links
+            <h4 className="text-xs font-bold tracking-wider uppercase text-zinc-950">
+              Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-300">
+            <ul className="space-y-2.5 text-sm text-zinc-600">
               <li>
-                <Link href="#about" className="hover:text-[#BB9331] transition-colors">
-                  About Academy
+                <Link href="#about" className="hover:text-zinc-950 transition-colors">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  All Courses
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  Programs
                 </Link>
               </li>
               <li>
-                <Link href="#why-us" className="hover:text-[#BB9331] transition-colors">
-                  Why Choose Us
+                <Link href="#why-us" className="hover:text-zinc-950 transition-colors">
+                  Why Us
                 </Link>
               </li>
               <li>
-                <Link href="#methodology" className="hover:text-[#BB9331] transition-colors">
-                  4-Step Methodology
+                <Link href="#methodology" className="hover:text-zinc-950 transition-colors">
+                  Methodology
                 </Link>
               </li>
               <li>
-                <Link href="#testimonials" className="hover:text-[#BB9331] transition-colors">
-                  Student Reviews
+                <Link href="#testimonials" className="hover:text-zinc-950 transition-colors">
+                  Reviews
                 </Link>
               </li>
               <li>
-                <Link href="#inquire" className="hover:text-[#BB9331] transition-colors">
-                  Admission Inquiry
+                <Link href="#inquire" className="hover:text-zinc-950 transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Coaching Streams */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider uppercase text-[#BB9331]">
-              Programs Offered
+          {/* Col 3: Programs */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-bold tracking-wider uppercase text-zinc-950">
+              Programs
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-300">
+            <ul className="space-y-2.5 text-sm text-zinc-600">
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  Class 8–10 Foundation (CBSE/ICSE/Goa)
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  Classes 8–10
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  NEET-UG Medical Coaching
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  NEET-UG
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  JEE Main & Advanced Coaching
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  JEE Main & Adv
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  11th & 12th Commerce Stream
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  Commerce 11–12
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  Olympiad & NTSE Talent Batches
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  Olympiads
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="hover:text-[#BB9331] transition-colors">
-                  Board Booster Crash Courses
+                <Link href="#programs" className="hover:text-zinc-950 transition-colors">
+                  Crash Courses
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Location */}
+          {/* Col 4: Campus Location & Hours */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold tracking-wider uppercase text-[#BB9331]">
-              Goa Campus
+            <h4 className="text-xs font-bold tracking-wider uppercase text-zinc-950">
+              Campus & Hours
             </h4>
-            <div className="space-y-3 text-xs text-zinc-300">
+            <div className="space-y-3 text-sm text-zinc-600">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#BB9331] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span>
-                  Excellence Education Academy<br />
-                  Panaji / Margao Campus, Goa, India
-                </span>
+                <span>Panaji / Margao Campus, Goa, India</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#BB9331] flex-shrink-0" aria-hidden="true" />
-                <a href="tel:+919876543210" className="hover:text-[#BB9331] transition-colors">
-                  +91 98765 43210 / 0832-2456789
+                <a href="tel:+919876543210" className="hover:text-zinc-950 transition-colors">
+                  +91 98765 43210
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#BB9331] flex-shrink-0" aria-hidden="true" />
-                <a href="mailto:info@exceleduacademy.com" className="hover:text-[#BB9331] transition-colors">
+                <a href="mailto:info@exceleduacademy.com" className="hover:text-zinc-950 transition-colors">
                   info@exceleduacademy.com
                 </a>
               </div>
-              <div className="flex items-start gap-2.5 pt-1">
+              <div className="flex items-start gap-2.5 pt-1 text-xs text-zinc-500">
                 <Clock className="w-4 h-4 text-[#BB9331] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span>Mon – Sat: 9:00 AM – 7:30 PM</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-[#0a1824] py-6 px-4 sm:px-8 text-xs text-zinc-400">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-center sm:text-left">
-            © 2025–2026 Excellence Education Academy, Goa. All rights reserved.
-          </p>
+        {/* Bottom Sub-bar */}
+        <div className="mt-14 pt-8 border-t border-zinc-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+          <p>© 2025–2026 Excellence Education Academy, Goa. All rights reserved.</p>
 
-          <div className="flex items-center gap-6">
-            <span className="text-[#BB9331] font-semibold">
-              Navy: #19364f • Gold: #BB9331 • White
-            </span>
-            <Link
-              href="#"
-              className="flex items-center gap-1.5 text-zinc-300 hover:text-[#BB9331] transition-colors"
-              aria-label="Back to top"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5 text-[#BB9331]" aria-hidden="true" />
-            </Link>
-          </div>
+          <Link
+            href="#"
+            className="inline-flex items-center gap-1.5 text-zinc-700 hover:text-zinc-950 font-medium transition-colors"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5 text-[#19364f]" aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </footer>
   );
 }
-

@@ -13,25 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#19364f",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://exceleduacademy.com"),
-  title: "Excellence Education Academy | Premier Academic & Competitive Coaching in Goa",
+  title: "Excellence Education Academy | Premier Coaching & Academics in Goa",
   description:
-    "Excellence Education Academy (Estd. 2025, Goa) offers premier academic coaching for Board Exams (CBSE, ICSE, Goa Board), NEET, JEE, Foundation courses, and Olympiads.",
-  keywords: [
-    "Excellence Education Academy",
-    "Goa coaching classes",
-    "NEET coaching Goa",
-    "JEE coaching Goa",
-    "Board exam tuition Goa",
-    "Excellence Academy Goa",
-    "Foundation courses Goa",
-  ],
+    "Excellence Education Academy (Estd. 2025, Goa) provides premier academic coaching for Board Exams (CBSE, ICSE, Goa Board), NEET, JEE, Foundation courses, and Olympiads.",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
@@ -65,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white text-[#19364f] selection:bg-[#BB9331]/20 selection:text-[#19364f]">
+      <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-[#BB9331]/20 selection:text-[#19364f]">
         {children}
       </body>
     </html>

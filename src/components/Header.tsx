@@ -3,186 +3,155 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Menu, X, ArrowRight, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Menu, X, MapPin } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-[#19364f]/10">
-      {/* Top Notification / Contact Bar */}
-      <div className="bg-[#19364f] text-white text-xs sm:text-sm py-2 px-4 sm:px-8 border-b border-[#BB9331]/30">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-4 text-xs font-medium text-white/90">
-            <span className="flex items-center gap-1.5 text-[#BB9331]">
-              <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Goa, India</span>
-            </span>
-            <span className="hidden md:inline text-white/30">•</span>
-            <span className="hidden md:flex items-center gap-1 text-white/90">
-              <GraduationCap className="w-3.5 h-3.5 text-[#BB9331]" aria-hidden="true" />
-              <span>Admissions Open for Academic Year 2025–2026</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-5 text-xs text-white/90">
-            <a
-              href="tel:+919876543210"
-              className="flex items-center gap-1.5 hover:text-[#BB9331] transition-colors focus-visible:outline-2 focus-visible:outline-[#BB9331] rounded"
-              aria-label="Call Admissions Helpline"
-            >
-              <Phone className="w-3 h-3 text-[#BB9331]" aria-hidden="true" />
-              <span>+91 98765 43210</span>
-            </a>
-            <span className="text-white/30">•</span>
-            <a
-              href="mailto:info@exceleduacademy.com"
-              className="flex items-center gap-1.5 hover:text-[#BB9331] transition-colors focus-visible:outline-2 focus-visible:outline-[#BB9331] rounded"
-              aria-label="Email Admissions Office"
-            >
-              <Mail className="w-3 h-3 text-[#BB9331]" aria-hidden="true" />
-              <span className="hidden xs:inline">info@exceleduacademy.com</span>
-              <span className="xs:hidden">Email</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between" aria-label="Main Navigation">
-        {/* Brand Logo & Title */}
+    <header className="sticky top-4 z-50 w-full px-4 sm:px-8">
+      {/* Floating Modern Pill Navbar */}
+      <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-full border border-zinc-200/80 shadow-[0_2px_20px_rgba(0,0,0,0.04)] px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all">
+        {/* Brand Logo & Name */}
         <Link
           href="/"
-          className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-lg p-1"
-          aria-label="Excellence Education Academy Home"
+          className="flex items-center gap-2.5 group focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full p-1"
+          aria-label="Excellence Education Academy"
         >
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 transition-transform group-hover:scale-105">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0">
             <Image
               src="/logo.png"
-              alt="Excellence Education Academy Crest"
+              alt="Excellence Education Academy Logo"
               fill
               className="object-contain"
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-lg sm:text-xl font-bold tracking-tight text-[#19364f] leading-tight">
-              EXCELLENCE
+          <div className="flex items-center gap-1.5">
+            <span className="text-base sm:text-lg font-bold tracking-tight text-[#19364f]">
+              Excellence
             </span>
-            <span className="text-xs sm:text-sm font-semibold tracking-wider text-[#BB9331] uppercase">
-              Education Academy
-            </span>
-            <span className="text-[10px] text-zinc-500 font-medium tracking-widest uppercase">
-              Goa • Estd. 2025
+            <span className="hidden sm:inline-block text-[11px] font-semibold text-[#BB9331] bg-[#BB9331]/10 px-2 py-0.5 rounded-full uppercase tracking-wider">
+              Academy
             </span>
           </div>
         </Link>
 
-        {/* Desktop Menu Links */}
-        <div className="hidden lg:flex items-center gap-8 font-medium text-sm text-[#19364f]">
+        {/* Center Nav Links */}
+        <nav
+          className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600"
+          aria-label="Main Navigation"
+        >
           <Link
             href="#about"
-            className="hover:text-[#BB9331] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded"
+            className="hover:text-zinc-950 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
-            About Academy
+            About
           </Link>
           <Link
             href="#programs"
-            className="hover:text-[#BB9331] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded"
+            className="hover:text-zinc-950 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
-            Academic Programs
+            Programs
           </Link>
           <Link
             href="#why-us"
-            className="hover:text-[#BB9331] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded"
+            className="hover:text-zinc-950 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
-            Why Choose Us
+            Why Us
           </Link>
           <Link
             href="#methodology"
-            className="hover:text-[#BB9331] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded"
+            className="hover:text-zinc-950 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
             Methodology
           </Link>
           <Link
             href="#testimonials"
-            className="hover:text-[#BB9331] transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded"
+            className="hover:text-zinc-950 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-[#19364f] rounded-full px-2"
           >
-            Testimonials
+            Reviews
           </Link>
-        </div>
+        </nav>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Right CTA & Location Tag */}
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-1 text-xs text-zinc-500 font-medium bg-zinc-100/80 px-3 py-1.5 rounded-full border border-zinc-200/50">
+            <MapPin className="w-3.5 h-3.5 text-[#BB9331]" aria-hidden="true" />
+            <span>Goa, India</span>
+          </div>
+
           <Link
             href="#inquire"
-            className="inline-flex items-center gap-2 bg-[#BB9331] hover:bg-[#d6a943] text-[#19364f] font-semibold text-sm px-5 py-2.5 rounded-md shadow-sm transition-all duration-200 hover:shadow hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[#19364f]"
+            className="inline-flex items-center gap-1.5 bg-[#19364f] hover:bg-[#132c40] text-white text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_4px_14px_rgba(25,54,79,0.2)] hover:shadow-[0_6px_20px_rgba(25,54,79,0.28)] transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[#19364f]"
           >
-            <span>Admission Inquiry</span>
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            <span>Book counseling</span>
+            <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+              <ArrowUpRight className="w-3.5 h-3.5 text-white" aria-hidden="true" />
+            </div>
           </Link>
+
+          {/* Mobile menu toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-full text-zinc-700 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-[#19364f]"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-md text-[#19364f] hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-[#19364f]"
-          aria-expanded={mobileMenuOpen}
-          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </nav>
-
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-zinc-200 bg-white px-4 py-6 space-y-4 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="flex flex-col space-y-3 font-medium text-[#19364f]">
+        <div className="md:hidden mt-2 max-w-6xl mx-auto bg-white/95 backdrop-blur-md rounded-3xl border border-zinc-200/80 shadow-xl p-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex flex-col space-y-2 text-sm font-medium text-zinc-700">
             <Link
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md hover:bg-[#f0f5fa] hover:text-[#BB9331] transition-colors"
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
               About Academy
             </Link>
             <Link
               href="#programs"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md hover:bg-[#f0f5fa] hover:text-[#BB9331] transition-colors"
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              Academic Programs
+              Programs & Courses
             </Link>
             <Link
               href="#why-us"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md hover:bg-[#f0f5fa] hover:text-[#BB9331] transition-colors"
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
               Why Choose Us
             </Link>
             <Link
               href="#methodology"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md hover:bg-[#f0f5fa] hover:text-[#BB9331] transition-colors"
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              Methodology
+              4-Step Methodology
             </Link>
             <Link
               href="#testimonials"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-md hover:bg-[#f0f5fa] hover:text-[#BB9331] transition-colors"
+              className="px-4 py-2.5 rounded-xl hover:bg-zinc-100 hover:text-zinc-950 transition-colors"
             >
-              Testimonials
+              Student Reviews
             </Link>
           </div>
           <div className="pt-2 border-t border-zinc-100">
             <Link
               href="#inquire"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex w-full items-center justify-center gap-2 bg-[#BB9331] hover:bg-[#d6a943] text-[#19364f] font-semibold text-center px-4 py-3 rounded-md shadow-sm transition-colors"
+              className="flex w-full items-center justify-center gap-2 bg-[#19364f] text-white font-medium text-sm py-3 px-5 rounded-full shadow-md hover:bg-[#132c40] transition-colors"
             >
-              <span>Admission Inquiry (2025–26)</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <span>Book Academic Counseling</span>
+              <ArrowUpRight className="w-4 h-4 text-white" aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -190,4 +159,3 @@ export default function Header() {
     </header>
   );
 }
-

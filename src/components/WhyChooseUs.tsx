@@ -1,79 +1,99 @@
-import { Users, BookOpenCheck, BrainCircuit, BarChart3, Clock, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Users, BrainCircuit, BookOpenCheck, Clock, BarChart3, Sparkles } from "lucide-react";
 
 export default function WhyChooseUs() {
   const pillars = [
     {
       icon: Users,
-      title: "Limited Batch Sizes (Max 15–20)",
+      tag: "Batch Size",
+      title: "Limited to 15–20 Students",
       description:
-        "We reject crowded lecture halls. Our low student-teacher ratio ensures the mentor actively monitors every student’s retention, notes, and progress in every class.",
+        "We reject crowded lecture halls. Low student-teacher ratio ensures the mentor actively monitors every student’s retention, notes, and individual progress.",
     },
     {
       icon: BrainCircuit,
-      title: "Conceptual Clarity & Depth",
+      tag: "Pedagogy",
+      title: "First-Principles Conceptual Clarity",
       description:
-        "We demystify hard concepts using relatable analogies and intuitive step-by-step logic, turning intimidating formulas into natural understanding.",
+        "We demystify hard concepts using intuitive step-by-step logic and visual reasoning, turning intimidating equations into natural understanding.",
     },
     {
       icon: BookOpenCheck,
-      title: "Curated High-Yield Material",
+      tag: "Study Material",
+      title: "High-Yield Modules & DPP Sheets",
       description:
-        "Students receive meticulously crafted study modules, crisp formula pocketbooks, past question banks, and daily practice problem (DPP) sheets.",
+        "Students receive meticulously curated study modules, crisp formula pocketbooks, past question banks, and daily practice problem (DPP) sets.",
     },
     {
       icon: Clock,
+      tag: "Mentorship",
       title: "Dedicated Daily Doubt Labs",
       description:
         "No question is left unanswered. Students have access to daily post-lecture doubt clearing sessions with faculty to resolve conceptual hurdles immediately.",
     },
     {
       icon: BarChart3,
+      tag: "Tracking",
       title: "In-Depth Performance Analytics",
       description:
         "Weekly simulated tests with detailed question-level error analysis. Parents receive transparent reports on test scores, attendance, and progress trajectory.",
     },
     {
       icon: Sparkles,
-      title: "Exam Temperament & Mindset",
+      tag: "Mindset",
+      title: "Exam Temperament & Confidence",
       description:
         "Regular workshops on time management, stress reduction, strategic question selection, and overcoming exam anxiety to perform at peak potential.",
     },
   ];
 
   return (
-    <section id="why-us" className="py-20 bg-[#f0f5fa] text-[#19364f]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BB9331]/15 text-[#BB9331] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-4 h-4" aria-hidden="true" />
-            <span>The Excellence Advantage</span>
+    <section id="why-us" className="py-20 sm:py-28 bg-white border-y border-zinc-200/70">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-14">
+        {/* Section Header */}
+        <div className="max-w-3xl space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-700">
+            <span>• The Excellence Advantage •</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#19364f] tracking-tight">
-            Why Goa’s Students & Parents Trust Us
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-950">
+            Why Goa’s students & parents choose us
           </h2>
-          <p className="text-base text-zinc-600">
-            We combine high academic standards with genuine compassion and personal care,
-            fostering an environment where every learner thrives.
+          <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
+            We combine high academic standards with genuine personal attention,
+            fostering a disciplined and supportive environment where every learner thrives.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* 6 Bento Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pillars.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-7 border border-zinc-200 hover:border-[#BB9331]/50 shadow-sm hover:shadow-md transition-all duration-200 group"
+                className="bg-[#fafbfc] rounded-[32px] p-7 sm:p-8 border border-zinc-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#19364f] text-[#BB9331] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Icon className="w-6 h-6" aria-hidden="true" />
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-white border border-zinc-200 text-[#19364f] flex items-center justify-center shadow-sm">
+                      <Icon className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <span className="text-xs font-semibold text-[#BB9331] bg-[#BB9331]/10 px-3 py-1 rounded-full">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-zinc-950 tracking-tight mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-[#19364f] mb-2 group-hover:text-[#BB9331] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  {item.description}
-                </p>
+
+                <div className="mt-6 pt-4 border-t border-zinc-200/60 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">
+                  Standard 0{index + 1}
+                </div>
               </div>
             );
           })}
@@ -82,4 +102,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-
