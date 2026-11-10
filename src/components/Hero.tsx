@@ -4,7 +4,7 @@ import { ArrowUpRight, Award, Utensils, Compass, Phone, MessageSquare, Sparkles 
 
 export default function Hero() {
   return (
-    <section className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 bg-[#fafbfc] overflow-hidden">
+    <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 bg-[#fafbfc] overflow-hidden">
       {/* Floating Side Action Icons (Right Edge - from old website specs) */}
       <aside aria-label="Quick contact" className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col gap-3">
         <a
