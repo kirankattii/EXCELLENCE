@@ -227,8 +227,8 @@ export function CaseStudyFlipStack({
     <main
       className={cn("relative bg-[#F8FAFC] font-sans text-slate-900", className)}
     >
-      <section className="relative z-10 flex flex-col items-center justify-center pt-12 sm:pt-16 pb-2 sm:pb-4 px-5 sm:px-10">
-        <div className="flex items-center justify-center gap-[clamp(10px,2vw,24px)] text-[clamp(18px,2.4vw,30px)] font-bold tracking-[-0.055em] text-[#1E6DEB] mb-3 sm:mb-4">
+      <section className="relative z-10 flex flex-col items-center justify-center pt-16 sm:pt-24 pb-6 sm:pb-10 px-5 sm:px-10">
+        <div className="flex items-center justify-center gap-[clamp(10px,2vw,24px)] text-[clamp(18px,2.4vw,30px)] font-bold tracking-[-0.055em] text-[#1E6DEB] mb-4 sm:mb-5">
           <motion.span
             aria-hidden="true"
             animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
@@ -263,10 +263,7 @@ export function CaseStudyFlipStack({
         className="relative"
         style={
           safeItems.length > 1
-            ? {
-                height: `${(safeItems.length - 1) * 75 + 100}vh`,
-                marginTop: "calc(-1 * clamp(0px, 50vh - 300px, 160px))",
-              }
+            ? { height: `${(safeItems.length - 1) * 90 + 100}vh` }
             : undefined
         }
       >
@@ -275,7 +272,7 @@ export function CaseStudyFlipStack({
             "flex flex-col justify-center overflow-hidden px-[clamp(14px,4vw,64px)]",
             safeItems.length > 1
               ? "sticky top-0 h-screen py-4 sm:py-6"
-              : "py-10 sm:py-14",
+              : "py-12 sm:py-16",
           )}
         >
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[860px] [perspective:800px] sm:aspect-[1.76/1]">
@@ -296,14 +293,7 @@ export function CaseStudyFlipStack({
         </div>
       </div>
 
-      <section
-        className="relative z-10 flex flex-col items-center justify-center pt-4 pb-12 sm:pt-6 sm:pb-16 px-5 sm:px-10"
-        style={
-          safeItems.length > 1
-            ? { marginTop: "calc(-1 * clamp(0px, 50vh - 300px, 160px))" }
-            : undefined
-        }
-      >
+      <section className="relative z-10 flex flex-col items-center justify-center pt-8 pb-16 sm:pt-10 sm:pb-24 px-5 sm:px-10">
         <p className="max-w-[16ch] text-center text-[clamp(40px,7vw,104px)] font-black leading-[0.95] tracking-[-0.06em] text-slate-950">
           {endLabel}
         </p>

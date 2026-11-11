@@ -213,10 +213,10 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-1.5 sm:p-2 rounded-full focus-visible:outline-2 ${
+            className={`lg:hidden p-2 rounded-full transition-colors focus-visible:outline-2 ${
               isScrolled
-                ? "text-slate-700 hover:bg-slate-100 focus-visible:outline-[#1E6DEB]"
-                : "text-white hover:bg-white/15 focus-visible:outline-white"
+                ? "text-[#1E6DEB] bg-[#F0F6FE] border border-[#1E6DEB]/25 hover:bg-[#e1edfe] focus-visible:outline-[#1E6DEB]"
+                : "text-white bg-white/15 border border-white/25 hover:bg-white/25 focus-visible:outline-white"
             }`}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
