@@ -2,27 +2,73 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
-  --navy: #19364f;
-  --navy-dark: #0f2334;
-  --navy-light: #254a6b;
-  --navy-subtle: #f8fafc;
-  --gold: #BB9331;
-  --gold-light: #d6a943;
-  --gold-dark: #8f6e20;
-  --gold-subtle: #fdfaf2;
-  --brand-color: #19364f;
+  --foreground: #091322;
+  --sky: #1E6DEB;
+  --sky-light: #4F93FA;
+  --sky-dark: #175CD3;
+  --sky-subtle: #F0F6FE;
+  --lime: #D4F85A;
+  --lime-light: #E2FA84;
+  --lime-dark: #8BAE16;
+  --lime-subtle: #F7FDE8;
+  --navy: #0A1118;
+  --navy-dark: #061122;
+  --navy-light: #162436;
+  --navy-subtle: #F4F7FD;
+  --brand-color: #1E6DEB;
 }
 
 @theme {
-  --color-navy: #19364f;
-  --color-navy-dark: #0f2334;
-  --color-navy-light: #254a6b;
-  --color-navy-subtle: #f8fafc;
-  --color-gold: #BB9331;
-  --color-gold-light: #d6a943;
-  --color-gold-dark: #8f6e20;
-  --color-gold-subtle: #fdfaf2;
+  --color-sky: #1E6DEB;
+  --color-sky-light: #4F93FA;
+  --color-sky-dark: #175CD3;
+  --color-sky-subtle: #F0F6FE;
+  --color-lime: #D4F85A;
+  --color-lime-light: #E2FA84;
+  --color-lime-dark: #8BAE16;
+  --color-lime-subtle: #F7FDE8;
+  --color-navy: #0A1118;
+  --color-navy-dark: #061122;
+  --color-navy-light: #162436;
+  --color-navy-subtle: #F4F7FD;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-marquee: marquee 45s linear infinite;
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (hover: hover) {
+  .group:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 }
 
 html {
@@ -32,23 +78,23 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #0f172a;
-  accent-color: #19364f;
+  color: #091322;
+  accent-color: #1E6DEB;
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Accessible focus ring complying with modern-web-guidance */
 :focus-visible {
-  outline: 2px solid #19364f;
+  outline: 2px solid #1E6DEB;
   outline-offset: 2px;
 }
 
-/* Custom soft shadows like Framer templates */
+/* Clean modern card shadows from reference design */
 .card-shadow {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px -2px rgba(10, 17, 24, 0.05), 0 2px 6px -1px rgba(10, 17, 24, 0.03);
 }
 
 .card-hover:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 20px 32px -4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px -4px rgba(30, 109, 235, 0.12), 0 8px 16px -2px rgba(10, 17, 24, 0.04);
 }

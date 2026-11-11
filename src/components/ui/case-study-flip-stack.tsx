@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
   motion,
@@ -91,7 +92,9 @@ function FlipCard({
   progress: MotionValue<number>;
   reduceMotion: boolean;
 }) {
-  const segment = 1 / Math.max(total, 1);
+  const transitionCount = Math.max(total - 1, 1);
+  const segment = 1 / transitionCount;
+  const isLast = index === total - 1;
   const start = index * segment;
   const end = Math.min(start + segment, 1);
   const entryStart = Math.max(0, start - segment);
@@ -99,8 +102,8 @@ function FlipCard({
     index === 0
       ? 0.0001
       : Math.min(start, entryStart + segment * 0.7);
-  const exitStart = start;
-  const exitEnd = end;
+  const exitStart = isLast ? 0 : start;
+  const exitEnd = isLast ? 1 : Math.max(end, start + 0.0001);
   const stackedCardGap = Math.min(24, 72 / Math.max(total - 1, 1));
   const stackedOffset = index * stackedCardGap;
   const restingOffset = Math.min(index * 12, 34);
@@ -109,23 +112,23 @@ function FlipCard({
   const exitYPercent = useTransform(
     progress,
     [exitStart, exitEnd],
-    reduceMotion ? [0, 0] : [0, -118],
+    reduceMotion || isLast ? [0, 0] : [0, -118],
   );
   const exitStackOffset = useTransform(
     progress,
     [exitStart, exitEnd],
-    reduceMotion ? [0, 0] : [0, stackedOffset],
+    reduceMotion || isLast ? [0, 0] : [0, stackedOffset],
   );
   const exitY = useMotionTemplate`calc(${exitYPercent}% + ${exitStackOffset}px)`;
   const rotateX = useTransform(
     progress,
     [exitStart, exitEnd],
-    reduceMotion ? [0, 0] : [0, 22],
+    reduceMotion || isLast ? [0, 0] : [0, 22],
   );
   const opacity = useTransform(
     progress,
     [exitStart, exitEnd],
-    reduceMotion ? [1, 0] : [1, 1],
+    reduceMotion && !isLast ? [1, 0] : [1, 1],
   );
   const entryScale = useTransform(
     progress,
@@ -182,11 +185,13 @@ function FlipCard({
         </div>
 
         <div className="relative m-[clamp(10px,1.2vw,18px)] min-h-[180px] overflow-hidden rounded-[clamp(12px,1.4vw,22px)] sm:ml-0">
-          <img
+          <Image
             src={item.image}
             alt={item.imageAlt}
-            className="h-full w-full object-cover"
-            loading={index < 2 ? "eager" : "lazy"}
+            fill
+            sizes="(max-width: 640px) 100vw, 45vw"
+            className="object-cover"
+            priority={index < 2}
             draggable={false}
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10" />
@@ -220,13 +225,13 @@ export function CaseStudyFlipStack({
 
   return (
     <main
-      className={cn("relative bg-[#eeeae2] font-sans text-[#29251f]", className)}
+      className={cn("relative bg-[#F8FAFC] font-sans text-slate-900", className)}
     >
-      <section className="relative h-[82vh] min-h-[640px] overflow-hidden px-5 sm:px-10">
-        <div className="absolute inset-x-0 top-[clamp(110px,16vh,165px)] flex items-center justify-center gap-[clamp(14px,2.5vw,32px)] text-[clamp(26px,3.5vw,52px)] font-medium tracking-[-0.055em]">
+      <section className="relative z-10 flex flex-col items-center justify-center pt-12 sm:pt-16 pb-2 sm:pb-4 px-5 sm:px-10">
+        <div className="flex items-center justify-center gap-[clamp(10px,2vw,24px)] text-[clamp(18px,2.4vw,30px)] font-bold tracking-[-0.055em] text-[#1E6DEB] mb-3 sm:mb-4">
           <motion.span
             aria-hidden="true"
-            animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           >
             ↓
@@ -234,7 +239,7 @@ export function CaseStudyFlipStack({
           <span>{hint}</span>
           <motion.span
             aria-hidden="true"
-            animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
             transition={{
               duration: 1.4,
               delay: 0.18,
@@ -246,8 +251,8 @@ export function CaseStudyFlipStack({
           </motion.span>
         </div>
 
-        <div className="absolute inset-x-5 top-[clamp(330px,43vh,440px)] flex justify-center sm:inset-x-10">
-          <h1 className="max-w-[18ch] text-center text-[clamp(42px,5.5vw,82px)] font-semibold leading-[0.92] tracking-[-0.06em] text-[#a94808]">
+        <div className="flex justify-center max-w-4xl px-4">
+          <h1 className="max-w-[18ch] text-center text-[clamp(34px,5vw,70px)] font-black leading-[0.94] tracking-[-0.06em] text-slate-950">
             {heading}
           </h1>
         </div>
@@ -256,9 +261,23 @@ export function CaseStudyFlipStack({
       <div
         ref={stackRef}
         className="relative"
-        style={{ height: `${(Math.max(safeItems.length, 1) + 1) * 100}vh` }}
+        style={
+          safeItems.length > 1
+            ? {
+                height: `${(safeItems.length - 1) * 75 + 100}vh`,
+                marginTop: "calc(-1 * clamp(0px, 50vh - 300px, 160px))",
+              }
+            : undefined
+        }
       >
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-[clamp(14px,4vw,64px)] py-8">
+        <div
+          className={cn(
+            "flex flex-col justify-center overflow-hidden px-[clamp(14px,4vw,64px)]",
+            safeItems.length > 1
+              ? "sticky top-0 h-screen py-4 sm:py-6"
+              : "py-10 sm:py-14",
+          )}
+        >
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[860px] [perspective:800px] sm:aspect-[1.76/1]">
             {[...safeItems].reverse().map((item, reverseIndex) => {
               const index = safeItems.length - reverseIndex - 1;
@@ -277,8 +296,15 @@ export function CaseStudyFlipStack({
         </div>
       </div>
 
-      <section className="flex min-h-[120vh] items-center justify-center px-5 sm:px-10">
-        <p className="text-center text-[clamp(54px,9vw,144px)] font-semibold leading-none tracking-[-0.07em] text-[#29251f]">
+      <section
+        className="relative z-10 flex flex-col items-center justify-center pt-4 pb-12 sm:pt-6 sm:pb-16 px-5 sm:px-10"
+        style={
+          safeItems.length > 1
+            ? { marginTop: "calc(-1 * clamp(0px, 50vh - 300px, 160px))" }
+            : undefined
+        }
+      >
+        <p className="max-w-[16ch] text-center text-[clamp(40px,7vw,104px)] font-black leading-[0.95] tracking-[-0.06em] text-slate-950">
           {endLabel}
         </p>
       </section>

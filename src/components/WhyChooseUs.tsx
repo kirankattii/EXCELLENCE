@@ -1,5 +1,11 @@
-import Link from "next/link";
-import { ArrowUpRight, Users, BrainCircuit, BookOpenCheck, Clock, BarChart3, Sparkles } from "lucide-react";
+import {
+  Users,
+  BrainCircuit,
+  BookOpenCheck,
+  Clock,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
 
 export default function WhyChooseUs() {
   const pillars = [
@@ -48,7 +54,10 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section id="why-us" className="py-20 sm:py-28 bg-white border-y border-zinc-200/70">
+    <section
+      id="why-us"
+      className="py-20 sm:py-28 bg-white border-y border-zinc-200/70"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-14">
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
@@ -60,7 +69,8 @@ export default function WhyChooseUs() {
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 leading-relaxed">
             We combine high academic standards with genuine personal attention,
-            fostering a disciplined and supportive environment where every learner thrives.
+            fostering a disciplined and supportive environment where every
+            learner thrives.
           </p>
         </div>
 
