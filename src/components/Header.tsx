@@ -200,7 +200,7 @@ export default function Header() {
 
           {/* Electric Lime Pill Button: Strictly hidden on mobile, visible on sm+ */}
           <Link
-            href="/contact"
+            href="/enroll"
             className="hidden sm:inline-flex items-center gap-1.5 px-4.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-xs sm:text-sm shadow-[0_4px_16px_rgba(212,248,90,0.45)] hover:shadow-[0_6px_22px_rgba(212,248,90,0.55)] transition-all active:scale-95 hover:scale-105"
           >
             <span>Apply Now</span>
@@ -300,11 +300,11 @@ export default function Header() {
                   <span>Call: +91 8329208271</span>
                 </a>
                 <Link
-                  href="/contact"
+                  href="/enroll"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 bg-[#D4F85A] text-[#0A1118] font-black text-xs py-3 rounded-full shadow-md hover:bg-[#c7f445]"
                 >
-                  <span>Enquire for Admissions</span>
+                  <span>Apply / Enroll Now</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>

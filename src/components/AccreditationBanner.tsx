@@ -82,7 +82,7 @@ export default function AccreditationBanner() {
 
         <div className="pt-4">
           <Link
-            href="#contact"
+            href="/enroll"
             className="inline-flex items-center gap-2.5 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm sm:text-base px-9 py-4 rounded-full shadow-[0_12px_32px_rgba(212,248,90,0.45)] hover:shadow-[0_16px_40px_rgba(212,248,90,0.55)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
           >
             <span>Enroll Now</span>

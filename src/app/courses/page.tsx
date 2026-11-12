@@ -160,7 +160,7 @@ export default function CoursesPage() {
 
                 <div className="relative z-10 pt-2">
                   <Link
-                    href="/#contact"
+                    href="/enroll"
                     className="inline-flex items-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm px-7 py-3.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enroll Now</span>
@@ -192,7 +192,7 @@ export default function CoursesPage() {
 
                 <div className="relative z-10 pt-2">
                   <Link
-                    href="/#contact"
+                    href="/enroll?course=rpl-certification"
                     className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#1E6DEB] font-black text-sm px-7 py-3.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enroll Now</span>

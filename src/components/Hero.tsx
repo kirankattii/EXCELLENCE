@@ -155,7 +155,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="#contact"
+              href="/enroll"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold text-sm sm:text-base py-3 px-6 sm:py-4 sm:px-7 rounded-full border border-white/40 backdrop-blur-md transition-all duration-200 shadow-md"
             >
               <span>Enroll Now</span>

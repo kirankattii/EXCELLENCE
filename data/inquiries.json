@@ -1,0 +1,38 @@
+[
+  {
+    "id": "inq_1794456473889_0pgt4",
+    "referenceId": "EEA-473889-5QE",
+    "createdAt": "2026-11-12T04:07:53.889Z",
+    "studentName": "Kiran Katti",
+    "parentName": "",
+    "phone": "+919113099868",
+    "email": "kiran.katti@greenated.com",
+    "gradeStream": "CTH Level 2 Certificate in Professional Restaurant Front of House Service",
+    "preferredTiming": "flexible",
+    "intakeBatch": "",
+    "educationLevel": "10th-pass",
+    "city": "Bengaluru",
+    "source": "enroll-page",
+    "queries": "",
+    "status": "new",
+    "location": "Goa, India"
+  },
+  {
+    "id": "inq_1794454434374_yqzq3",
+    "referenceId": "EEA-434374-Q31",
+    "createdAt": "2026-11-12T03:33:54.374Z",
+    "studentName": "KIRAN KATTI",
+    "parentName": "",
+    "phone": "+919113099868",
+    "email": "kirankatti550@gmail.com",
+    "gradeStream": "CTH Level 2 Certificate in Professional Bartending Skills",
+    "preferredTiming": "flexible",
+    "intakeBatch": "flexible",
+    "educationLevel": "working-pro",
+    "city": "Bengaluru",
+    "source": "enroll-page",
+    "queries": "",
+    "status": "new",
+    "location": "Goa, India"
+  }
+]

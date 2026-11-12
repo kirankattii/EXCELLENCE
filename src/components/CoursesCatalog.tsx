@@ -319,7 +319,7 @@ export default function CoursesCatalog() {
             {/* Enroll CTA */}
             <div className="p-7 pt-0">
               <Link
-                href="/#contact"
+                href={`/enroll?course=${course.id}`}
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#0A1118] hover:bg-[#1E6DEB] text-white font-black text-xs sm:text-sm py-4 px-6 rounded-full shadow-md transition-all duration-200 active:scale-95"
               >
                 <span>Enroll Now</span>
@@ -381,7 +381,7 @@ export default function CoursesCatalog() {
                   </td>
                   <td className="py-3.5 px-4 sm:px-5 text-right whitespace-nowrap">
                     <Link
-                      href="/#contact"
+                      href={`/enroll?course=${course.id}`}
                       className="inline-flex items-center gap-1 font-black text-xs text-[#1E6DEB] hover:text-[#175CD3]"
                     >
                       <span>Enroll</span>

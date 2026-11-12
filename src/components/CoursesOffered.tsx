@@ -208,10 +208,10 @@ export default function CoursesOffered() {
                 {/* Bottom CTA Button */}
                 <div className="pt-8">
                   <Link
-                    href="#contact"
+                    href={`/enroll?course=${course.id}`}
                     className="w-full inline-flex items-center justify-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm py-4 px-6 rounded-full shadow-md transition-all duration-200 active:scale-95 group-hover:bg-[#1E6DEB]"
                   >
-                    <span>Apply for Diploma</span>
+                    <span>Apply for Program</span>
                     <ArrowUpRight className="w-4 h-4 text-[#D4F85A] group-hover:text-white" />
                   </Link>
                 </div>

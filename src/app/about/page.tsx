@@ -125,7 +125,8 @@ const INSTRUCTIONAL_ADVISORS = [
     role: "Academic Head",
     badge: "Academic Leadership",
     image: "/acemedic-head.jpg",
-    imageAlt: "Mr. Alphonso Pereira, Academic Head at Excellence Education Academy",
+    imageAlt:
+      "Mr. Alphonso Pereira, Academic Head at Excellence Education Academy",
   },
 ];
 
@@ -156,13 +157,13 @@ export default function AboutPage() {
               aria-label="Breadcrumb"
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-bold text-white/95"
             >
-              <Link
-                href="/"
-                className="hover:text-[#D4F85A] transition-colors"
-              >
+              <Link href="/" className="hover:text-[#D4F85A] transition-colors">
                 Home
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
+              <ChevronRight
+                className="w-3.5 h-3.5 text-[#D4F85A]"
+                aria-hidden="true"
+              />
               <span className="text-[#D4F85A] font-black">About</span>
             </nav>
 
@@ -173,8 +174,7 @@ export default function AboutPage() {
               </div>
 
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
-                About{" "}
-                <span className="text-[#D4F85A]">Us</span>
+                About <span className="text-[#D4F85A]">Us</span>
               </h1>
 
               <p className="text-base sm:text-xl text-white/95 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -235,7 +235,9 @@ export default function AboutPage() {
                     </p>
                   </div>
                   <div className="rounded-2xl bg-[#D4F85A] border border-[#8BAE16]/25 p-4">
-                    <p className="text-2xl font-black text-[#0A1118]">30+ Yrs</p>
+                    <p className="text-2xl font-black text-[#0A1118]">
+                      30+ Yrs
+                    </p>
                     <p className="text-xs font-bold text-[#0A1118]/80 mt-1">
                       CTH Awarding Expertise
                     </p>
@@ -244,11 +246,14 @@ export default function AboutPage() {
 
                 <div className="pt-2 flex flex-wrap items-center gap-4">
                   <Link
-                    href="/#contact"
+                    href="/enroll"
                     className="inline-flex items-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-sm px-8 py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enquire for Admissions</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#D4F85A]" aria-hidden="true" />
+                    <ArrowUpRight
+                      className="w-4 h-4 text-[#D4F85A]"
+                      aria-hidden="true"
+                    />
                   </Link>
                   <Link
                     href="/courses"
@@ -344,8 +349,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
               {CTH_PILLARS.map((pillar, idx) => {
                 const Icon = pillar.icon;
-                const spanClass =
-                  idx < 3 ? "lg:col-span-2" : "lg:col-span-3";
+                const spanClass = idx < 3 ? "lg:col-span-2" : "lg:col-span-3";
                 return (
                   <div
                     key={pillar.number}

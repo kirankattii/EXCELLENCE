@@ -98,3 +98,163 @@ body {
 .card-hover:hover {
   box-shadow: 0 20px 40px -4px rgba(30, 109, 235, 0.12), 0 8px 16px -2px rgba(10, 17, 24, 0.04);
 }
+
+/* Native top-layer <dialog> lightbox containment & animations (modern-web-guidance) */
+dialog.gallery-lightbox {
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-behavior: allow-discrete;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.gallery-lightbox {
+    transform: scale(0.96);
+  }
+}
+
+dialog.gallery-lightbox:is([open]):where(:not([data-closing])) {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog.gallery-lightbox:is([open]):where(:not([data-closing])) {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.gallery-lightbox:is([open]):where(:not([data-closing])) {
+    transform: scale(1);
+  }
+
+  @starting-style {
+    dialog.gallery-lightbox:is([open]):where(:not([data-closing])) {
+      transform: scale(0.96);
+    }
+  }
+}
+
+dialog.gallery-lightbox:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.gallery-lightbox::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgb(6 17 34 / 0);
+  backdrop-filter: blur(0px);
+  transition-property: background-color, backdrop-filter, display, overlay;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+}
+
+dialog.gallery-lightbox:is([open]):where(:not([data-closing]))::backdrop {
+  background-color: rgb(6 17 34 / 0.88);
+  backdrop-filter: blur(10px);
+}
+
+@starting-style {
+  dialog.gallery-lightbox:is([open]):where(:not([data-closing]))::backdrop {
+    background-color: rgb(6 17 34 / 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.gallery-lightbox,
+  dialog.gallery-lightbox::backdrop {
+    transition-duration: 0.1s;
+  }
+}
+
+/* Subtle custom scrollbar hide for horizontal filmstrip */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Visually hidden utility keeping content in the accessibility tree */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* After-interaction form validation (modern-web-guidance: validate-input-after-interaction & select-menu-interaction) */
+.enroll-field .enroll-error-msg {
+  display: none;
+}
+
+.enroll-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.enroll-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) + .enroll-error-msg {
+  display: flex;
+}
+
+.enroll-field :is(input, select, textarea):is(:user-valid, .user-valid-fallback) {
+  border-color: #16a34a;
+}
+
+/* Branded customizable <select> on fine-pointer desktops where supported; native OS picker preserved on mobile & fallback browsers */
+@media (pointer: fine) {
+  @supports (appearance: base-select) {
+    .enroll-select,
+    .enroll-select::picker(select) {
+      appearance: base-select;
+    }
+
+    .enroll-select::picker(select) {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 1.25rem;
+      border: 1px solid #cbd5e1;
+      background-color: #ffffff;
+      box-shadow: 0 20px 50px rgba(10, 17, 24, 0.16);
+      max-height: 22rem;
+    }
+
+    .enroll-select option {
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.75rem;
+      color: #0f172a;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .enroll-select option:hover,
+    .enroll-select option:focus {
+      background-color: #f0f6fe;
+      color: #1e6deb;
+    }
+
+    .enroll-select option:checked {
+      background-color: #f0f6fe;
+      color: #1e6deb;
+      font-weight: 800;
+    }
+
+    .enroll-select option::checkmark {
+      color: #1e6deb;
+      font-weight: 900;
+    }
+
+    .enroll-select-chevron {
+      display: none;
+    }
+  }
+}

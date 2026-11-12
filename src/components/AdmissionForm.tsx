@@ -166,11 +166,11 @@ export default function AdmissionForm() {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80"
+      className="py-12 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-14">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>ADMISSIONS &amp; CAMPUS VISITS</span>
@@ -180,17 +180,17 @@ export default function AdmissionForm() {
             Get In Touch with Us!
           </h2>
 
-          <p className="text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
             Take the first step toward a prestigious culinary or hospitality
             career. Schedule a personalized campus tour and kitchen walkthrough
             in Goa.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
           {/* Left Column: Form Card */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-[32px] p-8 sm:p-10 border border-slate-200/90 shadow-[0_4px_30px_rgba(10,17,24,0.05)]">
+            <div className="bg-white rounded-3xl sm:rounded-[32px] p-5 sm:p-10 border border-slate-200/90 shadow-[0_4px_30px_rgba(10,17,24,0.05)]">
               {submitted ? (
                 <div
                   role="status"
@@ -228,9 +228,9 @@ export default function AdmissionForm() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   <div className="border-b border-slate-100 pb-3">
-                    <h3 className="text-xl font-black text-slate-950">
+                    <h3 className="text-lg sm:text-xl font-black text-slate-950">
                       Culinary &amp; Hospitality Course Application
                     </h3>
                     <p className="text-xs text-slate-500 mt-0.5">
@@ -256,7 +256,7 @@ export default function AdmissionForm() {
                   <div>
                     <label
                       htmlFor="studentName"
-                      className="block text-xs font-bold text-slate-800 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1 sm:mb-1.5"
                     >
                       Full Name <span className="text-red-500">*</span>
                     </label>
@@ -267,16 +267,16 @@ export default function AdmissionForm() {
                       required
                       autoComplete="name"
                       placeholder="e.g. Maria Fernandes"
-                      className="w-full bg-slate-50 text-slate-900 text-sm px-4 py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[46px]"
+                      className="w-full bg-slate-50 text-slate-900 text-sm px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[40px] sm:min-h-[46px]"
                     />
                   </div>
 
                   {/* Field 2 & 3: Email Address* (Left) & Phone Number* (Right) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-xs font-bold text-slate-800 mb-1.5"
+                        className="block text-xs font-bold text-slate-800 mb-1 sm:mb-1.5"
                       >
                         Email Address <span className="text-red-500">*</span>
                       </label>
@@ -287,14 +287,14 @@ export default function AdmissionForm() {
                         required
                         autoComplete="email"
                         placeholder="e.g. maria@example.com"
-                        className="w-full bg-slate-50 text-slate-900 text-sm px-4 py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[46px]"
+                        className="w-full bg-slate-50 text-slate-900 text-sm px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[40px] sm:min-h-[46px]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="phone"
-                        className="block text-xs font-bold text-slate-800 mb-1.5"
+                        className="block text-xs font-bold text-slate-800 mb-1 sm:mb-1.5"
                       >
                         Phone Number <span className="text-red-500">*</span>
                       </label>
@@ -308,7 +308,7 @@ export default function AdmissionForm() {
                         placeholder="10-digit mobile number"
                         pattern="[0-9]{10,12}"
                         aria-describedby="phone-hint"
-                        className="w-full bg-slate-50 text-slate-900 text-sm px-4 py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[46px]"
+                        className="w-full bg-slate-50 text-slate-900 text-sm px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[40px] sm:min-h-[46px]"
                       />
                       <span
                         id="phone-hint"
@@ -325,7 +325,7 @@ export default function AdmissionForm() {
                     <label
                       id={labelId}
                       htmlFor="gradeStream-trigger"
-                      className="block text-xs font-bold text-slate-800 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1 sm:mb-1.5"
                     >
                       Course Interested In{" "}
                       <span className="text-red-500">*</span>
@@ -353,7 +353,7 @@ export default function AdmissionForm() {
                       aria-describedby={courseError ? errorId : undefined}
                       onClick={() => setDropdownOpen((prev) => !prev)}
                       onKeyDown={handleTriggerKeyDown}
-                      className={`w-full px-4 py-3 rounded-full border text-left flex items-center justify-between gap-3 transition-all min-h-[48px] text-base sm:text-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1E6DEB] focus-visible:outline-offset-2 ${
+                      className={`w-full px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border text-left flex items-center justify-between gap-2.5 sm:gap-3 transition-all min-h-[40px] sm:min-h-[48px] text-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1E6DEB] focus-visible:outline-offset-2 ${
                         courseError
                           ? "bg-red-50/40 border-red-400 text-slate-900"
                           : dropdownOpen
@@ -475,25 +475,25 @@ export default function AdmissionForm() {
                   <div>
                     <label
                       htmlFor="queries"
-                      className="block text-xs font-bold text-slate-800 mb-1.5"
+                      className="block text-xs font-bold text-slate-800 mb-1 sm:mb-1.5"
                     >
                       Message / Previous Experience (Optional)
                     </label>
                     <textarea
                       id="queries"
                       name="queries"
-                      rows={3}
+                      rows={2}
                       placeholder="Share your background, cruise aspirations, or questions..."
-                      className="w-full bg-slate-50 text-slate-900 text-sm px-4 py-3 rounded-2xl border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400"
+                      className="w-full bg-slate-50 text-slate-900 text-sm px-3.5 sm:px-4 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[68px] sm:min-h-[88px]"
                     />
                   </div>
 
                   {/* Submit Button in Electric Lime matching reference */}
-                  <div className="pt-2">
+                  <div className="pt-1 sm:pt-2">
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full inline-flex items-center justify-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] disabled:opacity-70 text-[#0A1118] font-black text-sm py-4 px-6 rounded-full shadow-[0_8px_24px_rgba(212,248,90,0.35)] hover:shadow-[0_12px_28px_rgba(212,248,90,0.45)] transition-all min-h-[48px] active:scale-95"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] disabled:opacity-70 text-[#0A1118] font-black text-sm py-3 sm:py-4 px-5 sm:px-6 rounded-full shadow-[0_8px_24px_rgba(212,248,90,0.35)] hover:shadow-[0_12px_28px_rgba(212,248,90,0.45)] transition-all min-h-[44px] sm:min-h-[48px] active:scale-95"
                     >
                       {submitting ? (
                         <span>Submitting Application...</span>
@@ -518,19 +518,19 @@ export default function AdmissionForm() {
           </div>
 
           {/* Right Column: Contact Details */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="bg-white rounded-[28px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
+          <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+            <div className="bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs">
+                <div className="w-10 h-10 rounded-xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs shrink-0">
                   <Mail className="w-5 h-5" aria-hidden="true" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     Office Email
                   </h3>
                   <a
                     href="mailto:contact@exceleduacademy.com"
-                    className="text-base font-bold text-slate-950 hover:text-[#1E6DEB] transition-colors block mt-0.5"
+                    className="text-sm sm:text-base font-bold text-slate-950 hover:text-[#1E6DEB] transition-colors block mt-0.5 truncate"
                   >
                     contact@exceleduacademy.com
                   </a>
@@ -538,9 +538,9 @@ export default function AdmissionForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[28px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
+            <div className="bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-xs font-black">
+                <div className="w-10 h-10 rounded-xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-xs font-black shrink-0">
                   <Phone className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -549,7 +549,7 @@ export default function AdmissionForm() {
                   </h3>
                   <a
                     href="tel:+918329208271"
-                    className="text-base font-bold text-slate-950 hover:text-[#1E6DEB] transition-colors block mt-0.5"
+                    className="text-sm sm:text-base font-bold text-slate-950 hover:text-[#1E6DEB] transition-colors block mt-0.5"
                   >
                     +91 8329208271
                   </a>
@@ -557,9 +557,9 @@ export default function AdmissionForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[28px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
+            <div className="bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs">
+                <div className="w-10 h-10 rounded-xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs shrink-0">
                   <MapPin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -578,9 +578,9 @@ export default function AdmissionForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[28px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
+            <div className="bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-xs font-black">
+                <div className="w-10 h-10 rounded-xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-xs font-black shrink-0">
                   <Clock className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>

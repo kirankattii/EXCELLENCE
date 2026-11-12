@@ -16,7 +16,7 @@ export default function FeaturedCourses() {
         "Commercial kitchen brigade training & food safety (HACCP)",
         "Career preparation for top hotels, resorts & cruise lines",
       ],
-      link: "#contact",
+      link: "/enroll?course=diploma-culinary",
     },
     {
       image: "/images/patisserie-skills.jpg",
@@ -30,7 +30,7 @@ export default function FeaturedCourses() {
         "Chocolate tempering, entremets & modern dessert plating",
         "Prepares graduates for 5-star bakeries & patisserie kitchens",
       ],
-      link: "#contact",
+      link: "/enroll?course=diploma-patisserie",
     },
     {
       image: "/images/cruise-hospitality.jpg",
@@ -44,7 +44,7 @@ export default function FeaturedCourses() {
         "100% placement assistance with global cruise & hotel recruiters",
         "Globally recognized British CTH-UK certification",
       ],
-      link: "#contact",
+      link: "/enroll?course=diploma-cruise",
     },
   ];
 
