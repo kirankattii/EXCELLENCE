@@ -258,3 +258,85 @@ dialog.gallery-lightbox:is([open]):where(:not([data-closing]))::backdrop {
     }
   }
 }
+
+/* Interactive hover & press micro-animations for buttons & links with arrows */
+@media (prefers-reduced-motion: no-preference) {
+  :is(a, button):has(
+    .lucide-arrow-up-right,
+    .lucide-arrow-right,
+    .lucide-arrow-left,
+    .lucide-arrow-up
+  ):not(:disabled):not([aria-disabled="true"]) {
+    transition-property: translate, scale, transform, background-color, border-color, color, box-shadow, opacity;
+    transition-duration: 0.22s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  :is(a, button):has(
+    .lucide-arrow-up-right,
+    .lucide-arrow-right,
+    .lucide-arrow-left,
+    .lucide-arrow-up
+  ):not(:disabled):not([aria-disabled="true"]):active {
+    scale: 0.97;
+  }
+
+  :is(a, button):has(
+    .lucide-arrow-up-right,
+    .lucide-arrow-right,
+    .lucide-arrow-left,
+    .lucide-arrow-up
+  ) :is(.lucide-arrow-up-right, .lucide-arrow-right, .lucide-arrow-left, .lucide-arrow-up),
+  :is(a, button):has(
+    .lucide-arrow-up-right,
+    .lucide-arrow-right,
+    .lucide-arrow-left,
+    .lucide-arrow-up
+  ) > :is(span, div):has(.lucide-arrow-up-right, .lucide-arrow-right, .lucide-arrow-up),
+  button:has(.lucide-chevron-left, .lucide-chevron-right) :is(.lucide-chevron-left, .lucide-chevron-right) {
+    transition:
+      translate 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+      scale 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    :is(a, button):has(
+      .lucide-arrow-up-right,
+      .lucide-arrow-right,
+      .lucide-arrow-left,
+      .lucide-arrow-up
+    ):not(:disabled):not([aria-disabled="true"]):hover {
+      translate: 0 -2px;
+    }
+
+    :is(a, button):not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) > :is(span, div):has(.lucide-arrow-up-right, .lucide-arrow-right, .lucide-arrow-up) {
+      scale: 1.1;
+    }
+
+    :is(a, button):not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-arrow-up-right {
+      translate: 2.5px -2.5px;
+    }
+
+    :is(a, button):not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-arrow-right {
+      translate: 3.5px 0;
+    }
+
+    :is(a, button):not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-arrow-left {
+      translate: -3.5px 0;
+    }
+
+    :is(a, button):not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-arrow-up {
+      translate: 0 -3px;
+    }
+
+    button:not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-chevron-right {
+      translate: 2.5px 0;
+    }
+
+    button:not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) .lucide-chevron-left {
+      translate: -2.5px 0;
+    }
+  }
+}

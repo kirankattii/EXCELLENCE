@@ -24,6 +24,9 @@ export const metadata: Metadata = {
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Excellence+Education+Academy+The+Capital+660%2F3+Alto+Porvorim+Goa+403521";
 
+const MAPS_EMBED_URL =
+  "https://maps.google.com/maps?q=Excellence+Education+Academy,+The+Capital,+660/3,+Alto+Porvorim,+Goa+403521&t=&z=16&ie=UTF8&iwloc=&output=embed";
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -135,10 +138,27 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Directions & Social Channels Card */}
-              <div className="lg:col-span-6 rounded-[32px] bg-[#0A1118] text-white p-8 sm:p-10 shadow-xl flex flex-col justify-between space-y-8 relative overflow-hidden">
+              {/* Directions & Social Channels Card with Map Background */}
+              <div className="lg:col-span-6 rounded-3xl sm:rounded-[32px] bg-[#0A1118] text-white p-6 sm:p-10 border border-slate-800/80 shadow-xl flex flex-col justify-between space-y-8 relative overflow-hidden min-h-[340px]">
+                {/* Live Google Map Background */}
                 <div
-                  className="absolute -top-20 -right-20 w-64 h-64 bg-[#1E6DEB]/25 rounded-full blur-3xl pointer-events-none"
+                  className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+                  aria-hidden="true"
+                >
+                  <iframe
+                    src={MAPS_EMBED_URL}
+                    title="Map background of Excellence Education Academy at The Capital, Alto Porvorim, Goa"
+                    loading="lazy"
+                    tabIndex={-1}
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full border-0 opacity-60 contrast-110 saturate-90 scale-[1.06] pointer-events-none"
+                  />
+                  {/* Legibility gradient scrim preserving visible map texture & pin */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0A1118]/90 via-[#0A1118]/70 to-[#0A1118]/88" />
+                </div>
+
+                <div
+                  className="absolute -top-20 -right-20 w-64 h-64 bg-[#1E6DEB]/25 rounded-full blur-3xl pointer-events-none z-0"
                   aria-hidden="true"
                 />
 

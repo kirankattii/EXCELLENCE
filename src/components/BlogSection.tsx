@@ -99,8 +99,8 @@ export default function BlogSection() {
 
               <div className="p-7 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between text-xs font-black text-[#1E6DEB]">
                 <span>Read Full Article</span>
-                <div className="w-8 h-8 rounded-full bg-[#F0F6FE] flex items-center justify-center group-hover:bg-[#D4F85A] group-hover:text-[#0A1118] transition-colors">
-                  <ArrowUpRight className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-[#F0F6FE] flex items-center justify-center group-hover:bg-[#D4F85A] group-hover:text-[#0A1118] group-hover:scale-110 transition-all duration-200">
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
             </article>

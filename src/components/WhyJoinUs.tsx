@@ -78,7 +78,7 @@ export default function WhyJoinUs() {
 
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center text-xs font-black text-[#1E6DEB] group-hover:translate-x-1 transition-transform">
                   <span>Explore Standard {p.num}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                  <ArrowUpRight className="w-3.5 h-3.5 ml-1 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
             );

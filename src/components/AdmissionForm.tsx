@@ -44,7 +44,8 @@ const COURSE_OPTIONS = [
     icon: Wine,
   },
   {
-    value: "CTH Level 2 Certificate in Professional Restaurant Front of House Service",
+    value:
+      "CTH Level 2 Certificate in Professional Restaurant Front of House Service",
     level: "CTH Level 2",
     icon: Hotel,
   },
@@ -228,7 +229,10 @@ export default function AdmissionForm() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 sm:space-y-5"
+                >
                   <div className="border-b border-slate-100 pb-3">
                     <h3 className="text-lg sm:text-xl font-black text-slate-950">
                       Culinary &amp; Hospitality Course Application
@@ -310,13 +314,6 @@ export default function AdmissionForm() {
                         aria-describedby="phone-hint"
                         className="w-full bg-slate-50 text-slate-900 text-sm px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/10 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 min-h-[40px] sm:min-h-[46px]"
                       />
-                      <span
-                        id="phone-hint"
-                        className="text-[11px] text-slate-400 mt-1 block"
-                      >
-                        Direct contact for interview invitations &amp;
-                        brochures.
-                      </span>
                     </div>
                   </div>
 
@@ -353,7 +350,7 @@ export default function AdmissionForm() {
                       aria-describedby={courseError ? errorId : undefined}
                       onClick={() => setDropdownOpen((prev) => !prev)}
                       onKeyDown={handleTriggerKeyDown}
-                      className={`w-full px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border text-left flex items-center justify-between gap-2.5 sm:gap-3 transition-all min-h-[40px] sm:min-h-[48px] text-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1E6DEB] focus-visible:outline-offset-2 ${
+                      className={`w-full px-3.5 sm:px-4 py-2 sm:py-3 rounded-full border text-left flex items-center justify-between gap-2 sm:gap-3 transition-all min-h-[40px] sm:min-h-[48px] text-xs sm:text-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-[#1E6DEB] focus-visible:outline-offset-2 ${
                         courseError
                           ? "bg-red-50/40 border-red-400 text-slate-900"
                           : dropdownOpen
@@ -361,10 +358,10 @@ export default function AdmissionForm() {
                             : "bg-slate-50 border-slate-200 hover:border-slate-300 text-slate-900"
                       }`}
                     >
-                      <span className="flex items-center gap-2.5 min-w-0">
+                      <span className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                         {selectedOption ? (
                           <>
-                            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#D4F85A] text-[#0A1118] text-[10px] font-black shrink-0">
+                            <span className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full bg-[#D4F85A] text-[#0A1118] text-[9px] sm:text-[10px] font-black shrink-0">
                               {selectedOption.level}
                             </span>
                             <span className="font-semibold text-slate-900 truncate">
@@ -415,7 +412,7 @@ export default function AdmissionForm() {
                                 aria-selected={isSelected}
                                 onMouseEnter={() => setActiveIndex(idx)}
                                 onClick={() => selectCourse(option.value, idx)}
-                                className={`flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl cursor-pointer transition-colors min-h-[48px] ${
+                                className={`flex items-center justify-between gap-2.5 sm:gap-3 px-2.5 sm:px-3.5 py-2 sm:py-2.5 rounded-2xl cursor-pointer transition-colors min-h-[40px] sm:min-h-[48px] ${
                                   isSelected
                                     ? "bg-[#F0F6FE] text-[#1E6DEB] font-bold"
                                     : isHighlighted
@@ -423,24 +420,24 @@ export default function AdmissionForm() {
                                       : "text-slate-800 hover:bg-slate-50"
                                 }`}
                               >
-                                <span className="flex items-center gap-3 min-w-0">
+                                <span className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                                   <span
-                                    className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 ${
                                       isSelected
                                         ? "bg-[#1E6DEB] text-white"
                                         : "bg-slate-100 text-slate-600"
                                     }`}
                                   >
                                     <Icon
-                                      className="w-4 h-4"
+                                      className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                                       aria-hidden="true"
                                     />
                                   </span>
                                   <span className="min-w-0">
-                                    <span className="block text-[10px] font-black uppercase tracking-wider text-[#1E6DEB]">
+                                    <span className="block text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#1E6DEB]">
                                       {option.level}
                                     </span>
-                                    <span className="block text-xs sm:text-sm leading-snug">
+                                    <span className="block text-[11px] sm:text-sm leading-snug">
                                       {option.value}
                                     </span>
                                   </span>

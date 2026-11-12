@@ -89,20 +89,20 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <div className="pt-3 flex flex-wrap items-center gap-4">
+            <div className="pt-2 sm:pt-3 flex flex-wrap items-center gap-2.5 sm:gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-sm px-8 py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm px-4 sm:px-8 py-2.5 sm:py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 <span>Visit Our Goa Campus</span>
-                <ArrowUpRight className="w-4 h-4 text-[#D4F85A]" aria-hidden="true" />
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4F85A]" aria-hidden="true" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 bg-[#F0F6FE] hover:bg-[#e1edfe] text-[#1E6DEB] font-black text-sm px-7 py-4 rounded-full border border-[#1E6DEB]/20 transition-colors"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#F0F6FE] hover:bg-[#e1edfe] text-[#1E6DEB] font-black text-xs sm:text-sm px-4 sm:px-7 py-2.5 sm:py-4 rounded-full border border-[#1E6DEB]/20 transition-colors"
               >
                 <span>Read Full About Us</span>
-                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

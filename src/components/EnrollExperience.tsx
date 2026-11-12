@@ -648,7 +648,7 @@ function EnrollForm({
                               setEducationLevel("working-pro");
                             }
                           }}
-                          className="enroll-select appearance-none w-full bg-slate-50 hover:bg-white text-slate-950 font-semibold text-sm px-3.5 sm:px-4 pr-10 sm:pr-11 py-2 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/15 focus:bg-white focus:outline-none transition-all min-h-[40px] sm:min-h-[50px] cursor-pointer truncate"
+                          className="enroll-select appearance-none w-full bg-slate-50 hover:bg-white text-slate-950 font-semibold text-xs sm:text-sm px-3.5 sm:px-4 pr-10 sm:pr-11 py-2 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 focus:border-[#1E6DEB] focus:ring-2 focus:ring-[#1E6DEB]/15 focus:bg-white focus:outline-none transition-all min-h-[40px] sm:min-h-[50px] cursor-pointer truncate"
                         >
                           <option value="" disabled>
                             Choose a CTH-UK hospitality course...

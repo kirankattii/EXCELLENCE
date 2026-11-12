@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, MapPin, Phone, Mail, Clock, Award } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Award } from "lucide-react";
+import BackToTopButton from "@/components/BackToTopButton";
 
 export default function Footer() {
   return (
@@ -222,19 +223,13 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-6">
-            <Link href="#contact" className="hover:text-[#D4F85A] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#D4F85A] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#contact" className="hover:text-[#D4F85A] transition-colors">
+            <Link href="/terms-of-admission" className="hover:text-[#D4F85A] transition-colors">
               Terms of Admission
             </Link>
-            <Link
-              href="#contact"
-              className="hover:text-[#D4F85A] transition-colors flex items-center gap-1 font-bold text-slate-400"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </Link>
+            <BackToTopButton />
           </div>
         </div>
       </div>
