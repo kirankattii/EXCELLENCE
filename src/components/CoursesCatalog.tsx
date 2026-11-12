@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowUpRight,
   Award,
   Cake,
   ChefHat,
@@ -16,6 +15,7 @@ import {
   UtensilsCrossed,
   Wine,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 type CourseTrack = "all" | "diploma" | "certificate" | "award";
 
@@ -323,8 +323,8 @@ export default function CoursesCatalog() {
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#0A1118] hover:bg-[#1E6DEB] text-white font-black text-xs sm:text-sm py-4 px-6 rounded-full shadow-md transition-all duration-200 active:scale-95"
               >
                 <span>Enroll Now</span>
-                <span className="w-5 h-5 rounded-full bg-[#D4F85A] text-[#0A1118] flex items-center justify-center">
-                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                <span className="w-5 h-5 rounded-full bg-[#D4F85A] text-[#0A1118] flex items-center justify-center overflow-hidden">
+                  <AnimatedArrow size={12} boxClassName="h-3.5 w-3.5" />
                 </span>
               </Link>
             </div>
@@ -385,7 +385,7 @@ export default function CoursesCatalog() {
                       className="inline-flex items-center gap-1 font-black text-xs text-[#1E6DEB] hover:text-[#175CD3]"
                     >
                       <span>Enroll</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" />
                     </Link>
                   </td>
                 </tr>

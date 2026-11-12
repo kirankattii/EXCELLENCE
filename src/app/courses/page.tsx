@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
-  ArrowUpRight,
   Award,
   CheckCircle2,
   ChevronRight,
@@ -164,7 +164,7 @@ export default function CoursesPage() {
                     className="inline-flex items-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm px-7 py-3.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enroll Now</span>
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                    <AnimatedArrow size={15} />
                   </Link>
                 </div>
               </div>
@@ -196,7 +196,7 @@ export default function CoursesPage() {
                     className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#1E6DEB] font-black text-sm px-7 py-3.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enroll Now</span>
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                    <AnimatedArrow size={15} />
                   </Link>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
-  ArrowUpRight,
   CheckCircle2,
   Clock,
   FileText,
@@ -296,14 +296,14 @@ export default function PrivacyPolicyPage() {
                         <FileText className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
                         <span>Read Terms of Admission</span>
                       </span>
-                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" />
                     </Link>
                     <Link
                       href="/enroll"
                       className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-xs transition-colors"
                     >
                       <span>Apply for a Program</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" />
                     </Link>
                   </div>
                 </div>

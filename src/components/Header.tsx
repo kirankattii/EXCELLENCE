@@ -6,11 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowUpRight,
   Menu,
   X,
   Phone,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function Header() {
   const pathname = usePathname();
@@ -234,8 +234,12 @@ export default function Header() {
             className="hidden sm:inline-flex items-center gap-1.5 px-4.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-xs sm:text-sm shadow-[0_4px_16px_rgba(212,248,90,0.45)] hover:shadow-[0_6px_22px_rgba(212,248,90,0.55)] transition-all active:scale-95 hover:scale-105"
           >
             <span>Apply Now</span>
-            <div className="w-4 h-4 rounded-full bg-[#0A1118] flex items-center justify-center">
-              <ArrowUpRight className="w-2.5 h-2.5 text-[#D4F85A]" />
+            <div className="w-4 h-4 rounded-full bg-[#0A1118] flex items-center justify-center overflow-hidden">
+              <AnimatedArrow
+                size={11}
+                boxClassName="h-3.5 w-3.5"
+                className="text-[#D4F85A]"
+              />
             </div>
           </Link>
 
@@ -337,7 +341,7 @@ export default function Header() {
                   className="flex items-center justify-center gap-2 bg-[#D4F85A] text-[#0A1118] font-black text-xs py-3 rounded-full shadow-md hover:bg-[#c7f445]"
                 >
                   <span>Apply / Enroll Now</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <AnimatedArrow size={15} />
                 </Link>
               </div>
             </motion.div>

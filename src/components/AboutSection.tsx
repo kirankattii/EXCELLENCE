@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, ArrowUpRight, ChefHat, Sparkles } from "lucide-react";
+import { CheckCircle2, ChefHat, Sparkles } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function AboutSection() {
   const bullets = [
@@ -95,14 +96,14 @@ export default function AboutSection() {
                 className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm px-4 sm:px-8 py-2.5 sm:py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 <span>Visit Our Goa Campus</span>
-                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4F85A]" aria-hidden="true" />
+                <AnimatedArrow size={15} className="text-[#D4F85A]" />
               </Link>
               <Link
                 href="/about"
                 className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#F0F6FE] hover:bg-[#e1edfe] text-[#1E6DEB] font-black text-xs sm:text-sm px-4 sm:px-7 py-2.5 sm:py-4 rounded-full border border-[#1E6DEB]/20 transition-colors"
               >
                 <span>Read Full About Us</span>
-                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
+                <AnimatedArrow size={15} />
               </Link>
             </div>
           </div>

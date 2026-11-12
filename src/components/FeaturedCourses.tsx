@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { Star, CheckCircle2, Sparkles } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function FeaturedCourses() {
   const featured = [
@@ -139,9 +140,10 @@ export default function FeaturedCourses() {
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm py-4 px-6 rounded-full shadow-md transition-all duration-200 active:scale-95 group-hover:bg-[#1E6DEB]"
                 >
                   <span>Enroll Now</span>
-                  <ArrowRight
-                    className="w-4 h-4 text-[#D4F85A] group-hover:text-white"
-                    aria-hidden="true"
+                  <AnimatedArrow
+                    direction="right"
+                    size={15}
+                    className="text-[#D4F85A] group-hover:text-white"
                   />
                 </Link>
               </div>
@@ -155,7 +157,7 @@ export default function FeaturedCourses() {
             className="inline-flex items-center gap-2 bg-white hover:bg-[#F0F6FE] text-[#1E6DEB] font-black text-sm px-8 py-3.5 rounded-full border border-[#1E6DEB]/25 shadow-xs transition-colors"
           >
             <span>More Courses</span>
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            <AnimatedArrow direction="right" size={16} />
           </Link>
         </div>
       </div>

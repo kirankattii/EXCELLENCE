@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
-  ArrowUpRight,
   ChevronRight,
   Mail,
   MapPin,
@@ -186,7 +186,7 @@ export default function ContactPage() {
                       className="inline-flex items-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg transition-transform hover:-translate-y-0.5"
                     >
                       <span>Open in Google Maps</span>
-                      <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                      <AnimatedArrow size={15} />
                     </a>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"
                     >
                       <span>Instagram</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" className="text-[#D4F85A]" />
                     </a>
                     <a
                       href="https://www.youtube.com/channel/UCOQQlJnj3vWIcZ5EiPJ9-Hg"
@@ -213,7 +213,7 @@ export default function ContactPage() {
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"
                     >
                       <span>YouTube</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" className="text-[#D4F85A]" />
                     </a>
                     <a
                       href="https://www.facebook.com/share/19bToN1wVQ/"
@@ -222,7 +222,7 @@ export default function ContactPage() {
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"
                     >
                       <span>Facebook</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
+                      <AnimatedArrow size={14} boxClassName="h-4 w-4" className="text-[#D4F85A]" />
                     </a>
                   </div>
                 </div>

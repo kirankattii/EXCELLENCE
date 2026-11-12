@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   AlertCircle,
-  ArrowUpRight,
   Award,
   Cake,
   Calendar,
@@ -27,6 +26,7 @@ import {
   UtensilsCrossed,
   Wine,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { submitInquiry } from "@/app/actions/inquire";
 import {
   COURSE_PROGRAMS,
@@ -932,10 +932,7 @@ function EnrollForm({
                               ? `Apply for ${selectedCourse.shortTitle}`
                               : "Submit Course Application"}
                           </span>
-                          <ArrowUpRight
-                            className="w-4 h-4 text-[#0A1118] shrink-0"
-                            aria-hidden="true"
-                          />
+                          <AnimatedArrow size={15} className="text-[#0A1118]" />
                         </>
                       )}
                     </button>
@@ -1097,9 +1094,9 @@ function EnrollForm({
                             </span>
                           </span>
                         </span>
-                        <ArrowUpRight
-                          className="w-4 h-4 text-slate-400 group-hover:text-[#1E6DEB] shrink-0"
-                          aria-hidden="true"
+                        <AnimatedArrow
+                          size={15}
+                          className="text-slate-400 group-hover:text-[#1E6DEB]"
                         />
                       </button>
                     ))}

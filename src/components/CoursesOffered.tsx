@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowUpRight,
   Award,
   Cake,
   CheckCircle2,
@@ -16,6 +15,7 @@ import {
   UtensilsCrossed,
   Wine,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 const COURSES = [
   {
@@ -316,7 +316,7 @@ export default function CoursesOffered() {
                 className="text-xs font-bold text-slate-500 hover:text-[#1E6DEB] transition-colors hidden sm:inline-flex items-center gap-1"
               >
                 <span>Compare All Courses</span>
-                <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                <AnimatedArrow size={14} boxClassName="h-4 w-4" />
               </Link>
             </div>
 
@@ -434,9 +434,9 @@ export default function CoursesOffered() {
                       className="w-full inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm py-2.5 sm:py-4 px-4 sm:px-6 rounded-full shadow-md transition-all duration-200 active:scale-95 group-hover:bg-[#1E6DEB]"
                     >
                       <span>Apply for Program</span>
-                      <ArrowUpRight
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4F85A] group-hover:text-white"
-                        aria-hidden="true"
+                      <AnimatedArrow
+                        size={15}
+                        className="text-[#D4F85A] group-hover:text-white"
                       />
                     </Link>
                   </div>

@@ -3,7 +3,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowUpRight,
   Cake,
   Check,
   ChefHat,
@@ -20,6 +19,7 @@ import {
   UtensilsCrossed,
   Wine,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { submitInquiry } from "@/app/actions/inquire";
 
 const COURSE_OPTIONS = [
@@ -497,10 +497,7 @@ export default function AdmissionForm() {
                       ) : (
                         <>
                           <span>Submit Application</span>
-                          <ArrowUpRight
-                            className="w-4 h-4 text-[#0A1118]"
-                            aria-hidden="true"
-                          />
+                          <AnimatedArrow size={15} className="text-[#0A1118]" />
                         </>
                       )}
                     </button>

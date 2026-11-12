@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function BackToTopButton() {
   const handleBackToTop = () => {
@@ -20,7 +20,7 @@ export default function BackToTopButton() {
       className="hover:text-[#D4F85A] transition-colors flex items-center gap-1 font-bold text-slate-400 cursor-pointer"
     >
       <span>Back to Top</span>
-      <ArrowUp className="w-3.5 h-3.5" aria-hidden="true" />
+      <AnimatedArrow direction="up" size={14} boxClassName="h-4 w-4" />
     </button>
   );
 }

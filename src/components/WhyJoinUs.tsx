@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Flame, Globe2, CheckCircle2, ChefHat, Award, Ship, ArrowUpRight } from "lucide-react";
+import { Flame, Globe2, CheckCircle2, ChefHat, Award, Ship } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function WhyJoinUs() {
   const pillars = [
@@ -76,9 +77,9 @@ export default function WhyJoinUs() {
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center text-xs font-black text-[#1E6DEB] group-hover:translate-x-1 transition-transform">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-1 text-xs font-black text-[#1E6DEB] group-hover:translate-x-1 transition-transform">
                   <span>Explore Standard {p.num}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 ml-1 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <AnimatedArrow trigger="card" size={14} boxClassName="h-4 w-4" />
                 </div>
               </div>
             );

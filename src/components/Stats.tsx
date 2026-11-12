@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Sparkles, Ship } from "lucide-react";
+import { CheckCircle2, Sparkles, Ship } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/stat";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function Stats() {
   return (
@@ -160,7 +161,7 @@ export default function Stats() {
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm py-4 px-6 rounded-full shadow-lg transition-all duration-200 active:scale-95"
               >
                 <span>Explore Placement Pathways</span>
-                <ArrowUpRight className="w-4 h-4 text-[#D4F85A]" />
+                <AnimatedArrow size={15} className="text-[#D4F85A]" />
               </Link>
             </div>
           </div>

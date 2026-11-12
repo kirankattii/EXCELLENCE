@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowUpRight,
   Phone,
   MessageSquare,
   Star,
   CheckCircle2,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { Meteors } from "@/components/ui/meteors";
 import { CurvedMobileMarquee } from "@/components/ui/curved-mobile-marquee";
 
@@ -149,8 +149,12 @@ export default function Hero() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm sm:text-base py-3 px-6 sm:py-4 sm:px-8 rounded-full shadow-[0_8px_24px_rgba(212,248,90,0.5)] hover:shadow-[0_16px_40px_rgba(212,248,90,0.7)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95 hover:scale-105"
             >
               <span>Find Courses</span>
-              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0A1118] flex items-center justify-center">
-                <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#D4F85A]" />
+              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0A1118] flex items-center justify-center overflow-hidden">
+                <AnimatedArrow
+                  size={12}
+                  boxClassName="h-3.5 w-3.5"
+                  className="text-[#D4F85A]"
+                />
               </div>
             </Link>
 

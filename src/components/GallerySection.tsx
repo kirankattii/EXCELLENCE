@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   Expand,
@@ -15,6 +14,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
   GALLERY_CATEGORIES,
   GALLERY_ITEMS,
@@ -753,7 +753,7 @@ export default function GallerySection({
             >
               <Images className="w-4 h-4" aria-hidden="true" />
               <span>View Full {GALLERY_ITEMS.length}-Photo Gallery</span>
-              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+              <AnimatedArrow size={15} />
             </Link>
           </div>
         )}

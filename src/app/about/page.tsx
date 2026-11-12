@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
-  ArrowUpRight,
   Award,
   BookOpen,
   Briefcase,
@@ -250,10 +250,7 @@ export default function AboutPage() {
                     className="inline-flex items-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-sm px-8 py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enquire for Admissions</span>
-                    <ArrowUpRight
-                      className="w-4 h-4 text-[#D4F85A]"
-                      aria-hidden="true"
-                    />
+                    <AnimatedArrow size={15} className="text-[#D4F85A]" />
                   </Link>
                   <Link
                     href="/courses"

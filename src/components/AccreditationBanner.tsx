@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Award, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { Award, CheckCircle2 } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function AccreditationBanner() {
   return (
@@ -86,10 +87,11 @@ export default function AccreditationBanner() {
             className="inline-flex items-center gap-2.5 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm sm:text-base px-9 py-4 rounded-full shadow-[0_12px_32px_rgba(212,248,90,0.45)] hover:shadow-[0_16px_40px_rgba(212,248,90,0.55)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
           >
             <span>Enroll Now</span>
-            <div className="w-5 h-5 rounded-full bg-[#0A1118] flex items-center justify-center">
-              <ArrowUpRight
-                className="w-3 h-3 text-[#D4F85A]"
-                aria-hidden="true"
+            <div className="w-5 h-5 rounded-full bg-[#0A1118] flex items-center justify-center overflow-hidden">
+              <AnimatedArrow
+                size={12}
+                boxClassName="h-3.5 w-3.5"
+                className="text-[#D4F85A]"
               />
             </div>
           </Link>
