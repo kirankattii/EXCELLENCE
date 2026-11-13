@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://exceleduacademy.com"),
   title: "Excellence Education Academy | Goa's Leading Culinary & Hospitality Academy",
   description:
-    "Goa's only CTH-accredited culinary and hospitality institute. Professional Diplomas & Certificates in Culinary Skills, Patisserie, Cruise Hospitality, Front Office, and Bartending with 100% placement assistance.",
+    "Goa's first CTH-accredited culinary and hospitality institute. Professional Diplomas & Certificates in Culinary Skills, Patisserie, Cruise Hospitality, Front Office, and Bartending with 100% placement assistance.",
   keywords: [
     "Culinary Academy Goa",
     "Hospitality Institute Goa",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Excellence Education Academy | Goa's Leading Culinary & Hospitality Academy",
     description:
-      "Goa's only CTH accredited institute for culinary arts, pastry, cruise line hospitality, and hotel management with 100% placement support.",
+      "Goa's first CTH-accredited institute for culinary arts, pastry, cruise line hospitality, and hotel management with dedicated placement assistance.",
     url: "https://exceleduacademy.com",
     siteName: "Excellence Education Academy",
     images: [

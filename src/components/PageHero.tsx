@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Sparkles } from "lucide-react";
-import { Meteors } from "@/components/ui/meteors";
 
 interface PageHeroProps {
   breadcrumbLabel: string;
@@ -20,19 +18,6 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <Image
-          src="/images/sky-clouds.jpg"
-          alt="Azure Sky Backdrop"
-          fill
-          priority
-          className="object-cover object-bottom opacity-70 mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1048B8]/65 via-[#1E6DEB]/30 to-[#4F94FA]/45" />
-      </div>
-
-      <Meteors number={10} />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
         <nav
           aria-label="Breadcrumb"

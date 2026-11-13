@@ -6,39 +6,38 @@ import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 export default function FeaturedCourses() {
   const featured = [
     {
-      image: "/images/culinary-hero.jpg",
+      image: "/images/courses/culinary-skills.jpg",
       title: "Diploma in Culinary Skills",
       category: "Eligibility: 10th Pass or Equivalent",
       tag: "CTH Level 2",
-      rating: 5,
-      duration: "12 Months",
+      duration: "6 Months",
       bullets: [
         "Includes practical training and CTH-UK assessments",
         "Commercial kitchen brigade training & food safety (HACCP)",
         "Career preparation for top hotels, resorts & cruise lines",
       ],
       link: "/enroll?course=diploma-culinary",
+      detailsLink: "/courses/diploma-in-culinary-skills",
     },
     {
-      image: "/images/patisserie-skills.jpg",
+      image: "/images/courses/patisserie-skills.jpg",
       title: "Diploma in Patisserie and Confectionery Skills",
       category: "Eligibility: 10th Pass or Equivalent",
       tag: "CTH Level 2",
-      rating: 5,
-      duration: "12 Months",
+      duration: "6 Months",
       bullets: [
         "Artisan breads, French viennoiserie, croissants & brioche",
         "Chocolate tempering, entremets & modern dessert plating",
         "Prepares graduates for 5-star bakeries & patisserie kitchens",
       ],
       link: "/enroll?course=diploma-patisserie",
+      detailsLink: "/courses/diploma-in-patisserie-and-confectionery-skills",
     },
     {
-      image: "/images/cruise-hospitality.jpg",
+      image: "/images/courses/cruise-hospitality.jpg",
       title: "Diploma in Cruise Hospitality Services",
       category: "Eligibility: 10th Pass or Equivalent",
       tag: "CTH Level 2",
-      rating: 5,
       duration: "6 Months",
       bullets: [
         "International maritime guest service & banquet operations",
@@ -46,6 +45,7 @@ export default function FeaturedCourses() {
         "Globally recognized British CTH-UK certification",
       ],
       link: "/enroll?course=diploma-cruise",
+      detailsLink: "/courses/diploma-in-cruise-hospitality-services",
     },
   ];
 
@@ -78,7 +78,10 @@ export default function FeaturedCourses() {
             >
               <div>
                 {/* Image */}
-                <div className="relative w-full aspect-[16/10] bg-slate-100 overflow-hidden">
+                <Link
+                  href={card.detailsLink}
+                  className="block relative w-full aspect-[16/10] bg-slate-100 overflow-hidden cursor-pointer"
+                >
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -88,31 +91,24 @@ export default function FeaturedCourses() {
                   <div className="absolute top-4 left-4 bg-[#D4F85A] text-[#0A1118] px-3.5 py-1 rounded-full text-xs font-black shadow-sm">
                     {card.tag}
                   </div>
-                </div>
+                </Link>
 
                 <div className="p-7 space-y-4">
-                  {/* Rating & Duration */}
+                  {/* Eligibility & Duration */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-amber-500">
-                      {[...Array(card.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4 fill-amber-400 text-amber-400"
-                          aria-hidden="true"
-                        />
-                      ))}
-                      <span className="text-xs font-black text-slate-900 ml-1">
-                        5.0
-                      </span>
-                    </div>
+                    <span className="text-xs font-semibold text-slate-500">
+                      {card.category}
+                    </span>
                     <span className="text-xs font-black text-[#1E6DEB] bg-[#F0F6FE] border border-[#1E6DEB]/20 px-3 py-1 rounded-full">
                       {card.duration}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-black text-slate-950 tracking-tight leading-snug group-hover:text-[#1E6DEB] transition-colors">
-                    {card.title}
-                  </h3>
+                  <Link href={card.detailsLink} className="block hover:underline">
+                    <h3 className="text-xl font-black text-slate-950 tracking-tight leading-snug group-hover:text-[#1E6DEB] transition-colors">
+                      {card.title}
+                    </h3>
+                  </Link>
 
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                     {card.category}

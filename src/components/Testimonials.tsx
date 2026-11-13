@@ -75,7 +75,7 @@ export default function Testimonials() {
               {/* Top rating badge */}
               <div className="absolute top-6 left-6 z-10 bg-white/20 backdrop-blur-md border border-white/30 px-3.5 py-1 rounded-full flex items-center gap-1.5 text-xs text-white font-bold">
                 <Star className="w-3.5 h-3.5 fill-[#D4F85A] text-[#D4F85A]" />
-                <span>5.0 Verified Alumnus</span>
+                <span>Verified Alumnus</span>
               </div>
 
               {/* Content on dark gradient */}

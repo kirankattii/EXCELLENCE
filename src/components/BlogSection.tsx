@@ -43,15 +43,15 @@ export default function BlogSection() {
         <div className="max-w-3xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>INDUSTRY INSIGHTS &amp; ARTICLES</span>
+            <span>WORKSHOPS, EVENTS &amp; MASTERCLASSES</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950">
-            Latest insights and trends
+            Latest Workshops &amp; Academy Events
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
-            Practical tips from executive master chefs, industry hiring updates, and culinary masterclasses straight from our Goa campus kitchens.
+            Practical masterclasses, guest chef workshops, and culinary activities straight from our Goa campus training labs.
           </p>
         </div>
 

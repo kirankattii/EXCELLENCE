@@ -936,9 +936,24 @@ function EnrollForm({
                         </>
                       )}
                     </button>
-                    <p className="text-[11px] text-slate-500 text-center">
-                      Your details stay private and are used solely by Excellence
-                      Education Academy Goa for admissions counseling.
+                    <p className="text-[11px] text-slate-500 text-center leading-relaxed">
+                      🔒 Your details stay private and are used solely for admissions counseling. Please read our{" "}
+                      <Link
+                        href="/privacy-policy"
+                        target="_blank"
+                        className="text-[#1E6DEB] font-bold underline hover:text-[#1351C7] transition-colors"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="/terms-of-admission"
+                        target="_blank"
+                        className="text-[#1E6DEB] font-bold underline hover:text-[#1351C7] transition-colors"
+                      >
+                        Terms &amp; Conditions
+                      </Link>
+                      .
                     </p>
                   </div>
                 </form>

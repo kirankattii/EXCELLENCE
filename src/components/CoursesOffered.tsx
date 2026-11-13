@@ -17,12 +17,21 @@ import {
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
+const COURSE_SLUGS: Record<string, string> = {
+  "diploma-culinary": "/courses/diploma-in-culinary-skills",
+  "diploma-patisserie": "/courses/diploma-in-patisserie-and-confectionery-skills",
+  "diploma-cruise": "/courses/diploma-in-cruise-hospitality-services",
+  "cert-bartending": "/courses/certificate-in-professional-bartending-skills",
+  "cert-front-office": "/courses/certificate-in-restaurant-front-of-house-service",
+  "award-cookery": "/courses/award-in-basic-cookery-skills",
+};
+
 const COURSES = [
   {
     id: "diploma-culinary",
     tag: "CTH Level 2",
     icon: ChefHat,
-    duration: "12 Months • 10th Pass or Equivalent",
+    duration: "6 Months • 10th Pass or Equivalent",
     title: "CTH Level 2 Diploma in Culinary Skills",
     type: "Classical Cookery & Kitchen Practice",
     description:
@@ -38,7 +47,7 @@ const COURSES = [
     id: "diploma-patisserie",
     tag: "CTH Level 2",
     icon: Cake,
-    duration: "12 Months • 10th Pass or Equivalent",
+    duration: "6 Months • 10th Pass or Equivalent",
     title: "CTH Level 2 Diploma in Patisserie and Confectionery Skills",
     type: "Artisan Breads & Confectionery",
     description:
@@ -278,11 +287,11 @@ export default function CoursesOffered() {
 
           <div className="flex justify-center pt-0.5 sm:pt-1">
             <Image
-              src="/cth-logo2.png"
-              alt="CTH — Confederation of Tourism & Hospitality"
-              width={160}
-              height={32}
-              className="h-6 sm:h-8 w-auto object-contain"
+              src="/cth-approved.png"
+              alt="CTH Approved Centre"
+              width={180}
+              height={72}
+              className="h-8 sm:h-10 w-auto object-contain"
             />
           </div>
 
@@ -291,7 +300,7 @@ export default function CoursesOffered() {
           </h2>
 
           <p className="text-xs sm:text-base font-extrabold text-[#1E6DEB] uppercase tracking-wider">
-            Goa&apos;s Only CTH-Accredited Culinary &amp; Hospitality Institute
+            Goa&apos;s First CTH-Accredited Culinary &amp; Hospitality Institute
           </p>
 
           <p className="text-xs sm:text-base text-slate-600 leading-relaxed max-w-5xl mx-auto font-normal">
@@ -396,9 +405,14 @@ export default function CoursesOffered() {
                       <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-[#1E6DEB]">
                         {course.duration}
                       </span>
-                      <h3 className="text-base sm:text-xl font-black text-slate-950 tracking-tight leading-snug mt-0.5 sm:mt-1 group-hover:text-[#1E6DEB] transition-colors">
-                        {course.title}
-                      </h3>
+                      <Link
+                        href={COURSE_SLUGS[course.id] || "/courses"}
+                        className="block hover:underline"
+                      >
+                        <h3 className="text-base sm:text-xl font-black text-slate-950 tracking-tight leading-snug mt-0.5 sm:mt-1 group-hover:text-[#1E6DEB] transition-colors">
+                          {course.title}
+                        </h3>
+                      </Link>
                       <p className="text-[11px] sm:text-xs font-bold text-slate-400 mt-0.5">
                         {course.type}
                       </p>
@@ -427,15 +441,24 @@ export default function CoursesOffered() {
                     </div>
                   </div>
 
-                  {/* Bottom CTA Button */}
-                  <div className="pt-4 sm:pt-8">
+                  {/* Bottom Action Buttons: Dedicated Details + Quick Apply */}
+                  <div className="pt-4 sm:pt-6 grid grid-cols-2 gap-2 sm:gap-2.5 items-center">
+                    <Link
+                      href={COURSE_SLUGS[course.id] || "/courses"}
+                      className="w-full inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-[#F0F6FE] hover:bg-[#E0EEFD] border border-[#1E6DEB]/25 text-[#1E6DEB] hover:text-[#175CD3] font-black text-[11px] sm:text-xs py-2.5 sm:py-3 px-2 sm:px-3 rounded-full transition-all duration-200 text-center"
+                    >
+                      <span className="truncate">Course Details</span>
+                      <AnimatedArrow size={12} boxClassName="h-3.5 w-3.5 shrink-0" />
+                    </Link>
+
                     <Link
                       href={`/enroll?course=${course.id}`}
-                      className="w-full inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm py-2.5 sm:py-4 px-4 sm:px-6 rounded-full shadow-md transition-all duration-200 active:scale-95 group-hover:bg-[#1E6DEB]"
+                      className="w-full inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-[#0A1118] hover:bg-black text-white font-black text-[11px] sm:text-xs py-2.5 sm:py-3 px-2 sm:px-3 rounded-full shadow-md transition-all duration-200 active:scale-95 group-hover:bg-[#1E6DEB] text-center"
                     >
-                      <span>Apply for Program</span>
+                      <span className="truncate">Apply Now</span>
                       <AnimatedArrow
-                        size={15}
+                        size={12}
+                        boxClassName="h-3.5 w-3.5 shrink-0"
                         className="text-[#D4F85A] group-hover:text-white"
                       />
                     </Link>

@@ -84,6 +84,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Ensure all buttons and button-like interactive elements show a pointer cursor */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+summary {
+  cursor: pointer;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"],
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
 /* Accessible focus ring complying with modern-web-guidance */
 :focus-visible {
   outline: 2px solid #1E6DEB;

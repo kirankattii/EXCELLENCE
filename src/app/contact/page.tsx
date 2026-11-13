@@ -13,7 +13,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AdmissionForm from "@/components/AdmissionForm";
 import AccreditationBanner from "@/components/AccreditationBanner";
-import { Meteors } from "@/components/ui/meteors";
 
 export const metadata: Metadata = {
   title: "Contact Us | Excellence Education Academy – Goa",
@@ -35,19 +34,6 @@ export default function ContactPage() {
       <main className="flex-grow">
         {/* 1. Hero Section */}
         <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <Image
-              src="/images/sky-clouds.jpg"
-              alt="Azure Sky Backdrop"
-              fill
-              priority
-              className="object-cover object-bottom opacity-70 mix-blend-screen"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1048B8]/65 via-[#1E6DEB]/30 to-[#4F94FA]/45" />
-          </div>
-
-          <Meteors number={10} />
-
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
             {/* Breadcrumb */}
             <nav
@@ -198,7 +184,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <a
-                      href="https://www.instagram.com/exceleduacademy/"
+                      href="https://www.instagram.com/excellence_education_academy/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"
@@ -207,16 +193,7 @@ export default function ContactPage() {
                       <AnimatedArrow size={14} boxClassName="h-4 w-4" className="text-[#D4F85A]" />
                     </a>
                     <a
-                      href="https://www.youtube.com/channel/UCOQQlJnj3vWIcZ5EiPJ9-Hg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"
-                    >
-                      <span>YouTube</span>
-                      <AnimatedArrow size={14} boxClassName="h-4 w-4" className="text-[#D4F85A]" />
-                    </a>
-                    <a
-                      href="https://www.facebook.com/share/19bToN1wVQ/"
+                      href="https://www.facebook.com/excellenceeducationacademygoa/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition-colors"

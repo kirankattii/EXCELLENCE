@@ -2,14 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Phone,
-  MessageSquare,
-  Star,
-  CheckCircle2,
-} from "lucide-react";
+import { Phone, MessageSquare, Star, CheckCircle2 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
-import { Meteors } from "@/components/ui/meteors";
 import { CurvedMobileMarquee } from "@/components/ui/curved-mobile-marquee";
 
 export default function Hero() {
@@ -76,22 +70,6 @@ export default function Hero() {
   return (
     <>
       <section className="relative pt-20 sm:pt-36 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
-        {/* Photorealistic Sky and Fluffy White Clouds Layer */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <Image
-            src="/images/sky-clouds.jpg"
-            alt="Azure Summer Sky and Puffy White Clouds"
-            fill
-            priority
-            className="object-cover object-bottom opacity-75 mix-blend-screen"
-          />
-          {/* Sky depth gradients ensuring bold contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1048B8]/60 via-[#1E6DEB]/20 to-[#4F94FA]/40" />
-        </div>
-
-        {/* Luminous shooting stars across the open sky */}
-        <Meteors number={14} />
-
         {/* Floating Side Action Icons (Right Edge) */}
         <aside
           aria-label="Quick contact"
@@ -127,28 +105,30 @@ export default function Hero() {
           {/* Main Central Heading matching Reference */}
           <div className="space-y-4 max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-              Goa&apos;s Leading{" "}
+              Craft Your Skills.{" "}
               <span className="text-[#D4F85A] drop-shadow-[0_4px_28px_rgba(212,248,90,0.45)] underline decoration-white/40 decoration-wavy decoration-1 underline-offset-8">
-                Culinary &amp; Hospitality
-              </span>{" "}
-              Academy
+                Shape Your Future.
+              </span>
             </h1>
 
+            <p className="text-lg sm:text-2xl font-bold text-white/95 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+              International Culinary &amp; Hospitality Education in Goa
+            </p>
+
             <p className="text-base sm:text-xl text-white max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
-              Master the art of cooking and baking with globally recognized
-              CTH-UK programs. We emphasize practical, hands-on learning and
-              offer 100% placement support for careers in top hotels and resorts
-              worldwide.
+              Train with industry-focused practical learning at Excellence
+              Education Academy, an approved centre of the Confederation of
+              Tourism &amp; Hospitality (CTH), UK.
             </p>
           </div>
 
           {/* Action Buttons matching Reference with Electric Lime */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-1 w-full max-w-[260px] mx-auto sm:max-w-none sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-1 w-full max-w-[280px] mx-auto sm:max-w-none sm:w-auto">
             <Link
-              href="/courses"
+              href="#courses"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-sm sm:text-base py-3 px-6 sm:py-4 sm:px-8 rounded-full shadow-[0_8px_24px_rgba(212,248,90,0.5)] hover:shadow-[0_16px_40px_rgba(212,248,90,0.7)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95 hover:scale-105"
             >
-              <span>Find Courses</span>
+              <span>Explore Our Courses</span>
               <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0A1118] flex items-center justify-center overflow-hidden">
                 <AnimatedArrow
                   size={12}
@@ -159,10 +139,10 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/enroll"
+              href="#admissions"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold text-sm sm:text-base py-3 px-6 sm:py-4 sm:px-7 rounded-full border border-white/40 backdrop-blur-md transition-all duration-200 shadow-md"
             >
-              <span>Enroll Now</span>
+              <span>Book a Campus Visit</span>
             </Link>
           </div>
 
@@ -191,7 +171,7 @@ export default function Hero() {
             <CurvedMobileMarquee cards={showcaseCards} speed={36} />
           </div>
 
-          {/* Desktop View: Floating Perspective Cards Fan hovering over fluffy clouds */}
+          {/* Desktop View: Floating Perspective Cards Fan */}
           <div className="hidden sm:block pt-6 sm:pt-10 pb-4">
             <div className="grid grid-cols-5 gap-4 lg:gap-4 items-end max-w-6xl mx-auto">
               {showcaseCards.map((card, idx) => (
@@ -238,7 +218,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Cloud bank divider fading seamlessly to pure white at bottom of sky */}
+        {/* Divider fading seamlessly to pure white at bottom of section */}
         <div
           className="relative z-10 w-full pointer-events-none -mt-4 sm:-mt-8"
           aria-hidden="true"

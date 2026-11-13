@@ -14,7 +14,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import CoursesCatalog from "@/components/CoursesCatalog";
-import { Meteors } from "@/components/ui/meteors";
 
 export const metadata: Metadata = {
   title: "Courses | Excellence Education Academy – Goa",
@@ -30,19 +29,6 @@ export default function CoursesPage() {
       <main className="flex-grow">
         {/* 1. Hero Section */}
         <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <Image
-              src="/images/sky-clouds.jpg"
-              alt="Azure Sky Backdrop"
-              fill
-              priority
-              className="object-cover object-bottom opacity-70 mix-blend-screen"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1048B8]/65 via-[#1E6DEB]/30 to-[#4F94FA]/45" />
-          </div>
-
-          <Meteors number={10} />
-
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
             {/* Breadcrumb */}
             <nav

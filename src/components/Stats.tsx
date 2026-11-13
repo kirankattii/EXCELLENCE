@@ -20,9 +20,9 @@ export default function Stats() {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal">
-            Practical, hands-on culinary and bakery training with 100% placement
-            support preparing graduates for careers in top hotels, resorts, and
-            cruise lines worldwide.
+            Practical, hands-on culinary and bakery training with comprehensive
+            placement assistance preparing graduates for careers in top hotels,
+            resorts, and cruise lines worldwide.
           </p>
         </div>
 
@@ -46,14 +46,14 @@ export default function Stats() {
                   <AnimatedCounter value={100} suffix="%" align="left" />
                 </div>
                 <h3 className="text-lg font-black leading-snug">
-                  Certification &amp; Placement Support
+                  Certification &amp; Placement Assistance
                 </h3>
               </div>
 
               <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
-                Practical, hands-on learning with 100% placement support
-                preparing graduates for careers in top hotels, resorts, and
-                cruise lines worldwide.
+                Practical, hands-on learning with dedicated placement
+                assistance preparing graduates for careers in top hotels,
+                resorts, and cruise lines worldwide.
               </p>
             </div>
 
@@ -110,11 +110,11 @@ export default function Stats() {
 
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3 text-xs font-black text-[#1E6DEB]">
               <Image
-                src="/cth-logo2.png"
-                alt="CTH Gold Standard"
-                width={110}
-                height={22}
-                className="h-5 w-auto object-contain"
+                src="/cth-approved.png"
+                alt="CTH Approved Centre"
+                width={130}
+                height={52}
+                className="h-6.5 w-auto object-contain"
               />
               <span className="text-slate-400 font-semibold text-[11px]">
                 CTH-UK Certified
@@ -131,11 +131,11 @@ export default function Stats() {
 
               <div className="space-y-2">
                 <h3 className="text-2xl sm:text-3xl font-black leading-tight tracking-tight text-[#0A1118]">
-                  Internships from Day One
+                  Dedicated Placement Support
                 </h3>
                 <p className="text-xs sm:text-sm text-[#0A1118]/85 leading-relaxed font-medium">
-                  Our placement team connects graduates with opportunities across
-                  international hospitality, food service, and maritime sectors.
+                  Our placement team connects graduates with verified career
+                  opportunities across international hospitality, food service, and maritime sectors.
                 </p>
               </div>
 
@@ -150,7 +150,7 @@ export default function Stats() {
                 </div>
                 <div className="flex items-center gap-2 text-xs font-black text-[#0A1118]">
                   <CheckCircle2 className="w-4 h-4 text-[#0A1118]" />
-                  <span>Hands-on labs &amp; industry internships</span>
+                  <span>Hands-on labs &amp; career placement assistance</span>
                 </div>
               </div>
             </div>

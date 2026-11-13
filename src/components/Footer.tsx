@@ -43,8 +43,8 @@ export default function Footer() {
                 <Image
                   src="/cth-logo2.png"
                   alt="CTH Approved Centre Logo"
-                  width={120}
-                  height={24}
+                  width={130}
+                  height={26}
                   className="h-5 w-auto object-contain"
                 />
                 <span className="h-4 w-px bg-slate-200" aria-hidden="true" />
@@ -55,7 +55,7 @@ export default function Footer() {
 
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 text-xs text-slate-200 font-bold border border-white/10">
                 <Award className="w-4 h-4 text-[#D4F85A]" aria-hidden="true" />
-                <span>Goa&apos;s Only CTH Accredited Institute</span>
+                <span>Goa&apos;s First CTH-Accredited Institute</span>
               </div>
             </div>
           </div>
@@ -116,32 +116,32 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-400 font-medium">
               <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
+                <Link href="/courses/diploma-in-culinary-skills" className="hover:text-[#D4F85A] transition-colors">
                   Diploma in Culinary Skills
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
+                <Link href="/courses/diploma-in-patisserie-and-confectionery-skills" className="hover:text-[#D4F85A] transition-colors">
                   Diploma in Patisserie &amp; Confectionery
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
-                  Professional Restaurant Front of House
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
+                <Link href="/courses/diploma-in-cruise-hospitality-services" className="hover:text-[#D4F85A] transition-colors">
                   Diploma in Cruise Hospitality Services
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
+                <Link href="/courses/certificate-in-professional-bartending-skills" className="hover:text-[#D4F85A] transition-colors">
                   Professional Bartending Skills
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#D4F85A] transition-colors">
+                <Link href="/courses/certificate-in-restaurant-front-of-house-service" className="hover:text-[#D4F85A] transition-colors">
+                  Professional Restaurant Front of House
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses/award-in-basic-cookery-skills" className="hover:text-[#D4F85A] transition-colors">
                   Award in Basic Cookery Skills
                 </Link>
               </li>
@@ -186,7 +186,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 pt-1">
                 <a
-                  href="https://www.instagram.com/exceleduacademy/"
+                  href="https://www.instagram.com/excellence_education_academy/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#D4F85A] transition-colors"
@@ -195,16 +195,7 @@ export default function Footer() {
                 </a>
                 <span className="text-slate-600" aria-hidden="true">/</span>
                 <a
-                  href="https://www.youtube.com/channel/UCOQQlJnj3vWIcZ5EiPJ9-Hg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#D4F85A] transition-colors"
-                >
-                  YouTube
-                </a>
-                <span className="text-slate-600" aria-hidden="true">/</span>
-                <a
-                  href="https://www.facebook.com/share/19bToN1wVQ/"
+                  href="https://www.facebook.com/excellenceeducationacademygoa/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#D4F85A] transition-colors"

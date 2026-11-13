@@ -23,13 +23,18 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   align = "center",
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [displayValue, setDisplayValue] = useState<string | number>(0);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState<string | number>(value);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayValue(value.toFixed(decimals));
+      return;
+    }
+
     if (isInView) {
       const controls = animate(0, value, {
-        duration: 2.5,
+        duration: 1.8,
         ease: [0.16, 1, 0.3, 1],
         onUpdate: (latest) => {
           setDisplayValue(latest.toFixed(decimals));
@@ -47,39 +52,14 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     }
   );
 
-  const finalValue = value.toLocaleString(undefined, {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  });
-
-  const justifyClass =
-    align === "left"
-      ? "justify-start"
-      : align === "right"
-      ? "justify-end"
-      : "justify-center";
-
   return (
     <span
       ref={ref}
-      className={`relative inline-block tabular-nums ${className}`}
+      className={`inline-block tabular-nums ${className}`}
+      aria-label={`${value}${suffix}`}
     >
-      {/* GHOST ELEMENT: 
-          This is invisible but has the 'final' width (e.g., "15.5K+").
-          It prevents the layout from shifting while the number is smaller.
-      */}
-      <span className="invisible opacity-0 select-none" aria-hidden="true">
-        {finalValue}
-        {suffix}
-      </span>
-
-      {/* ACTUAL COUNTER: 
-          Positioned absolutely so it doesn't affect the parent container's width.
-      */}
-      <span className={`absolute inset-0 flex items-center ${justifyClass}`}>
-        {formattedValue}
-        {suffix}
-      </span>
+      {formattedValue}
+      {suffix}
     </span>
   );
 };

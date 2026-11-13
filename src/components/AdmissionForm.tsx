@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   Cake,
@@ -11,6 +12,7 @@ import {
   Hotel,
   Mail,
   MapPin,
+  MessageSquare,
   Phone,
   Ship,
   Sparkles,
@@ -166,10 +168,10 @@ export default function AdmissionForm() {
 
   return (
     <section
-      id="contact"
-      className="py-12 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80"
+      id="admissions"
+      className="py-12 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80 scroll-mt-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-14">
+      <div id="contact" className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-14">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
@@ -178,13 +180,11 @@ export default function AdmissionForm() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950">
-            Get In Touch with Us!
+            Admissions &amp; Campus Visit
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
-            Take the first step toward a prestigious culinary or hospitality
-            career. Schedule a personalized campus tour and kitchen walkthrough
-            in Goa.
+            Schedule a personalized campus visit to tour our commercial kitchen training bays and bakery labs, or connect directly with our admissions team via WhatsApp or phone.
           </p>
         </div>
 
@@ -501,9 +501,24 @@ export default function AdmissionForm() {
                         </>
                       )}
                     </button>
-                    <p className="text-[11px] text-slate-400 text-center mt-2.5">
-                      🔒 Your details are kept confidential and used solely for
-                      admission counseling.
+                    <p className="text-[11px] text-slate-500 text-center mt-2.5 leading-relaxed">
+                      🔒 Your details stay private and are used solely for admissions counseling. Please read our{" "}
+                      <Link
+                        href="/privacy-policy"
+                        target="_blank"
+                        className="text-[#1E6DEB] font-bold underline hover:text-[#1351C7] transition-colors"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="/terms-of-admission"
+                        target="_blank"
+                        className="text-[#1E6DEB] font-bold underline hover:text-[#1351C7] transition-colors"
+                      >
+                        Terms &amp; Conditions
+                      </Link>
+                      .
                     </p>
                   </div>
                 </form>
@@ -513,6 +528,29 @@ export default function AdmissionForm() {
 
           {/* Right Column: Contact Details */}
           <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+            {/* Direct WhatsApp Action Card */}
+            <a
+              href="https://wa.me/918329208271?text=Hi%20Excellence%20Education%20Academy,%20I%20would%20like%20to%20enquire%20about%20admissions%20and%20book%20a%20campus%20visit."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl sm:rounded-[28px] p-4 sm:p-6 shadow-md hover:shadow-lg transition-all flex items-center justify-between group"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center text-white shrink-0">
+                  <MessageSquare className="w-5 h-5" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="text-xs font-black uppercase tracking-wider text-white/90">
+                    Instant WhatsApp Support
+                  </h3>
+                  <p className="text-sm sm:text-base font-black text-white">
+                    Chat with Admissions
+                  </p>
+                </div>
+              </div>
+              <AnimatedArrow size={16} className="text-white group-hover:translate-x-1 transition-transform" />
+            </a>
+
             <div className="bg-white rounded-2xl sm:rounded-[28px] p-4 sm:p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-md hover:border-[#1E6DEB]/40 transition-all space-y-2">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs shrink-0">

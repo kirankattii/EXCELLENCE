@@ -21,7 +21,6 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
-import { Meteors } from "@/components/ui/meteors";
 
 export const metadata: Metadata = {
   title: "About Us | Excellence Education Academy – Goa",
@@ -138,19 +137,6 @@ export default function AboutPage() {
       <main className="flex-grow">
         {/* 1. Hero Section */}
         <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <Image
-              src="/images/sky-clouds.jpg"
-              alt="Azure Sky Backdrop"
-              fill
-              priority
-              className="object-cover object-bottom opacity-70 mix-blend-screen"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1048B8]/65 via-[#1E6DEB]/30 to-[#4F94FA]/45" />
-          </div>
-
-          <Meteors number={10} />
-
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
             {/* Breadcrumb */}
             <nav
@@ -244,17 +230,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="pt-2 flex flex-wrap items-center gap-4">
+                <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-4">
                   <Link
                     href="/enroll"
-                    className="inline-flex items-center gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-sm px-8 py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#0A1118] hover:bg-black text-white font-black text-xs sm:text-sm px-4.5 sm:px-8 py-2.5 sm:py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Enquire for Admissions</span>
-                    <AnimatedArrow size={15} className="text-[#D4F85A]" />
+                    <AnimatedArrow size={14} className="text-[#D4F85A]" boxClassName="h-4 w-4 sm:h-5 sm:w-[17px]" />
                   </Link>
                   <Link
                     href="/courses"
-                    className="inline-flex items-center gap-2 bg-[#F0F6FE] hover:bg-[#e1edfe] text-[#1E6DEB] font-black text-sm px-7 py-4 rounded-full border border-[#1E6DEB]/20 transition-colors"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#F0F6FE] hover:bg-[#e1edfe] text-[#1E6DEB] font-black text-xs sm:text-sm px-4 sm:px-7 py-2.5 sm:py-4 rounded-full border border-[#1E6DEB]/20 transition-colors"
                   >
                     <span>Explore Courses</span>
                   </Link>
@@ -271,13 +257,13 @@ export default function AboutPage() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-slate-200/80 flex items-center gap-3">
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl shadow-lg border border-slate-200/80 flex items-center gap-3">
                     <Image
-                      src="/cth-logo.png"
+                      src="/cth-approved.png"
                       alt="CTH Approved Centre"
-                      width={110}
-                      height={22}
-                      className="h-4.5 w-auto object-contain"
+                      width={130}
+                      height={52}
+                      className="h-6 w-auto object-contain"
                     />
                   </div>
                 </div>
@@ -308,27 +294,27 @@ export default function AboutPage() {
         </section>
 
         {/* 3. What is CTH? / CTH Accreditation */}
-        <section className="py-16 sm:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="max-w-4xl mx-auto text-center space-y-5">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
-                <Award className="w-3.5 h-3.5" aria-hidden="true" />
+        <section className="py-10 sm:py-16 md:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6 sm:space-y-10 md:space-y-12">
+            <div className="max-w-4xl mx-auto text-center space-y-3 sm:space-y-5">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-black text-[#1E6DEB] shadow-xs">
+                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                 <span>CTH ACCREDITATION</span>
               </div>
 
               <div className="flex justify-center">
-                <div className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 border border-slate-200/90 shadow-sm">
+                <div className="inline-flex items-center justify-center rounded-xl sm:rounded-2xl bg-white px-4 py-2 sm:px-6 sm:py-3 border border-slate-200/90 shadow-sm">
                   <Image
-                    src="/cth-logo2.png"
-                    alt="CTH — Confederation of Tourism & Hospitality"
+                    src="/cth-approved.png"
+                    alt="CTH Approved Centre — Confederation of Tourism & Hospitality"
                     width={220}
-                    height={44}
-                    className="h-9 sm:h-10 w-auto object-contain"
+                    height={88}
+                    className="h-8 sm:h-12 w-auto object-contain"
                   />
                 </div>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-950">
                 What is CTH?
               </h2>
 
@@ -343,30 +329,30 @@ export default function AboutPage() {
             </div>
 
             {/* 5 CTH Pillars in balanced 6-col bento grid (3 top + 2 bottom) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3.5 sm:gap-6">
               {CTH_PILLARS.map((pillar, idx) => {
                 const Icon = pillar.icon;
                 const spanClass = idx < 3 ? "lg:col-span-2" : "lg:col-span-3";
                 return (
                   <div
                     key={pillar.number}
-                    className={`${spanClass} bg-white rounded-[28px] p-7 sm:p-8 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-[0_16px_36px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all flex flex-col justify-between space-y-5 group`}
+                    className={`${spanClass} bg-white rounded-[20px] sm:rounded-[28px] p-4.5 sm:p-7 md:p-8 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-[0_16px_36px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all flex flex-col justify-between space-y-3 sm:space-y-5 group`}
                   >
-                    <div className="space-y-4">
+                    <div className="space-y-2.5 sm:space-y-4">
                       <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-2xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                          <Icon className="w-6 h-6" aria-hidden="true" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                         </div>
-                        <span className="text-xs font-black text-slate-400 tracking-wider">
+                        <span className="text-[11px] sm:text-xs font-black text-slate-400 tracking-wider">
                           {pillar.number}
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-black text-slate-950 tracking-tight">
+                      <h3 className="text-base sm:text-lg md:text-xl font-black text-slate-950 tracking-tight">
                         {pillar.title}
                       </h3>
 
-                      <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                         {pillar.description}
                       </p>
                     </div>
