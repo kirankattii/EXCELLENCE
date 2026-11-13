@@ -16,6 +16,7 @@ import {
   Wine,
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const COURSE_SLUGS: Record<string, string> = {
   "diploma-culinary": "/courses/diploma-in-culinary-skills",
@@ -279,7 +280,7 @@ export default function CoursesOffered() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6 sm:space-y-12">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[11px] sm:text-xs font-black text-[#1E6DEB] shadow-xs">
             <Award className="w-3.5 h-3.5" aria-hidden="true" />
             <span>CTH ACCREDITED VOCATIONAL PATHWAYS</span>
@@ -310,10 +311,10 @@ export default function CoursesOffered() {
             to succeed in global hospitality right from the heart of
             India&apos;s tourism capital.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Horizontal Slider Wrapper */}
-        <div className="space-y-3 sm:space-y-5">
+        <ScrollReveal variant="fade-up" delay={0.1} className="space-y-3 sm:space-y-5">
           {/* Top Controls Bar: Program Summary + Highlighted Prev/Next Arrows */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
@@ -488,7 +489,7 @@ export default function CoursesOffered() {
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

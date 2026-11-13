@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Clock, Calendar, Sparkles } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export default function BlogSection() {
   const posts = [
@@ -40,7 +41,7 @@ export default function BlogSection() {
     <section id="blogs" className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-14">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>WORKSHOPS, EVENTS &amp; MASTERCLASSES</span>
@@ -53,12 +54,15 @@ export default function BlogSection() {
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
             Practical masterclasses, guest chef workshops, and culinary activities straight from our Goa campus training labs.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 3 Blog Cards matching reference Section 7 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {posts.map((post, idx) => (
-            <article
+            <StaggerItem
               key={idx}
               className="bg-white rounded-[32px] overflow-hidden border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_20px_48px_rgba(30,109,235,0.12)] hover:border-[#1E6DEB]/40 transition-all duration-300 flex flex-col justify-between group"
             >
@@ -104,9 +108,9 @@ export default function BlogSection() {
                   <AnimatedArrow trigger="card" size={15} />
                 </div>
               </div>
-            </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

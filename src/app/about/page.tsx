@@ -21,6 +21,7 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "About Us | Excellence Education Academy – Goa",
@@ -181,7 +182,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
               {/* Left Content */}
-              <div className="lg:col-span-6 space-y-6">
+              <ScrollReveal variant="fade-up" className="lg:col-span-6 space-y-6">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB]">
                   <Building2 className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>INSTITUTION PROFILE</span>
@@ -245,10 +246,10 @@ export default function AboutPage() {
                     <span>Explore Courses</span>
                   </Link>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right Visual Collage */}
-              <div className="lg:col-span-6 space-y-4">
+              <ScrollReveal variant="fade-up" delay={0.1} className="lg:col-span-6 space-y-4">
                 <div className="relative w-full aspect-[16/10] rounded-[32px] overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
                   <Image
                     src="/eea-gallary/eea-gallary1.jpg"
@@ -288,7 +289,7 @@ export default function AboutPage() {
                     />
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -296,7 +297,8 @@ export default function AboutPage() {
         {/* 3. What is CTH? / CTH Accreditation */}
         <section className="py-10 sm:py-16 md:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6 sm:space-y-10 md:space-y-12">
-            <div className="max-w-4xl mx-auto text-center space-y-3 sm:space-y-5">
+            {/* Section Header */}
+            <ScrollReveal variant="fade-up" className="max-w-4xl mx-auto text-center space-y-3 sm:space-y-5">
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-black text-[#1E6DEB] shadow-xs">
                 <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                 <span>CTH ACCREDITATION</span>
@@ -326,15 +328,18 @@ export default function AboutPage() {
                 globally respected and recognized by employers and academic
                 institutions in over 100 countries.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* 5 CTH Pillars in balanced 6-col bento grid (3 top + 2 bottom) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3.5 sm:gap-6">
+            <StaggerContainer
+              staggerDelay={0.08}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3.5 sm:gap-6"
+            >
               {CTH_PILLARS.map((pillar, idx) => {
                 const Icon = pillar.icon;
                 const spanClass = idx < 3 ? "lg:col-span-2" : "lg:col-span-3";
                 return (
-                  <div
+                  <StaggerItem
                     key={pillar.number}
                     className={`${spanClass} bg-white rounded-[20px] sm:rounded-[28px] p-4.5 sm:p-7 md:p-8 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-[0_16px_36px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all flex flex-col justify-between space-y-3 sm:space-y-5 group`}
                   >
@@ -356,17 +361,17 @@ export default function AboutPage() {
                         {pillar.description}
                       </p>
                     </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* 4. Vision, Mission And Goals */}
         <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB]">
                 <Compass className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>OUR PURPOSE &amp; DIRECTION</span>
@@ -375,12 +380,15 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950">
                 Vision, Mission And Goals
               </h2>
-            </div>
+            </ScrollReveal>
 
             {/* Vision & Mission Bento Duo */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <StaggerContainer
+              staggerDelay={0.1}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+            >
               {/* Vision */}
-              <div className="rounded-[32px] bg-[#0A1118] text-white p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-6">
+              <StaggerItem className="rounded-[32px] bg-[#0A1118] text-white p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-6">
                 <div
                   className="absolute -top-20 -right-20 w-64 h-64 bg-[#1E6DEB]/25 rounded-full blur-3xl pointer-events-none"
                   aria-hidden="true"
@@ -400,10 +408,10 @@ export default function AboutPage() {
                     hospitality domain.
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
 
               {/* Mission */}
-              <div className="rounded-[32px] bg-[#1E6DEB] text-white p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-6">
+              <StaggerItem className="rounded-[32px] bg-[#1E6DEB] text-white p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-6">
                 <div
                   className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/15 rounded-full blur-3xl pointer-events-none"
                   aria-hidden="true"
@@ -428,11 +436,11 @@ export default function AboutPage() {
                     ))}
                   </ul>
                 </div>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerContainer>
 
             {/* Goals Card */}
-            <div className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 shadow-[0_4px_24px_rgba(10,17,24,0.03)] space-y-6">
+            <ScrollReveal variant="fade-up" delay={0.1} className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 shadow-[0_4px_24px_rgba(10,17,24,0.03)] space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 pb-5">
                 <div>
                   <span className="text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
@@ -462,14 +470,14 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* 5. Excellence Education Academy Gallery */}
         <section className="py-16 sm:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
                 <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>INFRASTRUCTURE &amp; SHOWROOM FACILITIES</span>
@@ -483,11 +491,11 @@ export default function AboutPage() {
                 Explore our culinary prep counters, commercial ovens, kitchen
                 workstations, academy reception, and practical training labs.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-7">
               {EEA_GALLERY.map((item) => (
-                <div
+                <StaggerItem
                   key={item.title}
                   className="group relative rounded-[32px] overflow-hidden border border-slate-200/90 bg-white shadow-[0_4px_24px_rgba(10,17,24,0.05)] hover:shadow-xl transition-all duration-300"
                 >
@@ -514,16 +522,16 @@ export default function AboutPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* 6. Course Mentors / Instructional Advisors */}
         <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB]">
                 <ChefHat className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>COURSE MENTORS</span>
@@ -537,9 +545,9 @@ export default function AboutPage() {
                 Dedicated academic leadership mentoring students to
                 international CTH hospitality standards.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="max-w-md mx-auto">
+            <ScrollReveal variant="scale-up" delay={0.1} className="max-w-md mx-auto">
               {INSTRUCTIONAL_ADVISORS.map((advisor) => (
                 <article
                   key={advisor.name}
@@ -572,7 +580,7 @@ export default function AboutPage() {
                   </div>
                 </article>
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 

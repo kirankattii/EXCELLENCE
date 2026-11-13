@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   Cake,
   Check,
@@ -173,7 +174,7 @@ export default function AdmissionForm() {
     >
       <div id="contact" className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-14">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>ADMISSIONS &amp; CAMPUS VISITS</span>
@@ -186,11 +187,11 @@ export default function AdmissionForm() {
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
             Schedule a personalized campus visit to tour our commercial kitchen training bays and bakery labs, or connect directly with our admissions team via WhatsApp or phone.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
           {/* Left Column: Form Card */}
-          <div className="lg:col-span-7">
+          <ScrollReveal variant="fade-up" delay={0.1} className="lg:col-span-7">
             <div className="bg-white rounded-3xl sm:rounded-[32px] p-5 sm:p-10 border border-slate-200/90 shadow-[0_4px_30px_rgba(10,17,24,0.05)]">
               {submitted ? (
                 <div
@@ -524,10 +525,10 @@ export default function AdmissionForm() {
                 </form>
               )}
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Contact Details */}
-          <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+          <ScrollReveal variant="fade-up" delay={0.2} className="lg:col-span-5 space-y-3 sm:space-y-4">
             {/* Direct WhatsApp Action Card */}
             <a
               href="https://wa.me/918329208271?text=Hi%20Excellence%20Education%20Academy,%20I%20would%20like%20to%20enquire%20about%20admissions%20and%20book%20a%20campus%20visit."
@@ -627,7 +628,7 @@ export default function AdmissionForm() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

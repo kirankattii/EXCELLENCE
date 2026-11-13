@@ -34,6 +34,11 @@ import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/ScrollReveal";
+import {
   COURSE_PROGRAMS,
   getCourseBySlug,
   type CourseIconName,
@@ -447,7 +452,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 2. Key Facts Strip */}
         <section className="relative z-20 -mt-10 sm:-mt-14 pb-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-5 rounded-[22px] sm:rounded-[32px] bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_20px_50px_-10px_rgba(10,17,24,0.12)]">
+            <ScrollReveal variant="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-5 rounded-[22px] sm:rounded-[32px] bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_20px_50px_-10px_rgba(10,17,24,0.12)]">
               {/* Fact 1: Duration */}
               <div className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
                 <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
@@ -521,7 +526,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   </p>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -530,7 +535,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
               {/* Left narrative */}
-              <div className="lg:col-span-7 space-y-5">
+              <ScrollReveal variant="fade-up" className="lg:col-span-7 space-y-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[11px] font-black text-[#1E6DEB]">
                   <CourseIcon name={course.iconName} className="w-3.5 h-3.5" />
                   <span>PROGRAM OVERVIEW</span>
@@ -558,10 +563,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     </p>
                   </div>
                 )}
-              </div>
+              </ScrollReveal>
 
               {/* Right sticky highlights box */}
-              <div className="lg:col-span-5 space-y-6">
+              <ScrollReveal variant="fade-up" delay={0.1} className="lg:col-span-5 space-y-6">
                 <div className="rounded-[32px] bg-gradient-to-br from-[#0A1118] to-[#122336] text-white p-7 sm:p-9 shadow-xl relative overflow-hidden space-y-6">
                   <div
                     className="absolute -top-16 -right-16 w-48 h-48 bg-[#1E6DEB]/30 rounded-full blur-3xl pointer-events-none"
@@ -621,7 +626,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -629,7 +634,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 4. Curriculum / What You Will Learn */}
         <section className="py-16 sm:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
                 <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>COMPREHENSIVE SYLLABUS</span>
@@ -643,12 +648,12 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 Hands-on commercial competencies designed in collaboration with
                 hospitality industry leaders and CTH-UK standards.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Curriculum Cards Grid: Compact, balanced 2-column directory */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3 max-w-5xl mx-auto">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3 max-w-5xl mx-auto">
               {course.whatYouWillLearn.map((topic, idx) => (
-                <div
+                <StaggerItem
                   key={idx}
                   className="bg-white rounded-2xl p-3.5 sm:px-4 sm:py-3.5 border border-slate-200/90 shadow-xs hover:border-[#1E6DEB]/50 hover:bg-[#FDFEFF] transition-all duration-200 flex items-center justify-between gap-3 group"
                 >
@@ -664,9 +669,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     className="w-4 h-4 text-slate-300 group-hover:text-[#1E6DEB] flex-shrink-0 transition-colors"
                     aria-hidden="true"
                   />
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* If Core Units are present (e.g. Front of House) */}
             {course.coreUnits && (
@@ -742,7 +747,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {course.skillsDeveloped && (
           <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-              <div className="max-w-3xl mx-auto text-center space-y-4">
+              <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB]">
                   <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>INDUSTRY COMPETENCIES</span>
@@ -756,11 +761,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   Beyond recipes and drills, you develop professional attitude,
                   commercial speed, and international hospitality standards.
                 </p>
-              </div>
+              </ScrollReveal>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 max-w-6xl mx-auto">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 max-w-6xl mx-auto">
                 {course.skillsDeveloped.map((skill, idx) => (
-                  <div
+                  <StaggerItem
                     key={idx}
                     className="p-4 sm:p-4.5 rounded-2xl bg-[#F8FAFC] hover:bg-white border border-slate-200/90 hover:border-[#1E6DEB]/40 hover:shadow-sm transition-all duration-200 flex items-start gap-3.5 group"
                   >
@@ -775,9 +780,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
                         {skill}
                       </h3>
                     </div>
-                  </div>
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerContainer>
             </div>
           </section>
         )}
@@ -794,7 +799,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
           />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12 relative z-10">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-black text-[#D4F85A]">
                 <Briefcase className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>EMPLOYMENT &amp; GLOBAL PLACEMENT</span>
@@ -808,12 +813,12 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 Graduates of this programme are employment-ready for prestigious
                 establishments in India and across the world.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Career Roles Grid: Compact, modern career pathway cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
+            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
               {course.careerOpportunities.map((role, idx) => (
-                <div
+                <StaggerItem
                   key={idx}
                   className="group relative rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 hover:border-[#D4F85A]/50 p-3.5 sm:p-4 flex flex-col justify-between gap-2.5 transition-all duration-200 hover:-translate-y-0.5"
                 >
@@ -834,13 +839,13 @@ export default async function CourseDetailPage({ params }: PageProps) {
                       Employment Ready
                     </span>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Progression Callout */}
             {course.careerProgression && (
-              <div className="rounded-[32px] bg-gradient-to-r from-[#1351C7] to-[#1E6DEB] p-8 sm:p-10 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6">
+              <ScrollReveal variant="fade-up" delay={0.1} className="rounded-[32px] bg-gradient-to-r from-[#1351C7] to-[#1E6DEB] p-8 sm:p-10 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="space-y-2 text-center md:text-left">
                   <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-[#D4F85A]">
                     <TrendingUp className="w-4 h-4" aria-hidden="true" />
@@ -861,7 +866,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <span>Begin Your Journey</span>
                   <AnimatedArrow size={14} />
                 </Link>
-              </div>
+              </ScrollReveal>
             )}
           </div>
         </section>
@@ -871,7 +876,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Who Should Apply */}
-              <div className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 space-y-6">
+              <ScrollReveal variant="fade-up" className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 space-y-6">
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB]">
                     <Users className="w-3.5 h-3.5" aria-hidden="true" />
@@ -903,10 +908,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     <span className="text-slate-900">{course.eligibility}</span>
                   </p>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Why Choose Excellence Education Academy Goa */}
-              <div className="rounded-[32px] bg-gradient-to-br from-[#1E6DEB] to-[#1351C7] text-white p-8 sm:p-10 shadow-xl space-y-6 flex flex-col justify-between">
+              <ScrollReveal variant="fade-up" delay={0.1} className="rounded-[32px] bg-gradient-to-br from-[#1E6DEB] to-[#1351C7] text-white p-8 sm:p-10 shadow-xl space-y-6 flex flex-col justify-between">
                 <div className="space-y-4">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 border border-white/30 text-xs font-black text-[#D4F85A]">
                     <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
@@ -937,7 +942,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     <AnimatedArrow size={14} />
                   </Link>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -945,7 +950,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 8. Direct Admissions Fast Form CTA */}
         <section className="py-16 sm:py-24 bg-gradient-to-b from-[#F8FAFC] to-white border-b border-slate-200/80">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <div className="rounded-[36px] bg-white border-2 border-[#1E6DEB]/25 p-8 sm:p-12 shadow-[0_20px_50px_rgba(30,109,235,0.1)] text-center space-y-8">
+            <ScrollReveal variant="fade-up" className="rounded-[36px] bg-white border-2 border-[#1E6DEB]/25 p-8 sm:p-12 shadow-[0_20px_50px_rgba(30,109,235,0.1)] text-center space-y-8">
               <div className="max-w-2xl mx-auto space-y-3">
                 <span className="text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
                   ADMISSIONS OPEN • LIMITED SEATS PER BATCH
@@ -977,14 +982,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <span>Call +91 96076 22999</span>
                 </a>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* 9. Related Other Programs */}
         <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <ScrollReveal variant="fade-up" className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <span className="text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
                   EXPLORE ALTERNATIVE PATHWAYS
@@ -1001,11 +1006,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 <span>View All Courses</span>
                 <AnimatedArrow size={14} />
               </Link>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {relatedCourses.map((rel) => (
-                <div
+                <StaggerItem
                   key={rel.id}
                   className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-lg hover:border-[#1E6DEB]/50 transition-all duration-300 flex flex-col justify-between group"
                 >
@@ -1056,9 +1061,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
                       <AnimatedArrow size={11} boxClassName="h-3 w-3" />
                     </Link>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 

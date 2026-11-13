@@ -3,13 +3,14 @@ import Link from "next/link";
 import { CheckCircle2, Sparkles, Ship } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/stat";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export default function Stats() {
   return (
     <section className="bg-white py-16 sm:py-24 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>PROVEN CAREER TRACK RECORD</span>
@@ -24,12 +25,15 @@ export default function Stats() {
             placement assistance preparing graduates for careers in top hotels,
             resorts, and cruise lines worldwide.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Bento Grid Trio matching reference Section 2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch"
+        >
           {/* Card 1: Vibrant Azure Blue (lg:col-span-4) */}
-          <div className="lg:col-span-4 bg-[#1E6DEB] text-white rounded-[32px] p-8 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden group">
+          <StaggerItem className="lg:col-span-4 bg-[#1E6DEB] text-white rounded-[32px] p-8 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden group">
             {/* Background subtle light radial */}
             <div
               className="absolute -top-20 -right-20 w-64 h-64 bg-white/20 rounded-full blur-2xl pointer-events-none"
@@ -70,10 +74,10 @@ export default function Stats() {
                 <span>Global Fleet Placement</span>
               </div>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Card 2: Crisp White Card (lg:col-span-4) */}
-          <div className="lg:col-span-4 bg-white rounded-[32px] p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] flex flex-col justify-between space-y-6 hover:border-[#1E6DEB]/40 hover:shadow-lg transition-all">
+          <StaggerItem className="lg:col-span-4 bg-white rounded-[32px] p-8 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] flex flex-col justify-between space-y-6 hover:border-[#1E6DEB]/40 hover:shadow-lg transition-all">
             <div className="space-y-4">
               <span className="inline-block text-[11px] font-black uppercase tracking-wider text-[#1E6DEB] bg-[#F0F6FE] px-3 py-1 rounded-full border border-[#1E6DEB]/20">
                 International Recognition
@@ -120,10 +124,10 @@ export default function Stats() {
                 CTH-UK Certified
               </span>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Card 3: Electric Lime Card (lg:col-span-4) matching reference */}
-          <div className="lg:col-span-4 bg-[#D4F85A] text-[#0A1118] rounded-[32px] p-8 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden group">
+          <StaggerItem className="lg:col-span-4 bg-[#D4F85A] text-[#0A1118] rounded-[32px] p-8 shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden group">
             <div className="space-y-4">
               <span className="inline-block text-[11px] font-black uppercase tracking-wider text-[#0A1118] bg-white/70 px-3 py-1 rounded-full border border-black/10">
                 Global Hospitality Careers
@@ -164,8 +168,8 @@ export default function Stats() {
                 <AnimatedArrow size={15} className="text-[#D4F85A]" />
               </Link>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </section>
   );

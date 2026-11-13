@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Star, Quote, Sparkles } from "lucide-react";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export default function Testimonials() {
   const testimonials = [
@@ -36,7 +37,7 @@ export default function Testimonials() {
     <section id="testimonials" className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-14">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>STUDENT SUCCESS STORIES</span>
@@ -49,12 +50,15 @@ export default function Testimonials() {
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
             Real feedback from graduates working aboard luxury international cruise liners and inside premier 5-star kitchens across the globe.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Photo Overlay Cards matching reference Section 6 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {testimonials.map((t, index) => (
-            <div
+            <StaggerItem
               key={index}
               className="relative rounded-[32px] overflow-hidden min-h-[460px] shadow-xl border border-slate-200 flex flex-col justify-end p-8 group transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
             >
@@ -98,9 +102,9 @@ export default function Testimonials() {
                   </p>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

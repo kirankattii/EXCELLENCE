@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export default function AccreditationBanner() {
   const steps = [
@@ -70,7 +71,7 @@ export default function AccreditationBanner() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
         {/* Compact Header: Dual Logo Badge + Status Pill + Headline */}
-        <div className="flex flex-col items-center text-center space-y-3.5 max-w-4xl mx-auto">
+        <ScrollReveal variant="fade-up" className="flex flex-col items-center text-center space-y-3.5 max-w-4xl mx-auto">
           {/* Top Status & Brand Row */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             {/* Live Approval Pill */}
@@ -140,14 +141,17 @@ export default function AccreditationBanner() {
               audited British diplomas.
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 3 Compact Pathway Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto">
+        <StaggerContainer
+          staggerDelay={0.08}
+          className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto"
+        >
           {steps.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <StaggerItem
                 key={idx}
                 className="group relative bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/25 hover:border-white/45 rounded-2xl p-4 sm:p-5 flex flex-col justify-between gap-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
               >
@@ -182,13 +186,13 @@ export default function AccreditationBanner() {
                   <CheckCircle2 className="w-3 h-3 text-[#D4F85A] shrink-0" />
                   <span>{item.tag}</span>
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
         {/* Compact Footer Strip: Institutional Governance Note + CTA */}
-        <div className="max-w-6xl mx-auto rounded-2xl bg-[#0A1118]/35 border border-white/25 p-3 sm:px-5 sm:py-3.5 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shadow-sm">
+        <ScrollReveal variant="fade-up" delay={0.15} className="max-w-6xl mx-auto rounded-2xl bg-[#0A1118]/35 border border-white/25 p-3 sm:px-5 sm:py-3.5 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shadow-sm">
           <div className="flex items-center gap-2.5 text-center sm:text-left text-xs text-white/95">
             <div className="w-7 h-7 rounded-lg bg-[#D4F85A]/20 text-[#D4F85A] flex items-center justify-center shrink-0 hidden sm:flex">
               <ShieldCheck className="w-4 h-4" aria-hidden="true" />
@@ -215,7 +219,7 @@ export default function AccreditationBanner() {
               />
             </div>
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

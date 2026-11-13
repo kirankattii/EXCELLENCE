@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import ScrollManager from "@/components/ScrollManager";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,9 +65,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-slate-900 selection:bg-[#D4F85A] selection:text-[#0A1118]">
+        <ScrollManager />
         {children}
       </body>
     </html>

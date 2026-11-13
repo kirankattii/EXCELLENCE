@@ -7,6 +7,7 @@ import {
   Award,
   Ship,
 } from "lucide-react";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
 export default function WhyJoinUs() {
   const pillars = [
@@ -40,7 +41,7 @@ export default function WhyJoinUs() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
         {/* Section Header */}
-        <div className="max-w-4xl mx-auto text-center space-y-3 sm:space-y-4">
+        <ScrollReveal variant="fade-up" className="max-w-4xl mx-auto text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
             <span>• THE EXCELLENCE ADVANTAGE •</span>
           </div>
@@ -55,14 +56,17 @@ export default function WhyJoinUs() {
             this advantage with state-of-the-art facilities, expert instructors,
             and globally recognized CTH-UK certification.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 3 Bento Feature Highlights matching reference Section 3 with Lime Badges */}
-        <div className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scroll-px-4 sm:scroll-px-8 md:scroll-px-0 scroll-smooth no-scrollbar -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 py-1 md:py-0">
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scroll-px-4 sm:scroll-px-8 md:scroll-px-0 scroll-smooth no-scrollbar -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 py-1 md:py-0"
+        >
           {pillars.map((p, idx) => {
             const Icon = p.icon;
             return (
-              <div
+              <StaggerItem
                 key={idx}
                 className="w-[82vw] sm:w-[340px] md:w-auto shrink-0 md:shrink snap-start bg-white rounded-[22px] sm:rounded-[28px] p-5 sm:p-8 border border-slate-200/90 shadow-[0_4px_20px_rgba(10,17,24,0.03)] hover:shadow-[0_16px_36px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all flex flex-col justify-between group cursor-default"
               >
@@ -99,15 +103,19 @@ export default function WhyJoinUs() {
                     </div>
                   )}
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
         {/* 2 Big Feature Visual Blocks */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 pt-0 sm:pt-4">
           {/* Sub-block 1: State-of-the-Art Training Kitchens */}
-          <div className="bg-white rounded-[22px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_16px_40px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all duration-300 flex flex-col justify-between space-y-5 sm:space-y-8">
+          <ScrollReveal
+            variant="fade-up"
+            delay={0.1}
+            className="bg-white rounded-[22px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_16px_40px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all duration-300 flex flex-col justify-between space-y-5 sm:space-y-8"
+          >
             <div className="space-y-3.5 sm:space-y-4">
               <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[#1E6DEB] flex items-center justify-center shadow-xs">
                 <Flame className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -162,10 +170,14 @@ export default function WhyJoinUs() {
                 className="object-cover"
               />
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Sub-block 2: Global Stage / Career Opportunities */}
-          <div className="bg-white rounded-[22px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_16px_40px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all duration-300 flex flex-col justify-between space-y-5 sm:space-y-8">
+          <ScrollReveal
+            variant="fade-up"
+            delay={0.2}
+            className="bg-white rounded-[22px] sm:rounded-[32px] p-5 sm:p-8 md:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_16px_40px_rgba(30,109,235,0.08)] hover:border-[#1E6DEB]/40 transition-all duration-300 flex flex-col justify-between space-y-5 sm:space-y-8"
+          >
             <div className="space-y-3.5 sm:space-y-4">
               <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#D4F85A] text-[#0A1118] flex items-center justify-center shadow-xs">
                 <Globe2 className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -223,7 +235,7 @@ export default function WhyJoinUs() {
                 className="object-cover"
               />
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

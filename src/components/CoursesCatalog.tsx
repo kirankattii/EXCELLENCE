@@ -20,6 +20,11 @@ import {
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import {
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/ScrollReveal";
+import {
   COURSE_PROGRAMS,
   type CourseIconName,
   type CourseProgram,
@@ -127,7 +132,7 @@ export default function CoursesCatalog() {
   return (
     <div className="space-y-16">
       {/* Filter Controls Header */}
-      <div className="space-y-4 sm:space-y-5 pb-6 border-b border-slate-200/80">
+      <ScrollReveal variant="fade-up" className="space-y-4 sm:space-y-5 pb-6 border-b border-slate-200/80">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
@@ -180,15 +185,15 @@ export default function CoursesCatalog() {
             })}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Course Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleCourses.map((course) => (
-          <article
+          <StaggerItem
             key={course.id}
-            onClick={() => router.push(`/courses/${course.slug}`)}
             className="bg-white rounded-[32px] overflow-hidden border border-slate-200/90 shadow-[0_4px_24px_rgba(10,17,24,0.04)] hover:shadow-[0_20px_48px_rgba(30,109,235,0.12)] hover:border-[#1E6DEB]/50 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+            onClick={() => router.push(`/courses/${course.slug}`)}
           >
             <div>
               {/* Card Image Header with Direct Page Link */}
@@ -312,12 +317,12 @@ export default function CoursesCatalog() {
                 </span>
               </Link>
             </div>
-          </article>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
 
       {/* Quick Comparison Table */}
-      <div className="rounded-[20px] sm:rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-2.5 sm:p-8 shadow-xs space-y-3.5 sm:space-y-5">
+      <ScrollReveal variant="fade-up" className="rounded-[20px] sm:rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-2.5 sm:p-8 shadow-xs space-y-3.5 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 px-1 sm:px-0">
           <div>
             <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-[#1E6DEB]">
@@ -388,7 +393,7 @@ export default function CoursesCatalog() {
             </tbody>
           </table>
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }
