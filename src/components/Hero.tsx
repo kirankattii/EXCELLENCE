@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { CurvedMobileMarquee } from "@/components/ui/curved-mobile-marquee";
+import { HeroAtmosphere } from "@/components/ui/HeroAtmosphere";
 
 export default function Hero() {
   const showcaseCards = [
@@ -74,7 +75,9 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative pt-20 sm:pt-36 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
+      <section className="relative pt-20 sm:pt-36 overflow-hidden text-white bg-[#0A2266]">
+        {/* Animated Oval Gradient Atmosphere */}
+        <HeroAtmosphere />
         {/* Floating Side Action Icons (Right Edge) */}
         <aside
           aria-label="Quick contact"

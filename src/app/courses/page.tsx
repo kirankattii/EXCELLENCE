@@ -14,6 +14,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import CoursesCatalog from "@/components/CoursesCatalog";
+import { HeroAtmosphere } from "@/components/ui/HeroAtmosphere";
 
 export const metadata: Metadata = {
   title: "Courses | Excellence Education Academy – Goa",
@@ -28,7 +29,9 @@ export default function CoursesPage() {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
+        <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-[#0A2266]">
+          {/* Animated Oval Gradient Atmosphere */}
+          <HeroAtmosphere />
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
             {/* Breadcrumb */}
             <nav

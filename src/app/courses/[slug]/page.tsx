@@ -33,6 +33,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { HeroAtmosphere } from "@/components/ui/HeroAtmosphere";
 import {
   ScrollReveal,
   StaggerContainer,
@@ -304,16 +305,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#3982F7]">
-          {/* Subtle decorative glow */}
-          <div
-            className="absolute top-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute -bottom-24 -left-20 w-96 h-96 bg-[#D4F85A]/15 rounded-full blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
+        <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden text-white bg-[#0A2266]">
+          {/* Animated Oval Gradient Atmosphere */}
+          <HeroAtmosphere />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-8">
             {/* Breadcrumb Navigation */}
