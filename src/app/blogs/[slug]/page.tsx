@@ -21,12 +21,12 @@ import {
   MessageCircle,
   ShieldCheck,
   List,
+  Flame,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
-import { HeroAtmosphere } from "@/components/ui/HeroAtmosphere";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 import {
   BLOG_POSTS,
@@ -37,6 +37,7 @@ import {
 import { getCourseBySlug } from "@/data/courses";
 import BlogShareBar from "@/components/BlogShareBar";
 import BlogTableOfContents from "@/components/BlogTableOfContents";
+import BlogJumpToToc from "@/components/BlogJumpToToc";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -158,7 +159,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Blogs",
+        name: "The Culinary Journal",
         item: "https://exceleduacademy.com/blogs",
       },
       {
@@ -202,161 +203,123 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
       <Header />
 
       <main className="flex-grow">
-        {/* 1. Redesigned Editorial Hero Section */}
-        <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#3982F7]">
-          {/* Atmosphere & Subtle Glows */}
-          <HeroAtmosphere />
+        {/* Distinctive Cinematic Editorial Masterclass Hero */}
+        <section className="relative pt-28 sm:pt-36 pb-12 sm:pb-16 overflow-hidden bg-[#070B10] text-white border-b border-slate-800">
+          {/* Subtle Ambient Studio Vignette */}
           <div
-            className="absolute top-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-blue-900/15 via-transparent to-transparent pointer-events-none"
             aria-hidden="true"
           />
           <div
-            className="absolute -bottom-24 -left-20 w-96 h-96 bg-[#D4F85A]/15 rounded-full blur-3xl pointer-events-none"
+            className="absolute top-20 right-10 w-80 h-80 rounded-full bg-[#D4F85A]/5 blur-[120px] pointer-events-none"
             aria-hidden="true"
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-8">
-            {/* Breadcrumb Navigation */}
-            <nav
-              aria-label="Breadcrumb"
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-bold text-white/95"
-            >
-              <Link href="/" className="hover:text-[#D4F85A] transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-              <Link href="/blogs" className="hover:text-[#D4F85A] transition-colors">
-                Blogs
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-              <span className="text-[#D4F85A] font-black truncate max-w-[180px] sm:max-w-none">
-                {post.category}
-              </span>
-            </nav>
+          <div className="max-w-5xl mx-auto px-4 sm:px-8 relative z-10 space-y-8">
+            {/* Minimalist Top Navigation & Category Bar */}
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <nav
+                aria-label="Breadcrumb"
+                className="inline-flex items-center gap-2 text-xs font-bold text-slate-400"
+              >
+                <Link href="/" className="hover:text-white transition-colors">
+                  Home
+                </Link>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                <Link href="/blogs" className="hover:text-white transition-colors">
+                  Journal
+                </Link>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                <span className="text-[#D4F85A] font-black">{post.category}</span>
+              </nav>
 
-            {/* 2-Column Responsive Header Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Category Badges, Title, Excerpt, Author */}
-              <div className="lg:col-span-7 space-y-6">
-                {/* Badges Row */}
-                <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 bg-[#D4F85A] text-[#0A1118] px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-sm">
-                    <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>{post.category}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/20 border border-white/30 backdrop-blur-md text-xs font-extrabold text-white">
-                    <Clock className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                    <span>{post.readTime}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/20 border border-white/30 backdrop-blur-md text-xs font-extrabold text-white">
-                    <Calendar className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                    <span>{post.publishedDate}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/25 border border-white/20 backdrop-blur-md text-xs font-extrabold text-white">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                    <span>CTH-UK Aligned</span>
-                  </span>
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <span className="bg-[#D4F85A] text-[#0A1118] px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-sm">
+                  {post.category}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/10 text-slate-300 font-semibold text-[11px] flex items-center gap-1.5">
+                  <Clock className="w-3 h-3 text-[#D4F85A]" />
+                  <span>{post.readTime}</span>
+                </span>
+                <span className="hidden sm:flex px-3 py-1 rounded-full bg-white/10 text-slate-300 font-semibold text-[11px] items-center gap-1.5">
+                  <Calendar className="w-3 h-3 text-slate-400" />
+                  <span>{post.publishedDate}</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Main Editorial Headline */}
+            <div className="space-y-5">
+              <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-white leading-[1.12]">
+                {post.title}
+              </h1>
+
+              <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl">
+                {post.excerpt}
+              </p>
+            </div>
+
+            {/* Author Credential Byline & Verification Bar */}
+            <div className="pt-4 pb-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/40 bg-slate-800">
+                  <Image
+                    src={post.author.avatar}
+                    alt={post.author.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-
-                {/* Main H1 Title */}
-                <h1 className="text-3xl sm:text-5xl lg:text-[46px] font-black tracking-tight text-white leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
-                  {post.title}
-                </h1>
-
-                {/* Excerpt / Lead Intro */}
-                <p className="text-base sm:text-lg text-white/95 leading-relaxed font-medium max-w-2xl">
-                  {post.excerpt}
-                </p>
-
-                {/* Author Info Bar */}
-                <div className="pt-2 flex flex-wrap items-center gap-4 border-t border-white/20">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-white bg-white shadow-md">
-                      <Image
-                        src={post.author.avatar}
-                        alt={post.author.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-black text-white text-sm leading-tight">
-                        {post.author.name}
-                      </p>
-                      <p className="text-[11px] text-[#D4F85A] font-bold">
-                        {post.author.role}
-                      </p>
-                    </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="font-black text-white text-sm sm:text-base leading-tight">
+                      {post.author.name}
+                    </p>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#1E6DEB]/30 border border-[#1E6DEB]/50 text-[10px] font-black text-blue-200 uppercase tracking-wider">
+                      <ShieldCheck className="w-3 h-3 text-[#D4F85A]" />
+                      <span>CTH Lead Chef</span>
+                    </span>
                   </div>
-
-                  <span className="hidden sm:inline text-white/30">•</span>
-
-                  <div className="inline-flex items-center gap-1.5 text-xs text-white/90 font-medium">
-                    <Award className="w-4 h-4 text-[#D4F85A]" />
-                    <span>{post.author.credentials}</span>
-                  </div>
-                </div>
-
-                {/* Quick Shortcuts & Navigation Jump */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  <a
-                    href="#table-of-contents"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 backdrop-blur-md text-xs font-black text-white transition-colors"
-                  >
-                    <List className="w-3.5 h-3.5 text-[#D4F85A]" />
-                    <span>Jump to Table of Contents</span>
-                  </a>
-
-                  {relatedCourse && (
-                    <Link
-                      href={`/courses/${relatedCourse.slug}`}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0A1118]/40 hover:bg-[#0A1118]/60 border border-white/20 backdrop-blur-md text-xs font-bold text-white transition-colors"
-                    >
-                      <GraduationCap className="w-3.5 h-3.5 text-[#D4F85A]" />
-                      <span>Course: {relatedCourse.shortTitle}</span>
-                      <ChevronRight className="w-3 h-3 text-white/70" />
-                    </Link>
-                  )}
+                  <p className="text-xs text-slate-400">
+                    {post.author.role} • {post.author.credentials}
+                  </p>
                 </div>
               </div>
 
-              {/* Right Column: Hero Visual Feature Card */}
-              <div className="lg:col-span-5">
-                <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border-2 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.3)] aspect-[16/10] bg-slate-900 group">
-                  <Image
-                    src={post.image}
-                    alt={post.imageAlt}
-                    fill
-                    priority
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 45vw"
-                  />
-                  {/* Subtle gradient vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none" />
+              {/* Jump to TOC button */}
+              <BlogJumpToToc />
+            </div>
 
-                  {/* Top Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#0A1118]/85 backdrop-blur-md text-[#D4F85A] border border-white/15 px-3 py-1 rounded-full text-[11px] font-black tracking-wider uppercase shadow-md">
-                      Featured Guide
-                    </span>
-                  </div>
+            {/* Panoramic Hero Visual Showcase Container */}
+            <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border-2 border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.6)] aspect-[16/9] sm:aspect-[21/10] bg-slate-900 group">
+              <Image
+                src={post.image}
+                alt={post.imageAlt}
+                fill
+                priority
+                className="object-cover group-hover:scale-102 transition-transform duration-700"
+                sizes="(max-width: 1200px) 100vw, 1100px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
 
-                  {/* Bottom Caption */}
-                  <div className="absolute bottom-4 inset-x-4">
-                    <p className="text-white text-xs sm:text-sm font-medium leading-snug drop-shadow-sm line-clamp-2">
-                      {post.imageAlt}
-                    </p>
-                  </div>
-                </div>
+              {/* Floating Bottom Info Pill */}
+              <div className="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-8 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                <p className="text-white text-xs sm:text-sm font-medium leading-snug drop-shadow-md max-w-xl">
+                  {post.imageAlt}
+                </p>
+
+                {relatedCourse && (
+                  <Link
+                    href={`/courses/${relatedCourse.slug}`}
+                    className="self-start sm:self-auto inline-flex items-center gap-1.5 bg-[#D4F85A] text-[#0A1118] px-3.5 py-1.5 rounded-full text-xs font-black shadow-lg hover:bg-white transition-colors shrink-0"
+                  >
+                    <span>Course: {relatedCourse.shortTitle}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
               </div>
             </div>
           </div>
-
-          {/* Bottom subtle gradient divider */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"
-            aria-hidden="true"
-          />
         </section>
 
         {/* 2. Main Article Content Container */}
@@ -384,8 +347,10 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
                 </div>
 
                 {/* Mobile Table of Contents (visible only on small screens) */}
-                <div id="table-of-contents" className="lg:hidden scroll-mt-28">
-                  <BlogTableOfContents items={post.tableOfContents} />
+                <div id="mobile-table-of-contents" className="lg:hidden scroll-mt-28">
+                  <div id="table-of-contents" className="scroll-mt-28">
+                    <BlogTableOfContents items={post.tableOfContents} />
+                  </div>
                 </div>
 
                 {/* Article Content Sections */}
@@ -622,7 +587,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               {/* Right Column (Sticky Sidebar) */}
               <aside className="lg:col-span-4 space-y-8">
                 {/* Desktop Sticky Table of Contents & Recommendations */}
-                <div className="hidden lg:block sticky top-24 space-y-6">
+                <div id="desktop-table-of-contents" className="hidden lg:block sticky top-24 space-y-6 scroll-mt-28">
                   <BlogTableOfContents items={post.tableOfContents} />
 
                   {/* Related Course Card */}

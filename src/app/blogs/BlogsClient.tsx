@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,6 +13,9 @@ import {
   Filter,
   CheckCircle2,
   X,
+  ChevronDown,
+  Check,
+  SlidersHorizontal,
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
@@ -21,6 +24,24 @@ import { BLOG_CATEGORIES, BLOG_POSTS, type BlogPost } from "@/data/blogs";
 export default function BlogsClient() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isMobilePopupOpen, setIsMobilePopupOpen] = useState<boolean>(false);
+
+  // Close popup with Escape key and prevent background scroll when open
+  useEffect(() => {
+    if (isMobilePopupOpen) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setIsMobilePopupOpen(false);
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "unset";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobilePopupOpen]);
 
   // Filter posts based on category and search query
   const filteredPosts = useMemo(() => {
@@ -40,6 +61,10 @@ export default function BlogsClient() {
     });
   }, [selectedCategory, searchQuery]);
 
+  // Active category object
+  const activeCategoryObj =
+    BLOG_CATEGORIES.find((c) => c.id === selectedCategory) || BLOG_CATEGORIES[0];
+
   // Featured post is the first post when in "all" category without search query
   const showFeaturedHero = selectedCategory === "all" && searchQuery.trim() === "";
   const featuredPost = showFeaturedHero ? filteredPosts[0] : null;
@@ -49,7 +74,7 @@ export default function BlogsClient() {
     <div className="py-12 sm:py-20 bg-slate-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         {/* Search & Category Filter Controls */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
+        <div className="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/80 shadow-xs space-y-5">
           <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
             {/* Search Input */}
             <div className="relative flex-grow max-w-xl">
@@ -85,8 +110,80 @@ export default function BlogsClient() {
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
+          {/* MOBILE FILTER SECTION (Replaces awkward wrapping pills) */}
+          <div className="block md:hidden pt-3 border-t border-slate-100 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              {/* Dropdown / Popup Trigger Button */}
+              <button
+                type="button"
+                onClick={() => setIsMobilePopupOpen(true)}
+                className="flex-grow flex items-center justify-between gap-2 px-4 py-3 rounded-2xl bg-[#F0F6FE] border border-[#1E6DEB]/25 text-slate-900 font-black text-xs shadow-xs hover:bg-[#E2EEFD] transition-all cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <SlidersHorizontal className="w-4 h-4 text-[#1E6DEB]" />
+                  <span>Topic:</span>
+                  <span className="text-[#1E6DEB]">{activeCategoryObj.label}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] font-black bg-[#1E6DEB] text-white px-2 py-0.5 rounded-full">
+                    {selectedCategory === "all"
+                      ? BLOG_POSTS.length
+                      : BLOG_POSTS.filter((p) => p.categorySlug === selectedCategory).length}
+                  </span>
+                  <ChevronDown className="w-4 h-4 text-slate-500" />
+                </div>
+              </button>
+
+              {/* Reset shortcut if category is selected */}
+              {selectedCategory !== "all" && (
+                <button
+                  type="button"
+                  onClick={() => setSelectedCategory("all")}
+                  aria-label="Reset filter to all"
+                  className="px-3 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer shrink-0"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Single-Line Horizontal Swipeable Rail (No wrapping) */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none scroll-smooth">
+              {BLOG_CATEGORIES.map((cat) => {
+                const isSelected = selectedCategory === cat.id;
+                const count =
+                  cat.id === "all"
+                    ? BLOG_POSTS.length
+                    : BLOG_POSTS.filter((p) => p.categorySlug === cat.id).length;
+
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`whitespace-nowrap text-xs font-black px-3.5 py-1.5 rounded-full transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                      isSelected
+                        ? "bg-[#1E6DEB] text-white shadow-xs"
+                        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                    }`}
+                  >
+                    <span>{cat.label}</span>
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                        isSelected
+                          ? "bg-white/20 text-white"
+                          : "bg-slate-200 text-slate-600"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* DESKTOP CATEGORY FILTER TABS (Hidden on mobile) */}
+          <div className="hidden md:flex flex-wrap gap-2 pt-2 border-t border-slate-100">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 mr-2 py-2">
               <Filter className="w-3.5 h-3.5" />
               <span>Filter by:</span>
@@ -123,6 +220,118 @@ export default function BlogsClient() {
             })}
           </div>
         </div>
+
+        {/* MOBILE FILTER POPUP / BOTTOM SHEET MODAL */}
+        {isMobilePopupOpen && (
+          <div className="fixed inset-0 z-[120] md:hidden flex items-end sm:items-center justify-center">
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity"
+              onClick={() => setIsMobilePopupOpen(false)}
+              aria-hidden="true"
+            />
+
+            {/* Modal Content */}
+            <div className="relative z-10 w-full max-w-md bg-white rounded-t-[32px] sm:rounded-[32px] shadow-2xl p-6 space-y-5 max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-200">
+              {/* Modal Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-[#F0F6FE] flex items-center justify-center text-[#1E6DEB]">
+                    <SlidersHorizontal className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-black text-slate-900 leading-tight">
+                      Filter by Topic
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-medium">
+                      Excellence Education Academy Articles
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsMobilePopupOpen(false)}
+                  className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors"
+                  aria-label="Close filter modal"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Category Options List */}
+              <div className="space-y-1.5">
+                {BLOG_CATEGORIES.map((cat) => {
+                  const isSelected = selectedCategory === cat.id;
+                  const count =
+                    cat.id === "all"
+                      ? BLOG_POSTS.length
+                      : BLOG_POSTS.filter((p) => p.categorySlug === cat.id).length;
+
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCategory(cat.id);
+                        setIsMobilePopupOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl text-left text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                        isSelected
+                          ? "bg-[#F0F6FE] text-[#1E6DEB] border border-[#1E6DEB]/30"
+                          : "hover:bg-slate-50 text-slate-800 border border-transparent"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all ${
+                            isSelected
+                              ? "bg-[#1E6DEB] border-[#1E6DEB] text-white"
+                              : "border-slate-300 bg-white"
+                          }`}
+                        >
+                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
+                        </div>
+                        <span>{cat.label}</span>
+                      </div>
+
+                      <span
+                        className={`text-xs px-2.5 py-0.5 rounded-full font-black ${
+                          isSelected
+                            ? "bg-[#1E6DEB] text-white"
+                            : "bg-slate-100 text-slate-600"
+                        }`}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Modal Footer Actions */}
+              <div className="pt-2 border-t border-slate-100 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCategory("all");
+                    setIsMobilePopupOpen(false);
+                  }}
+                  className="w-1/2 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors"
+                >
+                  Reset to All
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsMobilePopupOpen(false)}
+                  className="w-1/2 py-3 rounded-xl bg-[#1E6DEB] hover:bg-[#175CD3] text-white font-black text-xs shadow-sm transition-colors"
+                >
+                  Apply Filter
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Featured Post Card (Hero) */}
         {featuredPost && (

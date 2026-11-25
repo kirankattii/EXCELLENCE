@@ -10,18 +10,21 @@ import {
   GraduationCap,
   Ship,
   Sparkles,
-  UtensilsCrossed,
+  TrendingUp,
+  Clock,
+  ArrowRight,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AccreditationBanner from "@/components/AccreditationBanner";
-import { HeroAtmosphere } from "@/components/ui/HeroAtmosphere";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
+import { BLOG_POSTS } from "@/data/blogs";
 import BlogsClient from "./BlogsClient";
 
 export const metadata: Metadata = {
-  title: "Culinary & Hospitality Blogs | Excellence Education Academy – Goa",
+  title: "The Culinary Journal | Excellence Education Academy – Goa",
   description:
-    "Authoritative guides on CTH-UK culinary qualifications, international cruise ship careers, classical French cooking techniques, patisserie science, and professional bartending in Goa.",
+    "Authoritative culinary masterclasses, French pastry techniques, cruise ship career roadmaps, and CTH-UK qualification guides from Excellence Education Academy Goa.",
   keywords: [
     "culinary school blogs Goa",
     "cruise ship chef careers",
@@ -32,9 +35,9 @@ export const metadata: Metadata = {
     "Excellence Education Academy Goa",
   ],
   openGraph: {
-    title: "Culinary & Hospitality Insights | Excellence Education Academy Goa",
+    title: "The Culinary Journal & Insights | Excellence Education Academy Goa",
     description:
-      "Explore 10 comprehensive guides on commercial cookery, French patisserie, cruise ship placements, and British CTH certifications from Goa's premier culinary academy.",
+      "Explore 10 comprehensive masterclasses on commercial cookery, French patisserie, cruise ship placements, and British CTH certifications from Goa's premier culinary academy.",
     url: "https://exceleduacademy.com/blogs",
     siteName: "Excellence Education Academy",
     locale: "en_US",
@@ -43,96 +46,191 @@ export const metadata: Metadata = {
 };
 
 export default function BlogsPage() {
+  // Top featured spotlight post for the hero card
+  const spotlightPost = BLOG_POSTS[0];
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
 
       <main className="flex-grow">
-        {/* Upgraded Header / Hero Section */}
-        <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#3B82F6]">
-          {/* Faded White Globe, UK Flag & Cruise Ship Atmosphere */}
-          <HeroAtmosphere />
-
-          {/* Decorative ambient glows */}
+        {/* Distinctive Dark Obsidian Culinary Journal Masthead */}
+        <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 overflow-hidden text-white bg-[#0A1118] border-b border-slate-800">
+          {/* Subtle Fine Mesh Grid & Warm Ambient Glows (No generic blue gradient) */}
           <div
-            className="absolute top-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"
+            className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
             aria-hidden="true"
           />
+          {/* Warm Amber Kitchen Heat Lamp Glow (Top Left) */}
           <div
-            className="absolute -bottom-20 -left-20 w-96 h-96 bg-[#D4F85A]/15 rounded-full blur-3xl pointer-events-none"
+            className="absolute -top-32 -left-20 w-[480px] h-[480px] rounded-full bg-amber-500/10 blur-[130px] pointer-events-none"
+            aria-hidden="true"
+          />
+          {/* Electric Lime Accent Glow (Bottom Right) */}
+          <div
+            className="absolute -bottom-32 -right-20 w-[500px] h-[500px] rounded-full bg-[#D4F85A]/10 blur-[140px] pointer-events-none"
             aria-hidden="true"
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
-            {/* Breadcrumb Navigation */}
-            <nav
-              aria-label="Breadcrumb"
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-bold text-white/95"
-            >
-              <Link href="/" className="hover:text-[#D4F85A] transition-colors">
-                Home
-              </Link>
-              <ChevronRight
-                className="w-3.5 h-3.5 text-[#D4F85A]"
-                aria-hidden="true"
-              />
-              <span className="text-[#D4F85A] font-black">Blogs &amp; Insights</span>
-            </nav>
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-10">
+            {/* Masthead Top Bar: Breadcrumb + Edition Metadata */}
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 text-xs">
+              <nav aria-label="Breadcrumb" className="inline-flex items-center gap-2 font-bold text-slate-300">
+                <Link href="/" className="hover:text-[#D4F85A] transition-colors">
+                  Home
+                </Link>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-500" aria-hidden="true" />
+                <span className="text-[#D4F85A] font-black uppercase tracking-wider">
+                  The Culinary Journal
+                </span>
+              </nav>
 
-            {/* Headline and Eyebrow */}
-            <div className="space-y-4 max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1118]/35 border border-white/25 backdrop-blur-md text-[11px] font-black uppercase tracking-widest text-[#D4F85A]">
-                <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>EXCELLENCE EDUCATION ACADEMY • CULINARY JOURNAL &amp; KNOWLEDGE HUB</span>
+              <div className="flex items-center gap-3 text-slate-400 font-semibold text-[11px] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 text-white/90">
+                  <span className="w-2 h-2 rounded-full bg-[#D4F85A] animate-pulse" />
+                  <span>Goa Campus Editorial</span>
+                </span>
+                <span>•</span>
+                <span>British CTH-UK Center</span>
               </div>
-
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
-                Culinary Techniques, Pastry Science &amp;{" "}
-                <span className="text-[#D4F85A]">Global Career Insights</span>
-              </h1>
-
-              <p className="text-base sm:text-xl text-white/95 max-w-3xl mx-auto font-medium leading-relaxed">
-                Authoritative, chef-authored guides on British CTH-UK qualifications, luxury cruise ship placements, French mother sauces, laminated doughs, and professional kitchen mastery from our Goa training labs.
-              </p>
             </div>
 
-            {/* Trust and Summary Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-2">
-              <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md text-slate-900">
-                <Image
-                  src="/cth-logo.png"
-                  alt="CTH UK"
-                  width={75}
-                  height={15}
-                  className="h-3.5 w-auto object-contain"
-                />
-                <span className="text-[11px] font-black text-slate-800">
-                  Approved Centre • Goa
-                </span>
+            {/* Split Masthead Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              {/* Left Column: Publication Title & Manifesto */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-[11px] font-black uppercase tracking-widest text-[#D4F85A]">
+                  <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>MASTERCLASSES, TECHNIQUE &amp; MARITIME PATHWAYS</span>
+                </div>
+
+                <div className="space-y-3">
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]">
+                    Stories From <br className="hidden sm:inline" />
+                    The Pass:{" "}
+                    <span className="text-[#D4F85A]">The Culinary Journal</span>
+                  </h1>
+                  <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+                    Straight from our commercial training kitchens in Alto Porvorim, Goa. Explore classical French kitchen techniques, high-earning cruise ship placements, patisserie chemistry, and Ofqual UK vocational pathways.
+                  </p>
+                </div>
+
+                {/* Trending Topic Pills */}
+                <div className="pt-2 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
+                    <TrendingUp className="w-3.5 h-3.5 text-[#D4F85A]" />
+                    <span>Trending:</span>
+                  </span>
+                  <Link
+                    href="/blogs/the-5-french-mother-sauces-culinary-school-guide"
+                    className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 transition-colors"
+                  >
+                    #MotherSauces
+                  </Link>
+                  <Link
+                    href="/blogs/how-to-join-international-cruise-ships-from-goa"
+                    className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 transition-colors"
+                  >
+                    #CruiseShipJobs
+                  </Link>
+                  <Link
+                    href="/blogs/mastering-french-patisserie-science-of-croissants-and-viennoiserie"
+                    className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 transition-colors"
+                  >
+                    #CroissantScience
+                  </Link>
+                  <Link
+                    href="/blogs/essential-culinary-knife-skills-8-classical-cuts"
+                    className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 transition-colors"
+                  >
+                    #KnifeSkills
+                  </Link>
+                </div>
               </div>
 
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-extrabold text-white">
-                <BookOpen className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                <span>10 In-Depth Guides</span>
-              </span>
+              {/* Right Column: Hero Spotlight Feature Card */}
+              <div className="lg:col-span-5">
+                <div className="bg-gradient-to-b from-slate-900 to-[#0A1118] rounded-3xl p-6 border-2 border-white/10 hover:border-[#D4F85A]/50 transition-all duration-300 shadow-2xl relative group overflow-hidden">
+                  <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-[#D4F85A]">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>EDITOR&apos;S SPOTLIGHT</span>
+                    </span>
+                    <span className="text-slate-400 font-semibold">{spotlightPost.readTime}</span>
+                  </div>
 
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-extrabold text-white">
-                <Ship className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                <span>Maritime Cruise Careers</span>
-              </span>
+                  <Link href={`/blogs/${spotlightPost.slug}`} className="block pt-4 space-y-4">
+                    <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-800">
+                      <Image
+                        src={spotlightPost.image}
+                        alt={spotlightPost.imageAlt}
+                        fill
+                        priority
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 1024px) 100vw, 35vw"
+                      />
+                      <div className="absolute top-3 left-3 bg-[#D4F85A] text-[#0A1118] px-3 py-0.5 rounded-full text-[11px] font-black shadow-sm">
+                        {spotlightPost.category}
+                      </div>
+                    </div>
 
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-xs font-extrabold text-white">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#D4F85A]" aria-hidden="true" />
-                <span>80% Practical Kitchen Science</span>
-              </span>
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-black text-white group-hover:text-[#D4F85A] transition-colors leading-snug">
+                        {spotlightPost.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-400 line-clamp-2 leading-relaxed font-normal">
+                        {spotlightPost.excerpt}
+                      </p>
+                    </div>
+                  </Link>
+
+                  <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="relative w-7 h-7 rounded-full overflow-hidden bg-slate-700">
+                        <Image
+                          src={spotlightPost.author.avatar}
+                          alt={spotlightPost.author.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <span className="text-xs text-slate-300 font-semibold">
+                        {spotlightPost.author.name}
+                      </span>
+                    </div>
+
+                    <Link
+                      href={`/blogs/${spotlightPost.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-black text-[#D4F85A] hover:underline"
+                    >
+                      <span>Read Spotlight</span>
+                      <AnimatedArrow size={12} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Trust Row Strip */}
+            <div className="pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-bold text-slate-300">
+              <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <BookOpen className="w-4 h-4 text-[#D4F85A] shrink-0" />
+                <span>10 Complete Masterclasses</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <Award className="w-4 h-4 text-[#D4F85A] shrink-0" />
+                <span>British Ofqual UK Regulated</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <Ship className="w-4 h-4 text-[#D4F85A] shrink-0" />
+                <span>Maritime Cruise Placements</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <GraduationCap className="w-4 h-4 text-[#D4F85A] shrink-0" />
+                <span>Executive Chef Mentorship</span>
+              </div>
             </div>
           </div>
-
-          {/* Bottom gradient fade */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-slate-50 via-slate-50/75 to-transparent pointer-events-none"
-            aria-hidden="true"
-          />
         </section>
 
         {/* Blogs Catalog, Search & Filter Section */}
