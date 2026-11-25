@@ -21,13 +21,18 @@ interface CurvedMobileMarqueeProps {
 
 export function CurvedMobileMarquee({
   cards,
-  speed = 40,
+  speed = 36,
 }: CurvedMobileMarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const positionRef = useRef(0);
   const animFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
+  const containerWidthRef = useRef<number>(360);
+  const isVisibleRef = useRef<boolean>(true);
+  const lastZIndices = useRef<number[]>([]);
+  const lastVisibility = useRef<boolean[]>([]);
+
   const dragRef = useRef<{
     active: boolean;
     dragging: boolean;
@@ -44,68 +49,116 @@ export function CurvedMobileMarquee({
     lastX: 0,
   });
 
-  // Repeat cards 3 times for a continuous circular track that easily spans ultra-wide desktop displays
+  // Repeat cards 3 times for a continuous circular track
   const repeatedCards = [...cards, ...cards, ...cards];
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Cache container dimensions once and update on resize only (NO layout thrashing in RAF)
+    const updateDimensions = () => {
+      if (container) {
+        containerWidthRef.current = container.clientWidth || 360;
+      }
+    };
+    updateDimensions();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
+    });
+    resizeObserver.observe(container);
+
+    // Pause animation when scrolled out of viewport for 120Hz smooth page scroll
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        isVisibleRef.current = entries[0]?.isIntersecting ?? false;
+        if (isVisibleRef.current) {
+          lastTimeRef.current = null; // reset delta to prevent jump
+        }
+      },
+      { threshold: 0 }
+    );
+    intersectionObserver.observe(container);
+
     const updateLoop = (now: number) => {
+      animFrameRef.current = requestAnimationFrame(updateLoop);
+
+      if (!isVisibleRef.current) return;
+
       if (lastTimeRef.current !== null) {
-        const delta = Math.min((now - lastTimeRef.current) / 1000, 0.1); // clamp delta
-        // Never pause on hover: continuously glide at smooth speed
+        // Tightly clamp delta to max 33ms (prevents hitching/jumping if scroll pauses execution)
+        const rawDelta = (now - lastTimeRef.current) / 1000;
+        const delta = Math.min(rawDelta, 0.033);
         positionRef.current += speed * delta;
       }
       lastTimeRef.current = now;
 
-      const container = containerRef.current;
-      if (container) {
-        const containerWidth = container.clientWidth || 360;
-        const isDesktop = containerWidth >= 640;
-        const cardWidth = isDesktop ? 260 : 215;
-        const cardGap = isDesktop ? 20 : 16;
-        const itemStride = cardWidth + cardGap;
-        const totalTrackWidth = repeatedCards.length * itemStride;
+      const containerWidth = containerWidthRef.current;
+      const isDesktop = containerWidth >= 640;
+      const cardWidth = isDesktop ? 260 : 215;
+      const cardGap = isDesktop ? 20 : 16;
+      const itemStride = cardWidth + cardGap;
+      const totalTrackWidth = repeatedCards.length * itemStride;
 
-        const centerX = containerWidth / 2;
-        const curveSpan = isDesktop
-          ? containerWidth * 0.46
-          : containerWidth * 0.52;
-        const currentOffset =
-          ((positionRef.current % totalTrackWidth) + totalTrackWidth) %
+      const centerX = containerWidth / 2;
+      const curveSpan = isDesktop
+        ? containerWidth * 0.48
+        : containerWidth * 0.58;
+      const currentOffset =
+        ((positionRef.current % totalTrackWidth) + totalTrackWidth) %
+        totalTrackWidth;
+
+      // Smoothed mobile curve: gentler dip (14px) and subtle rotation (5.5deg) prevents jitter
+      const yDip = isDesktop ? 24 : 14;
+      const rotateFactor = isDesktop ? 7.0 : 5.5;
+
+      for (let idx = 0; idx < repeatedCards.length; idx++) {
+        const el = cardRefs.current[idx];
+        if (!el) continue;
+
+        // Circular wrap relative to screen center
+        const rawPos = idx * itemStride - currentOffset;
+        let distFromCenter =
+          (((rawPos + cardWidth / 2 - centerX) % totalTrackWidth) +
+            totalTrackWidth) %
           totalTrackWidth;
 
-        cardRefs.current.forEach((el, idx) => {
-          if (!el) return;
+        if (distFromCenter > totalTrackWidth / 2) {
+          distFromCenter -= totalTrackWidth;
+        }
 
-          // Continuous circular wrap relative to screen center
-          const rawPos = idx * itemStride - currentOffset;
-          let distFromCenter =
-            (((rawPos + cardWidth / 2 - centerX) % totalTrackWidth) +
-              totalTrackWidth) %
-            totalTrackWidth;
+        const x = centerX + distFromCenter - cardWidth / 2;
 
-          if (distFromCenter > totalTrackWidth / 2) {
-            distFromCenter -= totalTrackWidth;
-          }
+        // Performance: Offscreen culling (skip composite of non-visible cards on mobile)
+        const isOffscreen =
+          x < -cardWidth - 80 || x > containerWidth + 80;
 
-          const x = centerX + distFromCenter - cardWidth / 2;
-          const dist = distFromCenter / curveSpan;
-          const clampedDist = Math.max(-1.5, Math.min(1.5, dist));
+        if (lastVisibility.current[idx] !== !isOffscreen) {
+          el.style.visibility = isOffscreen ? "hidden" : "visible";
+          lastVisibility.current[idx] = !isOffscreen;
+        }
 
-          // Curved smile arc formula for both mobile and desktop:
-          // Center (dist = 0): y = 0, rotate = 0, scale = 1.04
-          // Left/Right: y dips smoothly down, rotates gracefully along arc
-          const yDip = isDesktop ? 26 : 20;
-          const rotateFactor = isDesktop ? 7.5 : 9.5;
-          const y = Math.pow(clampedDist, 2) * yDip;
-          const rotate = clampedDist * rotateFactor;
-          const scale = 1.04 - Math.min(Math.abs(clampedDist), 1.25) * 0.1;
+        if (isOffscreen) continue;
 
-          el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
-          el.style.zIndex = `${Math.round(30 - Math.abs(clampedDist) * 10)}`;
-        });
+        const dist = distFromCenter / curveSpan;
+        const clampedDist = Math.max(-1.4, Math.min(1.4, dist));
+
+        // Smooth parabolic smile arc
+        const y = Math.pow(clampedDist, 2) * yDip;
+        const rotate = clampedDist * rotateFactor;
+        const scale = 1.03 - Math.min(Math.abs(clampedDist), 1.2) * 0.08;
+
+        // Apply hardware-accelerated transform only (no layout triggers)
+        el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+
+        // Update z-index ONLY when changed to prevent CSS stacking rebuilds
+        const newZ = Math.round(30 - Math.abs(clampedDist) * 10);
+        if (lastZIndices.current[idx] !== newZ) {
+          el.style.zIndex = `${newZ}`;
+          lastZIndices.current[idx] = newZ;
+        }
       }
-
-      animFrameRef.current = requestAnimationFrame(updateLoop);
     };
 
     animFrameRef.current = requestAnimationFrame(updateLoop);
@@ -114,6 +167,8 @@ export function CurvedMobileMarquee({
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
       }
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
     };
   }, [cards.length, speed, repeatedCards.length]);
 
@@ -126,7 +181,8 @@ export function CurvedMobileMarquee({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[265px] sm:h-[305px] overflow-hidden select-none touch-pan-y [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      className="relative w-full h-[265px] sm:h-[305px] overflow-hidden select-none [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      style={{ touchAction: "pan-y" }}
       onPointerDown={(e) => {
         dragRef.current = {
           active: true,
@@ -146,9 +202,10 @@ export function CurvedMobileMarquee({
         }
         const totalDx = Math.abs(e.clientX - dragRef.current.startX);
         const totalDy = Math.abs(e.clientY - dragRef.current.startY);
+
         if (!dragRef.current.dragging) {
-          if (totalDy > totalDx && totalDy > 6) {
-            // Vertical page scroll takes priority
+          // If vertical gesture exceeds horizontal, immediately yield to native scroll
+          if (totalDy > totalDx && totalDy > 4) {
             dragRef.current.active = false;
             return;
           }
@@ -172,7 +229,14 @@ export function CurvedMobileMarquee({
           ref={(el) => {
             cardRefs.current[idx] = el;
           }}
-          className="absolute top-2 left-0 w-[215px] sm:w-[260px] h-[230px] sm:h-[265px] will-change-transform pointer-events-auto cursor-grab active:cursor-grabbing"
+          className="absolute top-2 left-0 w-[215px] sm:w-[260px] h-[240px] sm:h-[275px] pointer-events-auto cursor-grab active:cursor-grabbing"
+          style={{
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+            touchAction: "pan-y",
+          }}
         >
           <Link
             href={card.link || "/courses"}
@@ -201,7 +265,7 @@ export function CurvedMobileMarquee({
               </div>
             </div>
 
-            {/* Card footer details: Same height, reduced gap between text lines */}
+            {/* Card footer details: Same height, compact typography */}
             <div className="pt-2 sm:pt-2.5 px-1 text-left flex-1 flex flex-col justify-start">
               <h3 className="text-xs sm:text-sm font-black text-slate-900 leading-[1.12] sm:leading-[1.15] tracking-tight line-clamp-2">
                 {card.title}

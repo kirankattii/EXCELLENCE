@@ -34,8 +34,8 @@ export default function ContactPage() {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-[#0A2266]">
-          {/* Animated Oval Gradient Atmosphere */}
+        <section className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 overflow-hidden text-white bg-gradient-to-b from-[#1351C7] via-[#1E6DEB] to-[#4F94FA]">
+          {/* Faded White Globe, UK Flag & Cruise Ship Atmosphere */}
           <HeroAtmosphere />
           <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 text-center space-y-6">
             {/* Breadcrumb */}

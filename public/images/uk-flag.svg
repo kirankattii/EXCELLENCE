@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="1200" height="600">
+  <defs>
+    <!-- Counter-change clip path for St Patrick's saltire -->
+    <clipPath id="t">
+      <path d="M30,15 L0,0 v30 z M30,15 L60,0 v30 z M30,15 L0,0 h60 z M30,15 L0,30 h60 z"/>
+    </clipPath>
+    <!-- Smooth radial feather mask so all borders melt seamlessly into the background -->
+    <radialGradient id="flagFeather" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <mask id="softMask">
+      <rect width="60" height="30" fill="url(#flagFeather)" />
+    </mask>
+  </defs>
+
+  <g mask="url(#softMask)">
+    <!-- Union Flag Royal Blue Field -->
+    <rect width="60" height="30" fill="#0c357d" opacity="0.6"/>
+
+    <!-- St Andrew Saltire (White broad diagonal) -->
+    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/>
+
+    <!-- St Patrick Saltire (Red diagonal cross, counterchanged) -->
+    <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#CC142B" stroke-width="2"/>
+
+    <!-- St George Cross (White broad central cross) -->
+    <path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/>
+
+    <!-- St George Cross (Red central cross) -->
+    <path d="M30,0 v30 M0,15 h60" stroke="#CC142B" stroke-width="6"/>
+  </g>
+</svg>

@@ -180,7 +180,7 @@ export default function Header() {
           <Link
             href="/blogs"
             className={`transition-colors py-1 ${
-              pathname === "/blogs"
+              pathname?.startsWith("/blogs")
                 ? isScrolled
                   ? "text-[#1E6DEB] font-bold"
                   : "text-[#D4F85A] font-bold"
