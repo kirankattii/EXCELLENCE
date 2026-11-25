@@ -2,57 +2,62 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, MessageSquare, Star, CheckCircle2 } from "lucide-react";
+import { Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { CurvedMobileMarquee } from "@/components/ui/curved-mobile-marquee";
 
 export default function Hero() {
   const showcaseCards = [
     {
-      title: "Culinary Skills",
-      subtitle: "CTH Level 2 Diploma",
+      title: "Diploma in Culinary Skills",
+      subtitle: "CTH Level 2 • 6 Months Practical",
       badge: "CTH Level 2",
-      image: "/images/culinary-hero.jpg",
-      rating: "4.9",
-      rotate: "sm:-rotate-6",
-      offset: "sm:translate-y-4",
-    },
-    {
-      title: "Patisserie Arts",
-      subtitle: "Bakery & Confectionery",
-      badge: "CTH Level 2",
-      image: "/images/patisserie-skills.jpg",
-      rating: "5.0",
-      rotate: "sm:-rotate-3",
-      offset: "sm:translate-y-1",
-    },
-    {
-      title: "Cruise Hospitality",
-      subtitle: "Global Fleet Careers",
-      badge: "CTH Level 2",
-      image: "/images/cruise-hospitality.jpg",
-      rating: "5.0",
-      rotate: "sm:rotate-0",
-      offset: "sm:-translate-y-2",
+      image: "/images/courses/culinary-skills.jpg",
+      link: "/courses/diploma-in-culinary-skills",
       featured: true,
     },
     {
-      title: "Commercial Kitchens",
-      subtitle: "Goa Training Labs",
-      badge: "Goa Campus",
-      image: "/eea-gallary/eea-gallary2.jpg",
-      rating: "4.9",
-      rotate: "sm:rotate-3",
-      offset: "sm:translate-y-1",
+      title: "Diploma in Patisserie & Confectionery",
+      subtitle: "CTH Level 2 • Artisan Bakery Arts",
+      badge: "CTH Level 2",
+      image: "/images/courses/patisserie-skills.jpg",
+      link: "/courses/diploma-in-patisserie-and-confectionery-skills",
     },
     {
-      title: "Bartending Skills",
-      subtitle: "Professional Bar Service",
+      title: "Diploma in Cruise Hospitality Services",
+      subtitle: "CTH Level 2 • Maritime Fleet Careers",
       badge: "CTH Level 2",
-      image: "/images/barista-beverage.jpg",
-      rating: "4.8",
-      rotate: "sm:rotate-6",
-      offset: "sm:translate-y-4",
+      image: "/images/courses/cruise-hospitality.jpg",
+      link: "/courses/diploma-in-cruise-hospitality-services",
+      featured: true,
+    },
+    {
+      title: "Restaurant Front of House Service",
+      subtitle: "CTH Level 2 • Fine Dining Etiquette",
+      badge: "CTH Level 2",
+      image: "/images/courses/front-of-house.jpg",
+      link: "/courses/certificate-in-restaurant-front-of-house-service",
+    },
+    {
+      title: "Certificate in Professional Bartending",
+      subtitle: "CTH Level 2 • Craft Mixology & Bar Ops",
+      badge: "CTH Level 2",
+      image: "/images/courses/bartending-skills.jpg",
+      link: "/courses/certificate-in-professional-bartending-skills",
+    },
+    {
+      title: "Award in Basic Cookery Skills",
+      subtitle: "CTH Level 1 • Culinary Foundation",
+      badge: "CTH Level 1",
+      image: "/images/courses/basic-cookery.jpg",
+      link: "/courses/award-in-basic-cookery-skills",
+    },
+    {
+      title: "Working Professionals (RPL)",
+      subtitle: "CTH UK • Fast-Track Certification",
+      badge: "CTH RPL",
+      image: "/images/training-kitchen.jpg",
+      link: "/courses/recognition-of-prior-learning-rpl",
     },
   ];
 
@@ -166,55 +171,9 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Mobile View: Dynamic Curved Path Marquee */}
-          <div className="block sm:hidden pt-4 pb-1 w-full overflow-hidden">
-            <CurvedMobileMarquee cards={showcaseCards} speed={36} />
-          </div>
-
-          {/* Desktop View: Floating Perspective Cards Fan */}
-          <div className="hidden sm:block pt-6 sm:pt-10 pb-4">
-            <div className="grid grid-cols-5 gap-4 lg:gap-4 items-end max-w-6xl mx-auto">
-              {showcaseCards.map((card, idx) => (
-                <div
-                  key={idx}
-                  className={`relative bg-white rounded-3xl p-3 shadow-[0_20px_50px_rgba(10,17,24,0.25)] border border-white transition-all duration-300 hover:scale-105 hover:z-20 ${card.rotate} ${card.offset} ${
-                    card.featured
-                      ? "ring-2 ring-[#D4F85A] shadow-[0_25px_60px_rgba(212,248,90,0.45)]"
-                      : ""
-                  }`}
-                >
-                  {/* Photo container */}
-                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      className="object-cover"
-                      sizes="20vw"
-                    />
-                    <div className="absolute top-2 left-2 bg-[#0A1118]/85 text-[#D4F85A] text-[9px] font-black px-2 py-0.5 rounded-full backdrop-blur-xs">
-                      {card.badge}
-                    </div>
-                  </div>
-
-                  {/* Card footer details */}
-                  <div className="pt-3 px-1 text-left">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-xs font-black text-slate-900 truncate">
-                        {card.title}
-                      </h3>
-                      <div className="flex items-center gap-0.5 text-[10px] font-bold text-amber-500">
-                        <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                        <span>{card.rating}</span>
-                      </div>
-                    </div>
-                    <p className="text-[10px] text-slate-500 truncate mt-0.5 font-medium">
-                      {card.subtitle}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Curved Movement Carousel (Mobile & Desktop) */}
+          <div className="pt-4 sm:pt-7 pb-2 w-full overflow-hidden">
+            <CurvedMobileMarquee cards={showcaseCards} speed={38} />
           </div>
         </div>
 

@@ -9,7 +9,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
+import {
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/ScrollReveal";
 
 export default function AccreditationBanner() {
   const steps = [
@@ -18,7 +22,7 @@ export default function AccreditationBanner() {
       tag: "Regulated Curriculum",
       icon: BookOpen,
       title: "British Standard Syllabi",
-      desc: "Courses follow standardized CTH London curricula regulated in the UK, mastering international culinary, bakery, and hospitality benchmarks.",
+      desc: "Courses follow standardized CTH curricula regulated in the UK, mastering international culinary, bakery, and hospitality benchmarks.",
       badge: "Ofqual Regulated",
     },
     {
@@ -31,10 +35,10 @@ export default function AccreditationBanner() {
     },
     {
       step: "03",
-      tag: "London Certification",
+      tag: "Certification",
       icon: GraduationCap,
       title: "Direct UK Diplomas",
-      desc: "Graduates receive official CTH diplomas issued straight from London, recognized across 50+ countries by luxury hotels and cruise lines.",
+      desc: "Graduates receive official CTH diplomas issued straight from the UK, recognized across 50+ countries by luxury hotels and cruise lines.",
       badge: "Global Mobility",
     },
   ];
@@ -71,7 +75,10 @@ export default function AccreditationBanner() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6 sm:space-y-8">
         {/* Compact Header: Dual Logo Badge + Status Pill + Headline */}
-        <ScrollReveal variant="fade-up" className="flex flex-col items-center text-center space-y-3.5 max-w-4xl mx-auto">
+        <ScrollReveal
+          variant="fade-up"
+          className="flex flex-col items-center text-center space-y-3.5 max-w-4xl mx-auto"
+        >
           {/* Top Status & Brand Row */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             {/* Live Approval Pill */}
@@ -80,7 +87,7 @@ export default function AccreditationBanner() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4F85A] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4F85A]" />
               </span>
-              <span>Official CTH Approved Centre • London, UK</span>
+              <span>Official CTH Approved Centre • UK</span>
             </div>
 
             {/* Micro Ofqual Pill */}
@@ -128,17 +135,17 @@ export default function AccreditationBanner() {
               id="accreditation-title"
               className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white leading-snug drop-shadow-sm"
             >
-              Excellence Education Academy – Approved Centre of{" "}
+              Excellence Education Academy - Affiliated Centre of{" "}
               <span className="text-[#D4F85A] underline decoration-white/40 decoration-wavy decoration-1 underline-offset-4">
-                CTH, London (UK)
+                CTH (UK)
               </span>
             </h2>
 
             <p className="text-xs sm:text-sm text-white/95 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-xs">
-              CTH (London, UK) is the premier awarding body for tourism and
-              hospitality. Excellence Education Academy provides commercial
-              kitchen training in Goa, culminating in authentic, externally
-              audited British diplomas.
+              CTH (UK) is the premier awarding body for tourism and hospitality.
+              Excellence Education Academy provides commercial kitchen training
+              in Goa, culminating in authentic, externally audited British
+              diplomas.
             </p>
           </div>
         </ScrollReveal>
@@ -192,7 +199,11 @@ export default function AccreditationBanner() {
         </StaggerContainer>
 
         {/* Compact Footer Strip: Institutional Governance Note + CTA */}
-        <ScrollReveal variant="fade-up" delay={0.15} className="max-w-6xl mx-auto rounded-2xl bg-[#0A1118]/35 border border-white/25 p-3 sm:px-5 sm:py-3.5 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shadow-sm">
+        <ScrollReveal
+          variant="fade-up"
+          delay={0.15}
+          className="max-w-6xl mx-auto rounded-2xl bg-[#0A1118]/35 border border-white/25 p-3 sm:px-5 sm:py-3.5 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shadow-sm"
+        >
           <div className="flex items-center gap-2.5 text-center sm:text-left text-xs text-white/95">
             <div className="w-7 h-7 rounded-lg bg-[#D4F85A]/20 text-[#D4F85A] flex items-center justify-center shrink-0 hidden sm:flex">
               <ShieldCheck className="w-4 h-4" aria-hidden="true" />
@@ -202,7 +213,7 @@ export default function AccreditationBanner() {
                 Campus &amp; Awarding Roles:
               </span>{" "}
               Practical culinary training at Goa campus • Qualification verified
-              and awarded directly by CTH (London, UK).
+              and awarded directly by CTH (UK).
             </p>
           </div>
 

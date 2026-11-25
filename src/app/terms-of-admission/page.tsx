@@ -289,7 +289,7 @@ export default function TermsOfAdmissionPage() {
                         className="w-4 h-4 text-[#D4F85A] shrink-0"
                         aria-hidden="true"
                       />
-                      <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+                      <span>Mon – Sat: 10:00 AM – 6:00 PM</span>
                     </p>
                   </div>
 

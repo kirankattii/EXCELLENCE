@@ -90,7 +90,7 @@ export default function Header() {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-1 sm:gap-1.5 leading-none">
+            <div className="flex items-center gap-1.5 sm:gap-2 leading-none">
               <span
                 className={`font-black text-sm sm:text-lg md:text-xl tracking-tight leading-none transition-colors ${
                   isScrolled ? "text-slate-950" : "text-white"
@@ -98,9 +98,16 @@ export default function Header() {
               >
                 Excellence
               </span>
-              <span className="text-[8.5px] sm:text-[9.5px] font-black text-[#0A1118] bg-[#D4F85A] px-1.5 py-0.5 rounded-full uppercase tracking-wider leading-none">
-                CTH UK
-              </span>
+              <div className="inline-flex items-center bg-white px-1.5 py-0.5 rounded-full border border-slate-200/80 shadow-xs flex-shrink-0">
+                <Image
+                  src="/cth-logo.png"
+                  alt="CTH UK Logo"
+                  width={65}
+                  height={13}
+                  className="h-2 sm:h-2.5 md:h-3 w-auto object-contain"
+                  priority
+                />
+              </div>
             </div>
             <span
               className={`text-[8.5px] sm:text-[10.5px] font-semibold uppercase tracking-wider mt-0.5 transition-colors leading-none ${

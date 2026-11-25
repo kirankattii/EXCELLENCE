@@ -212,7 +212,7 @@ function getSkillIcon(skill: string, idx: number) {
 function getRoleIcon(
   role: string,
   idx: number,
-  iconClass = "w-3.5 h-3.5 text-[#D4F85A] group-hover:text-[#0A1118] transition-colors"
+  iconClass = "w-3.5 h-3.5 text-[#D4F85A] group-hover:text-[#0A1118] transition-colors",
 ) {
   const lower = role.toLowerCase();
   if (
@@ -294,10 +294,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
   }
 
   // Related courses (excluding current)
-  const relatedCourses = COURSE_PROGRAMS.filter((c) => c.id !== course.id).slice(
-    0,
-    3
-  );
+  const relatedCourses = COURSE_PROGRAMS.filter(
+    (c) => c.id !== course.id,
+  ).slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -353,7 +352,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     <span>{course.level}</span>
                   </span>
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/20 border border-white/30 backdrop-blur-md text-xs font-extrabold text-white">
-                    <Clock className="w-3 h-3 text-[#D4F85A]" aria-hidden="true" />
+                    <Clock
+                      className="w-3 h-3 text-[#D4F85A]"
+                      aria-hidden="true"
+                    />
                     <span>{course.shortDuration}</span>
                   </span>
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/25 border border-white/20 backdrop-blur-md text-xs font-extrabold text-white">
@@ -379,21 +381,27 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 </p>
 
                 {/* Primary CTAs */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 pt-1 sm:pt-2">
                   <Link
                     href={`/enroll?course=${course.id}`}
-                    className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-xs sm:text-base px-5 sm:px-8 py-2.5 sm:py-4 rounded-full shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                    className="inline-flex items-center gap-1.5 sm:gap-2.5 bg-[#D4F85A] hover:bg-[#c7f445] text-[#0A1118] font-black text-[11px] sm:text-base px-3.5 sm:px-8 py-2 sm:py-4 rounded-full shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
                   >
                     <span>Apply for Admission</span>
-                    <AnimatedArrow size={14} boxClassName="h-4 w-4 sm:h-5 sm:w-[17px]" />
+                    <AnimatedArrow
+                      size={12}
+                      boxClassName="h-3.5 w-3.5 sm:h-5 sm:w-[17px]"
+                    />
                   </Link>
                   <a
                     href="https://wa.me/919607622999?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4.5 sm:px-6 py-2.5 sm:py-4 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md text-xs sm:text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-2 sm:py-4 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md text-[11px] sm:text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95"
                   >
-                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4F85A]" aria-hidden="true" />
+                    <Phone
+                      className="w-3 h-3 sm:w-4 sm:h-4 text-[#D4F85A]"
+                      aria-hidden="true"
+                    />
                     <span>Speak to Counselor</span>
                   </a>
                 </div>
@@ -452,76 +460,91 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 2. Key Facts Strip */}
         <section className="relative z-20 -mt-10 sm:-mt-14 pb-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
-            <ScrollReveal variant="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-5 rounded-[22px] sm:rounded-[32px] bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_20px_50px_-10px_rgba(10,17,24,0.12)]">
+            <ScrollReveal
+              variant="fade-up"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 p-2 sm:p-5 rounded-2xl sm:rounded-[32px] bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_20px_50px_-10px_rgba(10,17,24,0.12)]"
+            >
               {/* Fact 1: Duration */}
-              <div className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+              <div className="flex items-center sm:items-start gap-2.5 sm:gap-3.5 p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
+                  <Clock className="w-3.5 h-3.5 sm:w-5 sm:h-5" aria-hidden="true" />
                 </div>
                 <div className="space-y-0.5 min-w-0">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[8.5px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
                     Duration
                   </span>
-                  <h3 className="text-sm sm:text-lg font-black text-slate-950 truncate">
+                  <h3 className="text-xs sm:text-lg font-black text-slate-950 sm:truncate leading-tight sm:leading-normal">
                     {course.shortDuration}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">
+                  <p className="text-[10px] sm:text-xs text-slate-500 font-medium line-clamp-1">
                     Practical + Theory Curriculum
                   </p>
                 </div>
               </div>
 
               {/* Fact 2: Eligibility */}
-              <div className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
-                  <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+              <div className="flex items-center sm:items-start gap-2.5 sm:gap-3.5 p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
+                  <GraduationCap
+                    className="w-3.5 h-3.5 sm:w-5 sm:h-5"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="space-y-0.5 min-w-0">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[8.5px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
                     Eligibility
                   </span>
-                  <h3 className="text-sm sm:text-lg font-black text-slate-950 truncate">
-                    {course.eligibility.includes("10th") || course.eligibility.includes("Class 10")
-                      ? "10th Pass or Equivalent"
-                      : "Working Professionals"}
+                  <h3 className="text-xs sm:text-lg font-black text-slate-950 sm:truncate leading-tight sm:leading-normal">
+                    {course.eligibility.includes("10th") ||
+                    course.eligibility.includes("Class 10") ? (
+                      <>
+                        <span className="block sm:inline">10th Pass or</span>{" "}
+                        <span className="block sm:inline">Equivalent</span>
+                      </>
+                    ) : (
+                      "Working Professionals"
+                    )}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">
+                  <p className="text-[10px] sm:text-xs text-slate-500 font-medium line-clamp-1">
                     Open to all streams
                   </p>
                 </div>
               </div>
 
               {/* Fact 3: Awarding Body */}
-              <div className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
-                  <Award className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+              <div className="flex items-center sm:items-start gap-2.5 sm:gap-3.5 p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
+                  <Award className="w-3.5 h-3.5 sm:w-5 sm:h-5" aria-hidden="true" />
                 </div>
                 <div className="space-y-0.5 min-w-0">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[8.5px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
                     Awarding Body
                   </span>
-                  <h3 className="text-sm sm:text-lg font-black text-slate-950 truncate">
+                  <h3 className="text-xs sm:text-lg font-black text-slate-950 sm:truncate leading-tight sm:leading-normal">
                     CTH, London (UK)
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">
+                  <p className="text-[10px] sm:text-xs text-slate-500 font-medium line-clamp-1">
                     Ofqual (UK) Regulated
                   </p>
                 </div>
               </div>
 
               {/* Fact 4: Mode of Study */}
-              <div className="flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
-                  <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+              <div className="flex items-center sm:items-start gap-2.5 sm:gap-3.5 p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F8FAFC] border border-slate-200/70 hover:border-[#1E6DEB]/40 hover:bg-[#F0F6FE]/50 transition-all duration-200 group">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-white border border-slate-200 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 shadow-xs group-hover:bg-[#1E6DEB] group-hover:text-white transition-colors">
+                  <UtensilsCrossed
+                    className="w-3.5 h-3.5 sm:w-5 sm:h-5"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="space-y-0.5 min-w-0">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[8.5px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400">
                     Learning Mode
                   </span>
-                  <h3 className="text-sm sm:text-lg font-black text-slate-950 truncate">
+                  <h3 className="text-xs sm:text-lg font-black text-slate-950 sm:truncate leading-tight sm:leading-normal">
                     80% Practical Labs
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">
+                  <p className="text-[10px] sm:text-xs text-slate-500 font-medium line-clamp-1">
                     Industry-Standard Kitchens
                   </p>
                 </div>
@@ -535,7 +558,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
               {/* Left narrative */}
-              <ScrollReveal variant="fade-up" className="lg:col-span-7 space-y-5">
+              <ScrollReveal
+                variant="fade-up"
+                className="lg:col-span-7 space-y-5"
+              >
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-[11px] font-black text-[#1E6DEB]">
                   <CourseIcon name={course.iconName} className="w-3.5 h-3.5" />
                   <span>PROGRAM OVERVIEW</span>
@@ -547,7 +573,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
                 <div className="prose prose-slate max-w-none space-y-3.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
                   <p>{course.overview}</p>
-                  {course.secondaryOverview && <p>{course.secondaryOverview}</p>}
+                  {course.secondaryOverview && (
+                    <p>{course.secondaryOverview}</p>
+                  )}
                 </div>
 
                 {course.practicalTraining && (
@@ -566,7 +594,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
               </ScrollReveal>
 
               {/* Right sticky highlights box */}
-              <ScrollReveal variant="fade-up" delay={0.1} className="lg:col-span-5 space-y-6">
+              <ScrollReveal
+                variant="fade-up"
+                delay={0.1}
+                className="lg:col-span-5 space-y-6"
+              >
                 <div className="rounded-[32px] bg-gradient-to-br from-[#0A1118] to-[#122336] text-white p-7 sm:p-9 shadow-xl relative overflow-hidden space-y-6">
                   <div
                     className="absolute -top-16 -right-16 w-48 h-48 bg-[#1E6DEB]/30 rounded-full blur-3xl pointer-events-none"
@@ -634,7 +666,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 4. Curriculum / What You Will Learn */}
         <section className="py-16 sm:py-24 bg-[#F8FAFC] border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal
+              variant="fade-up"
+              className="max-w-3xl mx-auto text-center space-y-4"
+            >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB] shadow-xs">
                 <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>COMPREHENSIVE SYLLABUS</span>
@@ -747,7 +782,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {course.skillsDeveloped && (
           <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-              <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
+              <ScrollReveal
+                variant="fade-up"
+                className="max-w-3xl mx-auto text-center space-y-4"
+              >
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F6FE] border border-[#1E6DEB]/20 text-xs font-black text-[#1E6DEB]">
                   <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>INDUSTRY COMPETENCIES</span>
@@ -799,7 +837,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
           />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12 relative z-10">
-            <ScrollReveal variant="fade-up" className="max-w-3xl mx-auto text-center space-y-4">
+            <ScrollReveal
+              variant="fade-up"
+              className="max-w-3xl mx-auto text-center space-y-4"
+            >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-black text-[#D4F85A]">
                 <Briefcase className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>EMPLOYMENT &amp; GLOBAL PLACEMENT</span>
@@ -845,7 +886,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
             {/* Progression Callout */}
             {course.careerProgression && (
-              <ScrollReveal variant="fade-up" delay={0.1} className="rounded-[32px] bg-gradient-to-r from-[#1351C7] to-[#1E6DEB] p-8 sm:p-10 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6">
+              <ScrollReveal
+                variant="fade-up"
+                delay={0.1}
+                className="rounded-[32px] bg-gradient-to-r from-[#1351C7] to-[#1E6DEB] p-8 sm:p-10 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6"
+              >
                 <div className="space-y-2 text-center md:text-left">
                   <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-[#D4F85A]">
                     <TrendingUp className="w-4 h-4" aria-hidden="true" />
@@ -876,7 +921,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Who Should Apply */}
-              <ScrollReveal variant="fade-up" className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 space-y-6">
+              <ScrollReveal
+                variant="fade-up"
+                className="rounded-[32px] bg-[#F8FAFC] border border-slate-200/90 p-8 sm:p-10 space-y-6"
+              >
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-black text-[#1E6DEB]">
                     <Users className="w-3.5 h-3.5" aria-hidden="true" />
@@ -895,7 +943,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   {course.whoShouldApply.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <div className="w-5 h-5 rounded-full bg-[#1E6DEB]/15 text-[#1E6DEB] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                        <CheckCircle2
+                          className="w-3.5 h-3.5"
+                          aria-hidden="true"
+                        />
                       </div>
                       <span className="leading-snug">{item}</span>
                     </li>
@@ -911,7 +962,11 @@ export default async function CourseDetailPage({ params }: PageProps) {
               </ScrollReveal>
 
               {/* Why Choose Excellence Education Academy Goa */}
-              <ScrollReveal variant="fade-up" delay={0.1} className="rounded-[32px] bg-gradient-to-br from-[#1E6DEB] to-[#1351C7] text-white p-8 sm:p-10 shadow-xl space-y-6 flex flex-col justify-between">
+              <ScrollReveal
+                variant="fade-up"
+                delay={0.1}
+                className="rounded-[32px] bg-gradient-to-br from-[#1E6DEB] to-[#1351C7] text-white p-8 sm:p-10 shadow-xl space-y-6 flex flex-col justify-between"
+              >
                 <div className="space-y-4">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 border border-white/30 text-xs font-black text-[#D4F85A]">
                     <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
@@ -950,7 +1005,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 8. Direct Admissions Fast Form CTA */}
         <section className="py-16 sm:py-24 bg-gradient-to-b from-[#F8FAFC] to-white border-b border-slate-200/80">
           <div className="max-w-5xl mx-auto px-4 sm:px-8">
-            <ScrollReveal variant="fade-up" className="rounded-[36px] bg-white border-2 border-[#1E6DEB]/25 p-8 sm:p-12 shadow-[0_20px_50px_rgba(30,109,235,0.1)] text-center space-y-8">
+            <ScrollReveal
+              variant="fade-up"
+              className="rounded-[36px] bg-white border-2 border-[#1E6DEB]/25 p-8 sm:p-12 shadow-[0_20px_50px_rgba(30,109,235,0.1)] text-center space-y-8"
+            >
               <div className="max-w-2xl mx-auto space-y-3">
                 <span className="text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
                   ADMISSIONS OPEN • LIMITED SEATS PER BATCH
@@ -978,7 +1036,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   href="tel:+919607622999"
                   className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 font-black text-sm sm:text-base px-7 py-4 rounded-full shadow-sm transition-all hover:-translate-y-0.5 active:scale-95"
                 >
-                  <Phone className="w-4 h-4 text-[#1E6DEB]" aria-hidden="true" />
+                  <Phone
+                    className="w-4 h-4 text-[#1E6DEB]"
+                    aria-hidden="true"
+                  />
                   <span>Call +91 96076 22999</span>
                 </a>
               </div>
@@ -989,7 +1050,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
         {/* 9. Related Other Programs */}
         <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
-            <ScrollReveal variant="fade-up" className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <ScrollReveal
+              variant="fade-up"
+              className="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+            >
               <div>
                 <span className="text-xs font-black uppercase tracking-widest text-[#1E6DEB]">
                   EXPLORE ALTERNATIVE PATHWAYS

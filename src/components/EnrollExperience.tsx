@@ -1196,7 +1196,7 @@ function EnrollForm({
               <p className="text-[11px] text-slate-400 flex items-start gap-1.5">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5 text-slate-400" aria-hidden="true" />
                 <span>
-                  The Capital, 660/3, Alto Porvorim, Goa 403521 (Mon–Sat, 9 AM –
+                  The Capital, 660/3, Alto Porvorim, Goa 403521 (Mon–Sat, 10 AM –
                   6 PM)
                 </span>
               </p>

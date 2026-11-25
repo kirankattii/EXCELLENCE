@@ -621,7 +621,7 @@ export default function AdmissionForm() {
                     Kitchen Tour &amp; Counseling Hours
                   </h3>
                   <p className="text-xs text-slate-700 mt-1 font-medium">
-                    Monday to Saturday: 9:00 AM – 6:00 PM
+                    Monday to Saturday: 10:00 AM – 6:00 PM
                     <br />
                     Walk-in visits &amp; demo class observations welcome
                   </p>

@@ -2,15 +2,16 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { Star } from "lucide-react";
+import Link from "next/link";
 
 export interface ShowcaseCardItem {
   title: string;
   subtitle: string;
   badge: string;
   image: string;
-  rating: string;
+  rating?: string;
   featured?: boolean;
+  link?: string;
 }
 
 interface CurvedMobileMarqueeProps {
@@ -20,11 +21,10 @@ interface CurvedMobileMarqueeProps {
 
 export function CurvedMobileMarquee({
   cards,
-  speed = 42,
+  speed = 40,
 }: CurvedMobileMarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isPaused = useRef(false);
   const positionRef = useRef(0);
   const animFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
@@ -44,17 +44,14 @@ export function CurvedMobileMarquee({
     lastX: 0,
   });
 
-  // Repeat cards twice for a continuous circular track
-  const repeatedCards = [...cards, ...cards];
-  const CARD_WIDTH = 210;
-  const CARD_GAP = 16;
-  const ITEM_STRIDE = CARD_WIDTH + CARD_GAP;
-  const TOTAL_TRACK_WIDTH = repeatedCards.length * ITEM_STRIDE;
+  // Repeat cards 3 times for a continuous circular track that easily spans ultra-wide desktop displays
+  const repeatedCards = [...cards, ...cards, ...cards];
 
   useEffect(() => {
     const updateLoop = (now: number) => {
-      if (lastTimeRef.current !== null && !isPaused.current) {
-        const delta = Math.min((now - lastTimeRef.current) / 1000, 0.1); // clamp delta to prevent giant leaps on tab switch
+      if (lastTimeRef.current !== null) {
+        const delta = Math.min((now - lastTimeRef.current) / 1000, 0.1); // clamp delta
+        // Never pause on hover: continuously glide at smooth speed
         positionRef.current += speed * delta;
       }
       lastTimeRef.current = now;
@@ -62,39 +59,49 @@ export function CurvedMobileMarquee({
       const container = containerRef.current;
       if (container) {
         const containerWidth = container.clientWidth || 360;
+        const isDesktop = containerWidth >= 640;
+        const cardWidth = isDesktop ? 260 : 215;
+        const cardGap = isDesktop ? 20 : 16;
+        const itemStride = cardWidth + cardGap;
+        const totalTrackWidth = repeatedCards.length * itemStride;
+
         const centerX = containerWidth / 2;
-        const curveSpan = containerWidth * 0.52;
+        const curveSpan = isDesktop
+          ? containerWidth * 0.46
+          : containerWidth * 0.52;
         const currentOffset =
-          ((positionRef.current % TOTAL_TRACK_WIDTH) + TOTAL_TRACK_WIDTH) %
-          TOTAL_TRACK_WIDTH;
+          ((positionRef.current % totalTrackWidth) + totalTrackWidth) %
+          totalTrackWidth;
 
         cardRefs.current.forEach((el, idx) => {
           if (!el) return;
 
           // Continuous circular wrap relative to screen center
-          const rawPos = idx * ITEM_STRIDE - currentOffset;
+          const rawPos = idx * itemStride - currentOffset;
           let distFromCenter =
-            ((rawPos + CARD_WIDTH / 2 - centerX) % TOTAL_TRACK_WIDTH +
-              TOTAL_TRACK_WIDTH) %
-            TOTAL_TRACK_WIDTH;
+            (((rawPos + cardWidth / 2 - centerX) % totalTrackWidth) +
+              totalTrackWidth) %
+            totalTrackWidth;
 
-          if (distFromCenter > TOTAL_TRACK_WIDTH / 2) {
-            distFromCenter -= TOTAL_TRACK_WIDTH;
+          if (distFromCenter > totalTrackWidth / 2) {
+            distFromCenter -= totalTrackWidth;
           }
 
-          const x = centerX + distFromCenter - CARD_WIDTH / 2;
+          const x = centerX + distFromCenter - cardWidth / 2;
           const dist = distFromCenter / curveSpan;
-          const clampedDist = Math.max(-1.4, Math.min(1.4, dist));
+          const clampedDist = Math.max(-1.5, Math.min(1.5, dist));
 
-          // Curved smile arc formula:
+          // Curved smile arc formula for both mobile and desktop:
           // Center (dist = 0): y = 0, rotate = 0, scale = 1.04
-          // Left/Right: y dips smoothly down, rotates along arc
-          const y = Math.pow(clampedDist, 2) * 22;
-          const rotate = clampedDist * 9.5;
-          const scale = 1.04 - Math.min(Math.abs(clampedDist), 1.2) * 0.12;
+          // Left/Right: y dips smoothly down, rotates gracefully along arc
+          const yDip = isDesktop ? 26 : 20;
+          const rotateFactor = isDesktop ? 7.5 : 9.5;
+          const y = Math.pow(clampedDist, 2) * yDip;
+          const rotate = clampedDist * rotateFactor;
+          const scale = 1.04 - Math.min(Math.abs(clampedDist), 1.25) * 0.1;
 
           el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
-          el.style.zIndex = `${Math.round(20 - Math.abs(clampedDist) * 10)}`;
+          el.style.zIndex = `${Math.round(30 - Math.abs(clampedDist) * 10)}`;
         });
       }
 
@@ -108,19 +115,18 @@ export function CurvedMobileMarquee({
         cancelAnimationFrame(animFrameRef.current);
       }
     };
-  }, [cards.length, speed, TOTAL_TRACK_WIDTH, ITEM_STRIDE, repeatedCards.length]);
+  }, [cards.length, speed, repeatedCards.length]);
 
   const endDrag = () => {
     dragRef.current.active = false;
     dragRef.current.dragging = false;
     dragRef.current.pointerId = null;
-    isPaused.current = false;
   };
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[260px] overflow-hidden select-none touch-pan-y [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+      className="relative w-full h-[265px] sm:h-[305px] overflow-hidden select-none touch-pan-y [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
       onPointerDown={(e) => {
         dragRef.current = {
           active: true,
@@ -148,7 +154,6 @@ export function CurvedMobileMarquee({
           }
           if (totalDx > 6) {
             dragRef.current.dragging = true;
-            isPaused.current = true;
           } else {
             return;
           }
@@ -159,16 +164,6 @@ export function CurvedMobileMarquee({
       }}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
-      onPointerEnter={(e) => {
-        if (e.pointerType === "mouse") {
-          isPaused.current = true;
-        }
-      }}
-      onPointerLeave={(e) => {
-        if (e.pointerType === "mouse") {
-          isPaused.current = false;
-        }
-      }}
       aria-label="Interactive Curriculum Cards"
     >
       {repeatedCards.map((card, idx) => (
@@ -177,48 +172,45 @@ export function CurvedMobileMarquee({
           ref={(el) => {
             cardRefs.current[idx] = el;
           }}
-          className="absolute top-3 left-0 w-[210px] will-change-transform pointer-events-auto cursor-grab active:cursor-grabbing"
-          style={{
-            transform: `translate3d(${idx * ITEM_STRIDE}px, 0, 0)`,
-          }}
+          className="absolute top-2 left-0 w-[215px] sm:w-[260px] h-[230px] sm:h-[265px] will-change-transform pointer-events-auto cursor-grab active:cursor-grabbing"
         >
-          <div
-            className={`relative bg-white rounded-3xl p-3 shadow-[0_16px_40px_rgba(10,17,24,0.22)] border border-white transition-shadow ${
+          <Link
+            href={card.link || "/courses"}
+            onClick={(e) => {
+              if (dragRef.current.dragging) {
+                e.preventDefault();
+              }
+            }}
+            className={`w-full h-full flex flex-col justify-start relative bg-white rounded-3xl p-3 shadow-[0_16px_40px_rgba(10,17,24,0.22)] border border-white transition-all duration-300 hover:scale-105 ${
               card.featured
                 ? "ring-2 ring-[#D4F85A] shadow-[0_20px_50px_rgba(212,248,90,0.35)]"
                 : ""
             }`}
           >
             {/* Photo container */}
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shrink-0">
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
                 className="object-cover"
-                sizes="210px"
+                sizes="(max-width: 640px) 215px, 260px"
               />
-              <div className="absolute top-2 left-2 bg-[#0A1118]/85 text-[#D4F85A] text-[9px] font-black px-2 py-0.5 rounded-full backdrop-blur-xs">
+              <div className="absolute top-2 left-2 bg-[#0A1118]/85 text-[#D4F85A] text-[9px] sm:text-[9.5px] font-black px-2 sm:px-2.5 py-0.5 rounded-full backdrop-blur-xs">
                 {card.badge}
               </div>
             </div>
 
-            {/* Card footer details */}
-            <div className="pt-2.5 px-1 text-left">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xs font-black text-slate-900 truncate">
-                  {card.title}
-                </h3>
-                <div className="flex items-center gap-0.5 text-[10px] font-bold text-amber-500">
-                  <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                  <span>{card.rating}</span>
-                </div>
-              </div>
-              <p className="text-[10px] text-slate-500 truncate mt-0.5 font-medium">
+            {/* Card footer details: Same height, reduced gap between text lines */}
+            <div className="pt-2 sm:pt-2.5 px-1 text-left flex-1 flex flex-col justify-start">
+              <h3 className="text-xs sm:text-sm font-black text-slate-900 leading-[1.12] sm:leading-[1.15] tracking-tight line-clamp-2">
+                {card.title}
+              </h3>
+              <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight mt-1 line-clamp-1">
                 {card.subtitle}
               </p>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
     </div>
